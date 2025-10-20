@@ -1,0 +1,8 @@
+#+TITLE: Now
+#+OPTIONS: 
+
+/(This is [[https://nownownow.com/about][a now page]], and if you have your own site, you should make one too.)/
+
+- Right now I'm working on [[https://amitav.net/roadmap-llm.html][building an LLM]] from scratch.
+- I'm also trying to use transformers to denoise quantum sensor readings. Heavily inspired by [[https://arxiv.org/abs/2509.16242][this paper]] using CNNs to denoise quantum sensor readings and [[https://arxiv.org/abs/2206.06287][this paper]] on creating physics-informed networks. 
+

@@ -1,0 +1,306 @@
+#+TITLE: Building vectors in C++
+
+* Hello!                  :noexport:
+#+INCLUDE: "building-lists.org" :only-contents t :lines "3-"
+* Vectors
+#+BEGIN_EXPORT html
+<details>
+<summary><code>list-template-2</code></summary>
+#+END_EXPORT
+#+NAME: list-template-2 
+#+BEGIN_SRC C++ :noweb yes :exports both :results output :session vector
+  template <typename T>
+  class MyList {
+  protected:
+    T* arr;
+    int capacity;
+    int current;
+
+  public:
+    MyList() : capacity(1), current(0) {
+      arr = new T[capacity];
+    }
+    void push(T data) {
+      if (current == capacity) {
+        T* temp = new T[2 * capacity];
+        for (int i = 0; i < capacity; i++) { temp[i] = arr[i]; }
+        delete[] arr;
+        capacity *= 2;
+        arr = temp;
+      }
+      arr[current++] = data;
+    }
+     T& operator[](int index)  {
+      if (index >= current || index < 0) {
+        throw std::out_of_range("Index out of range");
+      }
+      return arr[index];
+    }
+     const T& operator[](int index) const  {
+      if (index >= current || index < 0) {
+        throw std::out_of_range("Index out of range");
+      }
+      return arr[index];
+        }
+   <<list-extra-methods-1>>
+   };
+    
+#+END_SRC
+#+BEGIN_EXPORT html
+</details>
+#+END_EXPORT
+
+
+Hello! This is part 3 in a ~TBD~ part series on creating an LLM from scratch! You can see part 2, creating lists, [[https://amitav.net/building-lists.html][here]], and part 3, creating matrices, [[https://amitav.net/building-matrices.html][here]].
+
+First, before we create a vector class, we should clarify what we really mean when we say vector. For our purposes, a vector is an *ordered list of numbers*. Here's an example of a 2-dimensional vector:
+[5, 7]
+
+and here's an example of a 5-dimensional vector:
+[3.5, 4, 2, 1.2, 943.89]
+
+As you can see, the idea of a vector is actually extremely simple[fn:5]. We use multi-dimensional vectors to represent things like words and sentences and paragraphs, because the hope is that each vector will allow us to encode *multiple independent aspects* of a token at once. At a high-level, we're guessing[fn:6] that the vector will begin to associate different numbers with different attributes: maybe we want the first number to roughly correlate to how dog-like the word is, the second number to correlate to royalty, the third number to correlate with age, &c. For more information, see [[https://arxiv.org/pdf/1301.3781][this paper]] on word representations in vector space. Let's get cracking on the initial implementation:
+
+
+~vector-test-1~
+
+#+NAME: vector-test-1
+#+BEGIN_SRC C++ :results output :exports both :noweb eval
+  #include <iostream>
+  #include <stdexcept>
+
+  <<list-template-2>>
+  int main() {
+     MyList<float> vector;
+     vector.push(10);
+     vector.push(20);
+
+     for (int i = 0; i < vector.size(); i++) {
+       std::cout << vector[i] << std::endl;
+       }
+     
+
+
+    return 0;
+  }
+#+END_SRC
+
+
+Amazing! While this is great, we do sadly have to add some more features, though. Namely:
+
+- Element-wise addition and subtraction
+- Dot product[fn:7]
+- Scalar multiplication
+
+and that's pretty much it! Adding vectors is not actually that complicated, so let's get to work!
+
+~vector-class-1~
+#+NAME: vector-class-1
+#+BEGIN_SRC C++ :noweb eval
+  <<list-template-2>>
+  #include <stdexcept>
+    class mathVector : public MyList<float> {
+      public:
+      using MyList<float>::MyList;
+      explicit mathVector(int n) {
+        for (int i = 0; i < n; i++) {push(0.0f);}
+        }
+     
+      friend std::ostream& operator<<(std::ostream& os, const mathVector& vec) {
+      os << "[";
+      for (int i = 0; i < vec.size(); i++) {
+        os << vec[i];
+        if (i != vec.size() - 1) os << ", ";
+      }
+      os << "]";
+      return os;
+      }
+      void scalarMultiplication(float scalar) {
+        for (int i = 0; i < size(); i++) {
+          (*this)[i] *= scalar;
+          }
+        }
+      mathVector operator+(const mathVector& other) const {
+      if (size() != other.size()) {
+         throw std::invalid_argument("Vectors must be of the same dimension");
+         }
+
+      mathVector result;
+      result.reserve(size());
+      for (int i = 0; i < size(); i++) {
+          result.push((*this)[i] + other[i]);
+  	}
+      return result;
+  }
+
+  mathVector operator-(const mathVector& other) const {
+      if (size() != other.size()) {
+          throw std::invalid_argument("Vectors must be of the same dimension");
+  	}
+
+      mathVector result;
+      result.reserve(size());
+      for (int i = 0; i < size(); i++) {
+          result.push((*this)[i] - other[i]);
+  	}
+      return result;
+  }
+
+  float dotProduct(const mathVector& other) const {
+      if (size() != other.size()) {
+          throw std::invalid_argument("Dot product dimensions must match");
+  	}
+      float val = 0.0f;
+      for (int i = 0; i < size(); i++)
+          val += (*this)[i] * other[i];
+      return val;
+  }
+  };
+      
+#+END_SRC
+
+
+As you can see, none of it's too complicated. The first two lines just tell the compiler "Oi, this inherits from ~MyList~". ~Using MyList<float>::MyList;~ tells the compiler that it uses all of ~MyList~'s constructors. After that, we define a new constructor for ~mathVector~, which allows us to provide a number as an argument and it will fill up the vector with that many zeroes, which is very convenient. The element-wise addition and subtraction are really nothing special, just looping over every element in the ~mathVector~, adding it to the corresponding elment in the other ~mathVector~, and then returning another ~mathVector~ with the result. Finally, the dotProduct function just loops through the current ~mathVector~, multiplies the current item by the corresponding item in the other ~mathVector~, and takes the sum of all of those products[fn:7]. Now, let's test all of this out!
+
+~vector-test-2~
+#+NAME: vector-test-2
+#+BEGIN_SRC C++ :noweb eval :results output :exports both
+  #include <iostream>
+  <<vector-class-1>>
+  int main() {
+    mathVector vector_1;
+    vector_1.push(10);
+    vector_1.push(20);
+    vector_1.push(30);
+
+    std::cout << vector_1 << std::endl;
+
+    mathVector vector_2;
+
+    vector_2.push(5);
+    vector_2.push(15);
+    vector_2.push(25);
+
+    mathVector vector_3;
+    vector_3 = vector_1 - vector_2;
+
+    std::cout << vector_3 << std::endl;
+
+    float dot_product_1{ };
+    dot_product_1 = vector_3.dotProduct(vector_1);
+
+    std::cout << dot_product_1 << std::endl;
+        
+
+    vector_2.scalarMultiplication(2);
+
+    std::cout << vector_2;
+
+
+    return 0;
+    }
+#+END_SRC
+This piece was a bit of a shorter one, and the next piece will be implementing *matrices*.
+  
+* Footnotes
+[fn:7]I'm leaving this explanation here because it took me an unreasonable amount of time to understand how the hell a dot product works, and I do not wish for the same fate to befall you. Firstly, let's cover the algebraic definition:
+‎‎‎‎‎‎
+$$\\ \vec{u} \cdot \vec{v} = \sum_{i=1}^{|u|} u_iv_i \newline \tag{1}$$
+‎‎
+If you're not familiar with this notation, you can think of a summation ($\sum$) sort of like a for loop. This is an example of a dot product implementation.
+
+#+NAME: summation-demonstration
+#+BEGIN_SRC C++
+  MyList<float> u;
+  MyList<float> v;
+  float dot_product_output{ };
+  u.push(3);
+  u.push(4);
+  u.push(5);
+  v.push(6);
+  v.push(7);
+  v.push(8);
+
+  for (int i = 0; i < u.size(); i++) {
+     dot_product_output += (u[i] * v[i])
+  }
+#+END_SRC
+What this does is go through every element in vector $\vec{a}$(the little arrow over the letter indicates a vector), multiply it by the corresponding element in vector $\vec{b}$, and then add all of that up all of those products. Now, there is also another definition for a dot product, a /geometric/ definition, like so:
+‎‎‎‎
+$$\\ \vec{a} \cdot \vec{b} = ||\vec{a}||||\vec{b}||\cos{\theta} \tag{2}$$
+‎
+Now, the summation in the last one was pretty scary, but it was pretty simple overall. This one however, will be a bit more involved to prove, but stick with me. Firstly, using the law of cosines, we know that
+‎‎‎‎‎
+$$||(\vec{a}-\vec{b})||^2 = ||\vec{a}||^2 + ||\vec{b}||^2 - 2||\vec{a}||||\vec{b}||\cos(\theta) \tag{3}$$
+‎‎‎‎
+You can imagine $||\vec{a}||$ being the length from $\vec{a}$ to the origin, $||\vec{b}||$ being the length from $\vec{b}$ to the origin, and $||(\vec{a}-\vec{b})||$ being the length from $\vec{a}$ to $\vec{b}$. Next, let's compare that with
+‎‎
+$$(\vec{a}-\vec{b}) \cdot (\vec{a} - \vec{b}) \tag{4}$$
+‎
+Dot products have the following properties
+‎‎‎
+*Commmutative*
+$$\vec{u} \cdot \vec{v} = \vec{v} \cdot \vec{u} \tag{5}$$
+This is because the formula for a dot product is:
+‎‎‎‎
+$$\vec{a} \cdot \vec{b} = \sum_{i=1}^{|a|} a_ib_i \newline \tag{1}$$
+‎‎‎‎
+As you can see, a dot product is just a series of multiplications. When we swap the order of the elements in the dot product, what we're doing is just swapping the order of those factors, and because we know that multiplication is commutative, we also know that dot products are commutative.
+‎‎‎
+*Distributive over addition*
+
+$$
+\begin{align}
+\vec{u} \cdot (\vec{v} + \vec{w}) 
+&= \sum_{i=1}^{|u|} u_i(v_i + w_i) && \text{(def. of dot product)} \tag{6}\\
+&= \sum_{i=1}^{|u|} (u_i v_i + u_i w_i) && \text{(distributivity)} \tag{7}\\
+&= ((u_1v_1 + u_1w_1) + (u_2v_2 + u_2w_2) + \dots + (u_{|u|}v_{|u|} + u_{|u|}w_{|u|})) &&\text{(expand summations)} \tag{8}\\
+&= u_1v_1 + u_1w_1 + u_2v_2 + u_2w_2 + \dots + u_{|u|}v_{|u|} + u_{|u|}w_{|u|} && \text{(flatten parentheses)} \tag{9}\\
+&= (u_1v_1 + u_2v_2 + \dots + u_{|u|}v_{|u|}) + (u_1w_1 + u_2w_2 + \dots + u_{|u|}w_{|u|}) && \text{(group similar terms)} \tag{10}\\
+&= \sum_{i=1}^{|u|} u_i v_i + \sum_{i=1}^{|u|} u_i w_i && \text{(compress into summations)} \tag{11}\\
+&= \vec{u} \cdot \vec{v} + \vec{u} \cdot \vec{w} && \text{(def. of dot product)} \tag{12}
+\end{align}
+$$
+
+Tying those two properties together, let's try to evalute $4$ again.
+
+$$
+\begin{align}
+& (\vec{u} - \vec{v}) \cdot (\vec{u} - \vec{v}) \tag{4} \\
+&= (\vec{u} \cdot (\vec{u} - \vec{v})) - (\vec{v} \cdot (\vec{u} - \vec{v})) && \text{distribute the other factor}\tag{13} \\
+&= (\vec{u} \cdot \vec{u} - \vec{u} \cdot \vec{v}) - (\vec{v} \cdot \vec{u} - \vec{v} \cdot \vec{v}) && \text{distribute again} \tag{14} \\
+&= \vec{u} \cdot \vec{u} - \vec{u} \cdot \vec{v} - \vec{v} \cdot \vec{u} + \vec{v} \cdot \vec{v} && \text{flatten parantheses} \tag{15} \\
+&= \vec{u} \cdot \vec{u} + \vec{v} \cdot \vec{v} - 2(\vec{u} \cdot \vec{v}) && \text{rearrange and group like terms} \tag{16} \\
+&= ||\vec{u}||^2 + ||\vec{v}||^2 - 2\vec{u} \cdot \vec{v} \tag{17} \\
+&= \text{since} ||a|| = \sqrt{\vec{a} \cdot \vec{a}} && \text{according to the Euclidean  norm} \tag{18} 
+\end{align}
+$$
+
+Now, finishing us off
+$$
+\begin{align}
+(\vec{u}-\vec{v}) \cdot (\vec{u}-\vec{v})&=||(\vec{u}-\vec{v})||^2 && \text{by the Euclidean norm definition} \tag{19}\\
+||\vec{u}||^2 + ||\vec{v}||^2 - 2(\vec{u} \cdot \vec{v})&= ||\vec{u}||^2 + ||\vec{v}||^2 - 2||\vec{u}||||\vec{v}||\cos{\theta} && \text{substituting 3 and 17} \tag{20}\\
+-2(\vec{u} \cdot \vec{v}) &= -2||\vec{u}||||\vec{v}||\cos{\theta} && \text{subtract } \vec{u}^2 \text{and } \vec{v}^2\text{ from each side} \tag{21}\\
+\vec{u} \cdot \vec{v} &= ||\vec{u}||||\vec{v}||\cos{\theta} && \text{divide each side by -2} \tag{22}\\
+\end{align}
+$$
+
+Now that we've proved $2$, let's dig a little bit deeper and rewrite $22$ in terms of $\cos(\theta)$.
+
+$$
+\begin{align}
+\vec{u} \cdot \vec{v} &= ||\vec{u}||||\vec{v}||\cos{\theta} \tag{22}\\
+\frac{\vec{u} \cdot \vec{v}}{||\vec{u}||||\vec{v}||} &= \cos(\theta) \tag{23}\\
+\frac{\sum_{i=1}^{|u|}u_iv_i}{||\vec{u}||||\vec{v}||} &= \cos(\theta) \tag{24}\\
+\frac{\sum_{i=1}^{|u|}u_iv_i}{\sqrt{\sum_{i=1}^{|u|}u_i^2}\sqrt{\sum_{i=1}^{|v|}v_i^2}} &= \cos(\theta) \tag{25}\\
+\end{align}
+$$
+
+Boom! We've now derived the formula for the /[[https://en.wikipedia.org/wiki/Cosine_similarity][cosine similarity]]/. This formula is useful, because it allows us to compare the similarity of two vectors /independently/ of their magnitudes, which is very useful for things like facial recognition. The cosine similarity always belongs to the interval $[-1, +1]$, with a cosine similarity of 1 indicating that two vectors point in the same direction and a cosine similarity -1.
+[fn:5]This definition has the mathematical rigour of a senile tortoise. If you're looking for a more rigorous definition, I'd recommend reading [[https://linear.axler.net/LADR4e.pdf][Linear Algebra Done Right]] by Sheldon Axler.  
+[fn:6]I use the word "guess" here because we don't get to dictate what each number in a vector means, we can only speculate. 
+
+ 
+
+1

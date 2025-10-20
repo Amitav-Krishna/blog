@@ -1,0 +1,498 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2025-10-09 Thu 01:39 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Creating a map of residential school deaths across Canada</title>
+<meta name="author" content="Amitav Krishna" />
+<meta name="generator" content="Org Mode" />
+<style type="text/css">
+  #content { max-width: 60em; margin: auto; }
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #e6e6e6;
+    border-radius: 3px;
+    background-color: #f2f2f2;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: auto;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    top: -8px;
+    right: 12px;
+    padding: 3px;
+    color: #555;
+    background-color: #f2f2f299;
+  }
+  pre.src:hover:before { display: inline; margin-top: 14px;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { }
+</style>
+</head>
+<body>
+<div id="content" class="content">
+<h1 class="title">Creating a map of residential school deaths across Canada</h1>
+<div id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#org6cd4e21">1. Hello</a></li>
+<li><a href="#org824b042">2. The data</a></li>
+<li><a href="#org6de1acf">3. Making a map</a></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org6cd4e21" class="outline-2">
+<h2 id="org6cd4e21"><span class="section-number-2">1.</span> Hello</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+Orange Shirt day passed a few days ago, and with it we mourn the loss of thousands<sup><a id="fnr.1" class="footref" href="#fn.1" role="doc-backlink">1</a></sup> of Indigenous peoples at the hands of residential schools. In this piece, we will be trying to scrape the locations of all of the schools where these children were killed, and compile a map of sorts, with the locations of these residential schools, along with some cool heatmap type stuff. Let's get started.
+</p>
+</div>
+</div>
+<div id="outline-container-org824b042" class="outline-2">
+<h2 id="org824b042"><span class="section-number-2">2.</span> The data</h2>
+<div class="outline-text-2" id="text-2">
+<p>
+For the data, we will use the data provided by the <a href="https://nctr.ca">National Centre for Truth and Reconciliation</a> on residential schools. They're as trustworthy of a source you can get on this topic<sup><a id="fnr.2" class="footref" href="#fn.2" role="doc-backlink">2</a></sup>. More specifically, we're going to be using the <a href="https://nctr.ca/residential-schools/">Residential Schools Archive</a>. I was originally going to go through the <a href="https://nctr.ca/missing-children-and-unmarked-burials-initiative/national-student-memorial-register/">National St6udent Memorial Register</a>, but because we're focusing on the schools themselves the flow would look like
+</p>
+
+<div class="org-src-container">
+<pre class="src src-nil">(for every student)
+  click on memorial for student
+  get redirected to the profile for the school
+  add 1 student murdered to the entry for that school in the database
+</pre>
+</div>
+
+<p>
+in contrast, the flow we go through is
+</p>
+
+<div class="org-src-container">
+<pre class="src src-nil">(for every school)
+  click on profile
+  count the number of students
+  add that number, along with the name of the town and school to the database
+</pre>
+</div>
+
+<p>
+which is quite a bit more efficient. Along with saving my parents money on the Wi-Fi, because this is pretty unambiguously web scraping, it's best to try not to overstay your welcome. On that note, this is actually my first experience with web scraping, and that's what this section will mostly focus on. Let's get into the code
+</p>
+
+<div class="org-src-container">
+<pre class="src src-jupyter-python"><span style="color: #00ffff;">import</span> requests
+<span style="color: #00ffff;">from</span> bs4 <span style="color: #00ffff;">import</span> BeautifulSoup
+<span style="color: #00ffff;">import</span> csv
+<span style="color: #00ffff;">import</span> time
+<span style="color: #00ffff;">import</span> random
+</pre>
+</div>
+
+<p>
+These are some pretty standard libraries. <code>requests</code> is used to access webpages using Python, <a href="https://pypi.org/project/beautifulsoup4/">Beautiful Soup</a> is used for parsing HTML<sup><a id="fnr.3" class="footref" href="#fn.3" role="doc-backlink">3</a></sup>, <code>csv</code> is used for reading and (in our case) writing to CSV files, and <code>time</code> and <code>random</code> should both be pretty self-explanatory. Next, let's define our variables:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-jupyter-python"><span style="color: #eedd82;">LIST_URL</span> = <span style="color: #ffa07a;">"https://nctr.ca/residential-schools/page/{}/"</span>
+
+<span style="color: #eedd82;">HEADERS</span> = {<span style="color: #ffa07a;">"User-Agent"</span>: <span style="color: #ffa07a;">"The Bolt - Holy Trinity Catholic High School, Simcoe, Ontario - Deployed by Amitav Krishna (akrishna0511@bhncdsb.ca). Data is being scraped in order to create a map of deaths through residential schools across Canada. NOT APPROVED BY SCHOOL ADMINISTRATION, IF YOU HAVE ANY CONCERNS, PLEASE DIRECT THEM TO akrishna0511@bhncdsb.ca."</span>}
+</pre>
+</div>
+
+<p>
+Now, the first variable is pretty self-explanatory, that's the URL at which the list of schools is. The <code>{}</code> will be used later in conjunction with Python's <code>format()</code> function to replace it with the page number. Headers, on the other hand, are the METADATA around the message. There are two types of headers: <i>request</i> headers, which describe the client (you) and what you're looking for, and <i>response</i> headers, which describe stuff about the message, like the its type, the time the response was sent, the length, etc. In this case, we're modifying the User-Agent header in order to give the website information about who (the scraper) is. Another thing to check when doing scraping is the <code>robots.txt</code>, which basically describes who's allowed to do what where. In the case of this website, the <a href="https://nctr.ca/robots.txt">robots.txt</a> is very permissive, allowing any User-agent and only disallowing the <code>/wp-admin/</code> path, from which they likely manage their WordPress. Next, let's define a few functions that will be useful. Firstly, getting the schools from a page:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-jupyter-python"><span style="color: #00ffff;">def</span> <span style="color: #87cefa;">get_schools_from_page</span>(url):
+  <span style="color: #eedd82;">r</span> = requests.get(url, headers=HEADERS)
+  <span style="color: #00ffff;">if</span> r.status_code != 200:
+      <span style="color: #00ffff;">return</span> []
+  <span style="color: #eedd82;">soup</span> = BeautifulSoup(r.text, <span style="color: #ffa07a;">"lxml"</span>)
+  <span style="color: #eedd82;">links</span> = []
+  <span style="color: #00ffff;">for</span> art <span style="color: #00ffff;">in</span> soup.select(<span style="color: #ffa07a;">"article.mb-12"</span>):
+      <span style="color: #eedd82;">a</span> = art.select_one(<span style="color: #ffa07a;">"h2 a[href*='/residential-schools/']"</span>)
+      <span style="color: #00ffff;">if</span> <span style="color: #00ffff;">not</span> a:
+          <span style="color: #00ffff;">continue</span>
+
+      <span style="color: #eedd82;">href</span> = a.get(<span style="color: #ffa07a;">"href"</span>)
+      <span style="color: #eedd82;">name</span> = a.text.strip()
+
+      links.append((name, href))
+  <span style="color: #00ffff;">return</span> links
+</pre>
+</div>
+
+<p>
+This is pretty self-explanatory. We use <code>requests</code> to fetch the webpage. We then use BeautifulSoup to build a tree structure out of the tags, then we go through every <code>article</code> tag in the page with the class <code>mb-12</code>, and fetch one <code>a</code> tag (used to link to other pages) going to the subdomain of <code>/residential-schools/</code>. This may seem oddly specific, and that's because it is specific. The scraping we will do in this article is not very generalizable, because we want very structured data. Most of the time, I come up with the selects by just viewing the source of the page (CTRL+U in Firefox) and using find in page (CTRL+F in Firefox) to find the necessary content. We then fetch what that's linking to, and what the text of the tag is. Finally we package those into a tuple and chuck it into a list of links to be returned.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-jupyter-python"><span style="color: #00ffff;">def</span> <span style="color: #87cefa;">get_school_data</span>(url):
+  <span style="color: #eedd82;">r</span> = requests.get(url, headers=HEADERS)
+  <span style="color: #eedd82;">soup</span> = BeautifulSoup(r.text, <span style="color: #ffa07a;">"lxml"</span>)
+
+  <span style="color: #eedd82;">title</span> = soup.find(<span style="color: #ffa07a;">"title"</span>).get_text(strip=<span style="color: #7fffd4;">True</span>)
+  <span style="color: #eedd82;">province</span> = soup.find(<span style="color: #ffa07a;">"span"</span>, class_=<span style="color: #ffa07a;">"byline author vcard font-semibold"</span>).get_text(strip=<span style="color: #7fffd4;">True</span>)
+  <span style="color: #eedd82;">desc</span> = soup.find(<span style="color: #ffa07a;">"p"</span>).get_text(strip=<span style="color: #7fffd4;">True</span>) <span style="color: #00ffff;">if</span> soup.find(<span style="color: #ffa07a;">"p"</span>) <span style="color: #00ffff;">else</span> <span style="color: #ffa07a;">""</span>
+  <span style="color: #eedd82;">num_children</span> = <span style="color: #b0c4de;">len</span>(soup.select(<span style="color: #ffa07a;">".related-students-table-body tr"</span>))
+
+  <span style="color: #00ffff;">return</span> {
+      <span style="color: #ffa07a;">"school_name"</span>: title.replace(<span style="color: #ffa07a;">" - NCTR"</span>, <span style="color: #ffa07a;">""</span>),
+      <span style="color: #ffa07a;">"province"</span>: province,
+      <span style="color: #ffa07a;">"location_text"</span>: desc,
+      <span style="color: #ffa07a;">"num_children"</span>: num_children,
+      <span style="color: #ffa07a;">"url"</span>: url
+  }
+
+</pre>
+</div>
+
+<p>
+There's again some more boilerplate lines at the top, and then the rest of the lines are used to find information about the school. The <code>num_children</code> variable used here is definitely not descriptive enough, because it's actually referring to the number of children that went to the school and never went home, however that's what it is in all of my documents because I only realized there's insufficient info there while writing this, and running the script again would be a bit of a pain. I found what needed to be selected, again, with the trusty CTRL+U and CTRL+F. Finally, putting this all together, we get
+</p>
+
+<div class="org-src-container">
+<pre class="src src-jupyter-python"><span style="color: #00ffff;">def</span> <span style="color: #87cefa;">scrape_all</span>():
+  <span style="color: #eedd82;">all_rows</span> = []
+  <span style="color: #eedd82;">page</span> = 1
+  <span style="color: #00ffff;">while</span> <span style="color: #7fffd4;">True</span>:
+      <span style="color: #eedd82;">url</span> = LIST_URL.<span style="color: #b0c4de;">format</span>(page)
+      <span style="color: #eedd82;">schools</span> = get_schools_from_page(url)
+      <span style="color: #00ffff;">if</span> <span style="color: #00ffff;">not</span> schools:
+          <span style="color: #00ffff;">break</span>
+      <span style="color: #b0c4de;">print</span>(f<span style="color: #ffa07a;">"Found </span>{<span style="color: #b0c4de;">len</span>(schools)}<span style="color: #ffa07a;"> schools on page </span>{page}<span style="color: #ffa07a;">"</span>)
+      <span style="color: #00ffff;">for</span> name, href <span style="color: #00ffff;">in</span> schools:
+          <span style="color: #eedd82;">data</span> = get_school_data(href)
+          all_rows.append(data)
+          <span style="color: #b0c4de;">print</span>(data)
+          time.sleep(random.uniform(1, 3))
+      <span style="color: #eedd82;">page</span> += 1
+
+  <span style="color: #00ffff;">with</span> <span style="color: #b0c4de;">open</span>(<span style="color: #ffa07a;">"nctr_school_summary.csv"</span>, <span style="color: #ffa07a;">"w"</span>, newline=<span style="color: #ffa07a;">""</span>, encoding=<span style="color: #ffa07a;">"utf-8"</span>) <span style="color: #00ffff;">as</span> f:
+      <span style="color: #eedd82;">writer</span> = csv.DictWriter(f, fieldnames=all_rows[0].keys())
+      writer.writeheader()
+      writer.writerows(all_rows)
+
+</pre>
+</div>
+
+<p>
+I don't believe I've mentioned it earlier, but the residential schools archive uses what's called <i>pagination</i>, where instead of loading all items at once, you only send a subset of the items at a time, and then access more by accessing the other pages. For this, for every single school on the page, we scrape the info from it and then append it to our array, <code>all_rows</code>, and then we move on to the next page, and then repeat until we get a <code>404 Not Found</code> error. We add 1 - 3 seconds in between every request, just to be a good netizen and not step on the website's toes.I'm not going to run it here, because it takes approximately ten minutes on every run, but if you want to download the data for yourself without hitting nctr's servers, you should be able to download it from <a href="https://amitav.net/nctr_school_summary.csv">here</a>.
+</p>
+</div>
+</div>
+<div id="outline-container-org6de1acf" class="outline-2">
+<h2 id="org6de1acf"><span class="section-number-2">3.</span> Making a map</h2>
+<div class="outline-text-2" id="text-3">
+<p>
+Now, let's make a heatmap of all of the provinces
+</p>
+
+<div class="org-src-container">
+<pre class="src src-jupyter-python"><span style="color: #00ffff;">import</span> pandas <span style="color: #00ffff;">as</span> pd
+<span style="color: #00ffff;">import</span> geopandas <span style="color: #00ffff;">as</span> gpd
+</pre>
+</div>
+
+<p>
+<code>Pandas</code> is a Python library used for data analysis, and <code>GeoPandas</code> is a Python library that extends pandas to make it work with geospatial data.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-jupyter-python"><span style="color: #eedd82;">data</span> = pd.read_csv(<span style="color: #ffa07a;">"nctr_school_summary.csv"</span>)
+<span style="color: #eedd82;">canada</span> = gpd.read_file(
+    <span style="color: #ffa07a;">"https://raw.githubusercontent.com/codeforamerica/click_that_hood/master/public/data/canada.geojson"</span>
+    )
+<span style="color: #eedd82;">abbrs</span> = {
+    <span style="color: #ffa07a;">"AB"</span>: <span style="color: #ffa07a;">"Alberta"</span>,
+    <span style="color: #ffa07a;">"ON"</span>: <span style="color: #ffa07a;">"Ontario"</span>,
+    <span style="color: #ffa07a;">"SK"</span>: <span style="color: #ffa07a;">"Saskatchewan"</span>,
+    <span style="color: #ffa07a;">"QC"</span>: <span style="color: #ffa07a;">"Quebec"</span>,
+    <span style="color: #ffa07a;">"MB"</span>: <span style="color: #ffa07a;">"Manitoba"</span>,
+    <span style="color: #ffa07a;">"NS"</span>: <span style="color: #ffa07a;">"Nova Scotia"</span>,
+    <span style="color: #ffa07a;">"NT"</span>: <span style="color: #ffa07a;">"Northwest Territories"</span>,
+    <span style="color: #ffa07a;">"NU"</span>: <span style="color: #ffa07a;">"Nunavut"</span>,
+    <span style="color: #ffa07a;">"YT"</span>: <span style="color: #ffa07a;">"Yukon Territory"</span>,
+    <span style="color: #ffa07a;">"BC"</span>: <span style="color: #ffa07a;">"British Columbia"</span>
+    }
+</pre>
+</div>
+
+<p>
+And, we've used them! The first line is used to read the data from the CSV we've created, and the second one loads a GeoJSON file, which is a text format used to describe shapes with lattitude and longitude. I'm not going to go into detail on that, and would recommend you DuckDuckGo it if you're interested in learning more. Finally, we will use that dictionary to convert between the abbreviated names used for the provinces by the National Centre for Truth and Reconciliation and the names used by the GeoJSON format.
+</p>
+<div class="org-src-container">
+<pre class="src src-jupyter-python"><span style="color: #00ffff;">def</span> <span style="color: #87cefa;">extract_province</span>(province:<span style="color: #b0c4de;">str</span>) -&gt; <span style="color: #b0c4de;">str</span>:
+        <span style="color: #00ffff;">if</span> <span style="color: #ffa07a;">","</span> <span style="color: #00ffff;">in</span> province:
+            <span style="color: #00ffff;">return</span> province.split(<span style="color: #ffa07a;">", "</span>)[-1].strip().upper()
+        <span style="color: #00ffff;">return</span> <span style="color: #7fffd4;">None</span>
+</pre>
+</div>
+
+<p>
+We use this to extract the province abbreviation from the location (e.g. "Simcoe, ON" -&gt; "ON").
+</p>
+
+<div class="org-src-container">
+<pre class="src src-jupyter-python"><span style="color: #eedd82;">data</span>[<span style="color: #ffa07a;">"province_abbrev"</span>] = data[<span style="color: #ffa07a;">"province"</span>].<span style="color: #b0c4de;">apply</span>(extract_province)
+
+<span style="color: #eedd82;">data</span>[<span style="color: #ffa07a;">"province"</span>] = data[<span style="color: #ffa07a;">"province_abbrev"</span>].<span style="color: #b0c4de;">map</span>(abbrs)
+</pre>
+</div>
+
+<p>
+Firstly, we apply the <code>extract_province</code> function to every item in the <code>province</code> column of our data, and then extract that out into a new column. Then, we set each of the items in the <code>province</code> column to the mapping of the corresponding item in the <code>province_abbrev</code> column.
+</p>
+<div class="org-src-container">
+<pre class="src src-jupyter-python"><span style="color: #eedd82;">summary</span> = data.groupby(<span style="color: #ffa07a;">"province"</span>, as_index=<span style="color: #7fffd4;">False</span>)[<span style="color: #ffa07a;">"num_children"</span>].<span style="color: #b0c4de;">sum</span>()
+<span style="color: #eedd82;">merged</span> = canada.merge(summary, left_on=<span style="color: #ffa07a;">"name"</span>, right_on=<span style="color: #ffa07a;">"province"</span>, how=<span style="color: #ffa07a;">"left"</span>)
+</pre>
+</div>
+
+<p>
+The first line creates a new DataFrame, in which all of the rows in data are grouped by the province, and for each group, we sum the <code>num_children</code> column, making a DataFrame in which there's just a single row per province, containing the number of children. Then the second line merges the two dataframes. It finds the <code>name</code> (represents province names) and matches each row to the corresponding row in <code>summary</code> where <code>summary.province</code> == <code>canada.name</code>. It also keeps all rows from <code>canada</code> and attaches the matching <code>num_children</code> values. Now, we can finish our plotting:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-jupyter-python">
+<span style="color: #00ffff;">import</span> matplotlib.pyplot <span style="color: #00ffff;">as</span> plt
+
+<span style="color: #eedd82;">fig</span>, <span style="color: #eedd82;">ax</span> = plt.subplots(1, 1, figsize=(10, 8))
+merged.plot(
+    column=<span style="color: #ffa07a;">"num_children"</span>,
+    cmap=<span style="color: #ffa07a;">"Reds"</span>,
+    linewidth=0.8,
+    edgecolor=<span style="color: #ffa07a;">"black"</span>,
+    legend=<span style="color: #7fffd4;">True</span>,
+    ax=ax
+    )
+ax.set_title(<span style="color: #ffa07a;">"Number of students killed by province"</span>, fontsize=15)
+ax.axis(<span style="color: #ffa07a;">"off"</span>)
+plt.show()
+
+</pre>
+</div>
+
+
+<div id="orgefab8b3" class="figure">
+<p><img src="./.ob-jupyter/3e30d011aeebbe50c1f97e6fcb7d66bf801c0911.png" alt="3e30d011aeebbe50c1f97e6fcb7d66bf801c0911.png" />
+</p>
+</div>
+
+<p>
+<code>Matplotlib</code>'s a really common library used for data visualization, and is the library we will use for data visualization. <code>fig</code> is the whole canvas size, while <code>ax</code> is the length of the axes. Next, we plot our map, with the column for each province being <code>num_children</code>, and each province being more red the more children have died in residential schools there. We set the title, turn off the axes, and then plot. 
+</p>
+</div>
+</div>
+<div id="footnotes">
+<h2 class="footnotes">Footnotes: </h2>
+<div id="text-footnotes">
+
+<div class="footdef"><sup><a id="fn.1" class="footnum" href="#fnr.1" role="doc-backlink">1</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
+<a href="https://nctr.ca/research/reconciliation-begins-with-a-commitment-to-truth-telling/">https://nctr.ca/research/reconciliation-begins-with-a-commitment-to-truth-telling/</a>
+</p></div></div>
+
+<div class="footdef"><sup><a id="fn.2" class="footnum" href="#fnr.2" role="doc-backlink">2</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
+Do note that this is NOT a comprehensive list of all those murdered by the residential school system by any means. The National Centre for Truth and Reconciliation is still investigating to this day. If you know any students who died or are believed or known to have gone missing from a residential school, <a href="https://nctr.ca/contact/">contact them here to have their name added to the memorial</a>. Also, interestingly, NCTR claims to have 4,300, however taking the sum of the <code>num_students</code> column only yields 3,625. I thought it might be a flaw with my scraping, however scraping every student on the official <a href="https://nctr.ca/missing-children-and-unmarked-burials-initiative/national-student-memorial-register/">National Student Memorial Register</a> gets us the same thing:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-jupyter-python"><span style="color: #00ffff;">import</span> requests
+<span style="color: #00ffff;">from</span> bs4 <span style="color: #00ffff;">import</span> BeautifulSoup
+
+<span style="color: #eedd82;">r</span> = requests.get(<span style="color: #ffa07a;">"https://nctr.ca/missing-children-and-unmarked-burials-initiative/national-student-memorial-register/"</span>)
+<span style="color: #eedd82;">soup</span> = BeautifulSoup(r.text, <span style="color: #ffa07a;">"lxml"</span>)
+<span style="color: #eedd82;">count</span> = 0
+
+<span style="color: #00ffff;">for</span> student <span style="color: #00ffff;">in</span> soup.select(<span style="color: #ffa07a;">".student-name"</span>):
+    <span style="color: #eedd82;">count</span>+=1
+<span style="color: #b0c4de;">print</span>(count)
+</pre>
+</div>
+
+<pre class="example">
+3625
+</pre></div></div>
+
+<div class="footdef"><sup><a id="fn.3" class="footnum" href="#fnr.3" role="doc-backlink">3</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
+For somebody unfamiliar with web development, this may seem like a distinction without a difference. Imagine the Internet like the postal service, and imagine HTML as some foreign language, like French. <code>requests</code> is used to send and recieve mail from other places around the <a href="https://www.geeksforgeeks.org/computer-networks/difference-between-internet-and-www/">World Wide Web</a>, while <code>BeautifulSoup</code> is used as a sort of translator. A reasonable follow-up question would then be, "Well, why do we use HTML then, instead of plain text?" We use HTML because it provides relatively simple framework for structuring web pages. I'm of the opinion that if HTML had never taken off, there would be some other thing functionally identical to HTML that would take its place. As Voltaire never said, "If [HTML] did not exist, it would be necessary to invent [it]."
+</p></div></div>
+
+
+</div>
+</div></div>
+<div id="postamble" class="status">
+<p class="author">Author: Amitav Krishna</p>
+<p class="date">Created: 2025-10-09 Thu 01:39</p>
+<p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>

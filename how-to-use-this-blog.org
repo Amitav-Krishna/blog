@@ -1,0 +1,26 @@
+#+TITLE: How to use this blog efficiently
+#+OPTIONS: toc:nil ^:nil
+
+
+Hello! This page is on the rules of engagement on this website. 
+
+** "I want to get more content from you, but I'm worried I'll forget about your existence"
+
+Has this ever happened to you? We have a revolutionary new technology to ease your woes: [[https://en.wikipedia.org/wiki/RSS][RSS]]. I use an RSS reader for most of my browsing, and I would highly recommend you do as well! The one I use is [[https://github.com/georgemandis/bubo-rss][Bubo Reader]], which I use because it's extremely simple, and can be deployed on [[https://amitavkrishna.com/rss][your own server]]. You can also deploy it on [[https://netlify.com][Netlify]], as seen in this [[https://bubo-rss-demo.netlify.app][demo]]. My instance is ~60 kB, but a more extensive and well-styled instance of Bubo Reader can be seen [[https://kevinfiol/reader/][here]], weighing ~150 kB. Netlify's free plan gives us [[https://docs.netlify.com/manage/accounts-and-billing/billing/billing-for-credit-based-plans/how-credits-work/][300 credits]], and here are the credits for each of the uses we care about:
+
+| Feature          | Credit Usage           | Quick high-level description                                                                      |
+|------------------+------------------------+--------------------------------------------------------------------------------------------------|
+| Production deploys | 15                   | Deploying your project to production, build minutes no longer calculated                         |
+| Bandwidth        | 10 credits per GB      | Data sent out to the internet, such as assets hosted on Netlify or files downloaded from your site/app |
+| Web requests     | 3 credits per 10,000 requests | Web traffic requests to your site or app, includes page views, API calls, redirects, requests to serverless functions, asset requests |
+
+Using some back-of-the-envelope-maths, assuming that you get under 10,000 requests per month and use up less than a gigabyte of bandwidth[fn:1] that leaves us with 20 production deploys. That's pretty good, enough for a reload every 36 hours. I would recommend, instead though, that you just use a bunch of branch deploys instead. It'll be at ~your-site--your-branch-name.netlify.app~ instead of ~your-site.netlify.app~, but the unlimited deploys means you can reload your reader however often you'd like! With this new set-up, you get a little over 270 000 page views[fn:2] with a hundered kilobyte website, which should be more than enough.
+
+TL;DR Use Bubo. If that seems like a hassle, the creator of this blog environment, [[https://karl-voit.at][Karl Voit]] [[https://karl-voit.at/apps-I-am-using/][recommends]] [[https://play.google.com/store/apps/details?id=com.newsblur&hl=en][NewsBlur]]. The most reliable feed to use would be the links feed in the sidebar.
+
+(To be continued?)
+
+* Footnotes
+[fn:2] (views/10000)+((views*100)/10000000) = 300. Assumes that the website is exactly 100 kilobytes in size. 
+
+[fn:1] Do note that if Kevin Fiol had more than six and a half thousand page views he would get over a gigabyte of bandwidth.

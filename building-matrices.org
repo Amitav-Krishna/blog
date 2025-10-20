@@ -1,0 +1,20 @@
+#+TITLE: Building matrices in C++
+#+PROPERTY: header-args:jupyter-python :session manim :kernel python3
+* Hello! :noexport:
+#+INCLUDE: "building-vectors.org" :only-contents t :lines "2-"
+
+* Building matrices
+** What the hell is a matrix, anyways?
+When I say matrix, you probably don't have a great idea of what a matrix actually /is/, and that's what I aim to solve.
+
+*** What the hell is a vector, /really/?
+/This section draws heavily on the textbook Linear Algebra Done Right by Sheldon Axler/
+
+In the previous issue I didn't go that deeply into the mathematical defintion behind a vector. Sadly, before we can truly understand what a matrix is, we must first understand what a vector is.
+
+In grade school, you should have learned about $\mathbb{Q}$, the rational numbers, $\mathbb{Z}$, the integers, and most importantly for this discussion, $\mathbb{R}$, the set of all real numbers. The /set of/ the real numbers($\mathbb{R}$) include the rational numbers, which are all numbers that can be represented in the form $\frac{p}{q}$, and the /irrational/ numbers, all of the numbers that are too cool for school, like $\pi$, $\varphi$, and $\sqrt{2}$. It /does not/ include, however, what we call /imaginary/ numbers: numbers that include an imaginary part, $i$, the /imaginary unit/, which is defined as the $\sqrt{-1}. /Imaginary/, because it's not a real number, and /unit/, because it serves the same purpose on the imaginary axis as 1 on the real axis. A /complex number/, is an ordered pair $(a, b)$, where $a, b \in \mathbb{R}$, and written as $a + bi$, where $i$ is again that imaginary part. We denote the set of all complex numbers with $\mathbb{C}$. We define $\mathbb{F}$ as either $\mathbb{R}$ or $\mathbb{C}$. 
+
+
+
+
+

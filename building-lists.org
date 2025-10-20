@@ -1,0 +1,274 @@
+#+TITLE: Building lists in C++
+#+HTML_HEAD: <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+#+OPTIONS: \n:t tex:t toc:nil
+
+
+
+Hello! This is part 2 in a =TBD= part series on creating an LLM from scratch! You can see part 1, the roadmap, [[https://amitav.net/roadmap-llm.html][here]] and part 3, building vectors, [[https://amitav.net/building-vectors.html][here]].
+
+
+* Making a list
+
+The first things that pop into my head when I’m thinking about vectors and matrices are /lists/. A vector is just a list of numbers, and a matrix is a list of vectors. Therefore, we should start with a list and then build our way up from there. Here are the features I want out of this specific list implementation:
+
+- the ability to insert items into the list, either at the end, or if a position is provided, in the provided position.
+- the ability to retrieve an item from said list using the position of said item in the list.
+- the ability to know whether or not an item is present in the list.
+- the ability to know the number of items present in the list, and the number of items it can hold.
+- the ability to clear the list (fill it with zeroes).
+
+
+So, let’s get cracking! Firstly, let’s define our template:
+
+=list-template-1=
+#+NAME: list-template-1
+#+BEGIN_SRC C++
+  template <typename T>
+  class MyList {
+  protected:
+    T* arr;
+    int capacity;
+    int current;
+
+  public:
+    MyList() : capacity(1), current(0) {
+      arr = new T[capacity];
+    }
+    void push(T data) {
+      if (current == capacity) {
+        T* temp = new T[2 * capacity];
+        for (int i = 0; i < capacity; i++) { temp[i] = arr[i]; }
+        delete[] arr;
+        capacity *= 2;
+        arr = temp;
+      }
+      arr[current++] = data;
+    }
+     T& operator[](int index)  {
+      if (index >= current || index < 0) {
+        throw std::out_of_range("Index out of range");
+      }
+      return arr[index];
+    }
+     const T& operator[](int index) const  {
+      if (index >= current || index < 0) {
+        throw std::out_of_range("Index out of range");
+      }
+      return arr[index];
+        }
+    
+
+#+END_SRC
+
+
+The /structure/ of the list itself is fully defined by three things: =capacity=, an integer representing the number of objects the list can hold; =current=, an integer representing the number of objects currently held in the list; and =arr=, a pointer (memory address) to the first element of the list. The constructor is used to initialize =capacity= to 1, and =current= to 0; in addition, we allocate enough memory to hold a number of objects of type =T=[fn:1] equal to =capacity= (=T[capacity]=), create a pointer to the beginning of that chunk of memory (=new=), and then set =arr= to that pointer.
+
+The ~push~ function appends an element to the end of the list. If there's enough space for it in the current list (i.e., ~current~ < ~capacity~) then we can just set the chunk of data after the current chunk of data to our new data. If there /isn't/ enough space for it in the current list (i.e., ~current~ = ~capacity~), then we first want to allocate some more space, in this case double the amount we currently have allocated[fn:2] into a new list (~T[2 * capacity]~), create a pointer to that block of memory (~new~), and then assign that to a temporary pointer (~T* temp~). Afterwards, we want to copy over all of the elements in our current list to the new list (~for (int i = 0; i < capacity; i++) {temp[i] = arr[i];}~), deallocate the memory we're using for our current list (~delete[] arr~), double capacity (~capacity *= 2~), and then change ~arr~ to point to the first element of the new list (~arr = temp~).
+
+For accessing elements, we use the ~[]~ operator. There's nothing special about this operator, it's just the most convenient for me to work with. It takes an index as input and ensures that the index is not a) greater than the number of elements present in the list, or b) negative[fn:3]. Then, we just return the object ~arr~ is pointing to at that index. Here's a test:
+
+~lists-test-1~
+#+NAME: list-test-1
+#+BEGIN_SRC C++ :results output :exports both :noweb yes
+  #include <iostream>
+  #include <string>
+  #include <stdexcept>
+  <<list-template-1>>
+  };
+
+  int main() {
+    MyList<std::string> groceries;
+    std::string y = "Bananas";
+    std::string z = "Apples";
+    groceries.push(y);
+    groceries.push(z);
+
+    for (int i = 0; i < 2; i++) {
+      std::cout << x[i] << std::endl;
+    }
+
+    return 0;
+  }
+#+END_SRC
+
+Magnifique! Now, let's add some extra utility functions
+
+~list-extra-methods-1~
+#+NAME: list-extra-methods-1
+#+BEGIN_SRC C++
+int size() const { return current; }
+int getcapacity() const { return capacity; }
+bool operator==(const MyList& other) const {
+  if (other.size() != size()) return false;
+  for (int i = 0; i < size(); i++)
+    if (not ((*this)[i] == other[i])) {return false;}
+  return true;
+}
+
+
+bool search(const T key) const {
+  for (int i = 0; i < size(); i++){
+    if ((*this)[i] == key) {return true;}
+  }
+  return false;
+}
+  
+void pop() { if(current > 0) {current--;} }
+void clear() { current = 0; }
+void reserve(int new_capacity) {
+  if (new_capacity > capacity) {
+    T* temp = new T[new_capacity];
+    for (int i = 0; i < current; i++)
+      temp[i] = arr[i];
+    delete[] arr;
+    arr = temp;
+    capacity = new_capacity;
+  }
+}
+MyList(const MyList& other) : capacity(other.capacity), current(other.current) {
+  arr = new T[capacity];
+  for (int i = 0; i < current; i++) {
+    arr[i] = other.arr[i];
+  }
+}
+
+MyList& operator=(const MyList& other) {
+  if (this != &other) {
+    delete[] arr;
+    capacity = other.capacity;
+    current = other.current;
+    arr = new T[capacity];
+    for (int i = 0; i < current; i++)
+      arr[i] = other.arr[i];
+  }
+  return *this;
+}
+
+~MyList() { delete[] arr; }
+#+END_SRC
+
+There's quite a few methods in there:
+
+- =size()=: Returns the number of items in the list (=current=).
+- =getcapacity()=: Returns the number of items the list can fit (=capacity=).
+- ~operator==(const MyList& other)~: Returns whether or not this list is the same as the other list. First it checks whether or not the sizes are the same, because if the sizes differ, then the lists cannot be identical. After that, it goes through each element in the list and checks if it's identical to the corresponding element in the other list.
+- ~search(const T key)~: Checks if an element exists in a list.
+- ~pop()~: Reduces the length of the list by one. It doesn't delete that element
+- ~clear()~: Reduces the length to zero.
+- ~reserve(int new_capacity)~: Reserves space for the specified number of objects.
+- ~MyList(const MyList& other)~[fn:4]: This is a /copy contstructor/, copying the contents of the provided list to the new list.
+- ~MyList& operator=(const MyList& other)~: This is a /copy assignment operator/, which assigns the contents of the provided list to the list[fn:4].
+- ~~MyList()~[fn:4]: This is a destructor, which is called when the object goes out of scope or it is deleted, in order to free the memory.
+
+
+Let's test all of this out!
+
+~list-test-2~
+#+NAME: list-test-2
+#+BEGIN_SRC C++ :results output :exports both :noweb eval
+  #include <iostream>
+  #include <string>
+  #include <stdexcept>
+  template <typename T>
+  class MyList {
+  protected:
+    T* arr;
+    int capacity;
+    int current;
+
+  public:
+    MyList() : capacity(1), current(0) {
+      arr = new T[capacity];
+    }
+    void push(T data) {
+      if (current == capacity) {
+        T* temp = new T[2 * capacity];
+        for (int i = 0; i < capacity; i++) { temp[i] = arr[i]; }
+        delete[] arr;
+        capacity *= 2;
+        arr = temp;
+      }
+      arr[current++] = data;
+    }
+     T& operator[](int index)  {
+      if (index >= current || index < 0) {
+        throw std::out_of_range("Index out of range");
+      }
+
+      return arr[index];
+    }
+     const T& operator[](int index) const  {
+      if (index >= current || index < 0) {
+        throw std::out_of_range("Index out of range");
+      }
+
+      return arr[index];
+    }
+    <<list-extra-methods-1>>
+     };
+
+
+  int main() {
+    MyList<std::string> groceries;
+        std::cout << "Capacity: " << groceries.getcapacity() << std::endl;
+    std::cout << "Size: " <<  groceries.size() << std::endl;
+    groceries.push("Apples");
+    groceries.push("Bananas");
+    std::cout << "Capacity: " << groceries.getcapacity() << std::endl;
+    std::cout << "Size: " <<  groceries.size() << std::endl;
+    groceries.push("Carrots");
+    std::cout << "Capacity: " << groceries.getcapacity() << std::endl;
+    std::cout << "Size: " <<  groceries.size() << std::endl;
+    
+    
+
+    for (int i = 0; i < groceries.size(); i++) {
+      std::cout << groceries[i] << std::endl;
+    }
+    groceries.pop();
+    groceries.push("Dragonfruit");
+    std::cout << "Capacity: " << groceries.getcapacity() << std::endl;
+    std::cout << "Size: " <<  groceries.size() << std::endl;
+    for (int i = 0; i < groceries.size(); i++) {
+      std::cout << groceries[i] << std::endl;
+    }
+
+    groceries.reserve(5);
+    std::cout << "Capacity: " << groceries.getcapacity() << std::endl;
+
+    MyList<std::string> y(groceries); // Copy constructor is called!
+    std::cout << (y == groceries) << std::endl;
+    y.push("Eggplant");
+    std::cout << (y == groceries) << std::endl;
+
+    groceries = y; // Copy assignment operator is called
+
+    std::cout << y.search("Apples") << std::endl;
+    std::cout << y.search("Figs") << std::endl;
+
+
+    
+
+    return 0;
+  }
+#+END_SRC
+
+Amazing! Now that we have our list structure sorted out, let's move on to [[https://amitav.net/building-vectors.html][*vectors*]].
+
+
+
+
+
+
+‎
+
+
+
+
+[fn:3] In many languages, most notably Python, Ruby, and Perl, negative indices are allowed and translate ~list[-k]~ to ~list[length-k]~. It would be trivial to implement negative indices; you just check if the index is negative, and if so, add it to ~current~ and use that as the index. For the sake of simplicity, however, I've decided to omit negative indices.
+[fn:2] You may be wondering, "Why not just allocate some more memory at the end of the allocated block and save ourselves having to copy over all of our data to a new list and then deallocate the current list?" The reason for this is /contiguity/. When I call =new=, it goes through the /C heap allocator/, which manages requests for memory on the /heap/. The /heap/ is memory set aside for dynamic allocation, and allocated to the allocator by the operating system. If we try to extend our current block, chances are that the memory just beyond the end are already reserved for something else. Touching it would mean stepping into memory we don't own, which would cause the operating system to go, "Whoa there buddy, you don't have permission to access that", and cause a segmentation fault, killing the program. Allocators can /sometimes/ extend in place if they happen to control the neighbouring block, but you can't rely on that. Another option would be to use something like a linked list, where each element points to the next element, so that way the list can be made up of a bunch of discontinuous objects, which would increase the efficiency of insertion and deletion, but would /greatly/ increase the time it takes to access an element, because every access would require traversing the list from the beginning. In our case, we care most about accessing elements quickly and less so about insertions and erasures, the operations in which linked lists shine. 
+
+[fn:1] =T= is defined when the list is initialized. 
+
+
+[fn:4]You may be wondering: don't we already have a copy operator? How's this any different from ~MyList(const MyList& other)~? Well, the ~operator=~, the copy /assignment operator/ is performed on a list that /already exists/, and so also includes a ~delete[] arr~ to free the currently allocated memory. The other operation, the copy /constructor/, is used to create a /new list/ with the contents of the provided list. For the detail-oriented among you this may have been obvious, however I had trouble wrapping my head around the difference between these two. C++ has something called the rule of three, which states that "if a class requires a user-defined destructor, a user-defined copy constructor, or a user-defined copy assignment, it almost certainly requires all three"([[https://en.cppreference.com/w/cpp/language/rule_of_three.html][Further reading]]). In short: a destructor is used to free the resources held by an object once it goes out of scope or is deleted; a copy constructor is used to copy an existing object to a new object; and a copy assignment operator is used to copy an existing object to another existing object. The reason the rule of three exists is mostly because, unless otherwise defined, the compiler defaults to a *shallow copy*, meaning that it simply copies the pointers to the new object. If we have two objects each pointing to the same place in memory, then we have a risk of a *double delete*. When we first call ~delete arr[]~ on the memory, it correctly frees the memory, as one would expect. When we try the second ~delete~ is when it really hits the fan: best case scenario, it touches memory that's been returned to the operating system and triggers a segmentation fault. Worst case scenario, it "appears to work", but the heap has actually put that block in the free list /twice/, which can be used by [[https://owasp.org/www-community/vulnerabilities/Doubly_freeing_memory][bad actors to execute arbitrary code]]. 

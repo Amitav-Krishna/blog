@@ -1,0 +1,662 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2025-10-12 Sun 10:44 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Building vectors in C++</title>
+<meta name="author" content="Amitav Krishna" />
+<meta name="generator" content="Org Mode" />
+<style type="text/css">
+  #content { max-width: 60em; margin: auto; }
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #e6e6e6;
+    border-radius: 3px;
+    background-color: #f2f2f2;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: auto;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    top: -8px;
+    right: 12px;
+    padding: 3px;
+    color: #555;
+    background-color: #f2f2f299;
+  }
+  pre.src:hover:before { display: inline; margin-top: 14px;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { }
+</style>
+<script>
+  window.MathJax = {
+    tex: {
+      ams: {
+        multlineWidth: '85%'
+      },
+      tags: 'ams',
+      tagSide: 'right',
+      tagIndent: '.8em'
+    },
+    chtml: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    svg: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    output: {
+      font: 'mathjax-modern',
+      displayOverflow: 'overflow'
+    }
+  };
+</script>
+
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
+</head>
+<body>
+<div id="content" class="content">
+<h1 class="title">Building vectors in C++</h1>
+<div id="outline-container-orgcd7039b" class="outline-2">
+<h2 id="orgcd7039b"><span class="section-number-2">1.</span> Vectors</h2>
+<div class="outline-text-2" id="text-1">
+<details>
+<summary><code>list-template-2</code></summary>
+<div class="org-src-container">
+<pre class="src src-C++" id="org0980910"><span style="color: #00ffff;">template</span> &lt;<span style="color: #00ffff;">typename</span> <span style="color: #98fb98;">T</span>&gt;
+<span style="color: #00ffff;">class</span> <span style="color: #98fb98;">MyList</span> {
+<span style="color: #00ffff;">protected</span>:
+  <span style="color: #98fb98;">T</span>* <span style="color: #eedd82;">arr</span>;
+  <span style="color: #98fb98;">int</span> <span style="color: #eedd82;">capacity</span>;
+  <span style="color: #98fb98;">int</span> <span style="color: #eedd82;">current</span>;
+
+<span style="color: #00ffff;">public</span>:
+  <span style="color: #87cefa;">MyList</span>() : capacity(1), current(0) {
+    arr = <span style="color: #00ffff;">new</span> <span style="color: #98fb98;">T</span>[capacity];
+  }
+  <span style="color: #98fb98;">void</span> <span style="color: #87cefa;">push</span>(<span style="color: #98fb98;">T</span> <span style="color: #eedd82;">data</span>) {
+    <span style="color: #00ffff;">if</span> (current == capacity) {
+      <span style="color: #98fb98;">T</span>* <span style="color: #eedd82;">temp</span> = <span style="color: #00ffff;">new</span> <span style="color: #98fb98;">T</span>[2 * capacity];
+      <span style="color: #00ffff;">for</span> (<span style="color: #98fb98;">int</span> <span style="color: #eedd82;">i</span> = 0; i &lt; capacity; i++) { temp[i] = arr[i]; }
+      <span style="color: #00ffff;">delete</span>[] arr;
+      capacity *= 2;
+      arr = temp;
+    }
+    arr[current++] = data;
+  }
+   <span style="color: #98fb98;">T</span>&amp; <span style="color: #00ffff;">operator</span><span style="color: #87cefa;">[]</span>(<span style="color: #98fb98;">int</span> <span style="color: #eedd82;">index</span>)  {
+    <span style="color: #00ffff;">if</span> (index &gt;= current || index &lt; 0) {
+      <span style="color: #00ffff;">throw</span> <span style="color: #7fffd4;">std</span>::out_of_range(<span style="color: #ffa07a;">"Index out of range"</span>);
+    }
+    <span style="color: #00ffff;">return</span> arr[index];
+  }
+   <span style="color: #00ffff;">const</span> <span style="color: #98fb98;">T</span>&amp; <span style="color: #00ffff;">operator</span><span style="color: #87cefa;">[]</span>(<span style="color: #98fb98;">int</span> <span style="color: #eedd82;">index</span>) <span style="color: #00ffff;">const</span>  {
+    <span style="color: #00ffff;">if</span> (index &gt;= current || index &lt; 0) {
+      <span style="color: #00ffff;">throw</span> <span style="color: #7fffd4;">std</span>::out_of_range(<span style="color: #ffa07a;">"Index out of range"</span>);
+    }
+    <span style="color: #00ffff;">return</span> arr[index];
+      }
+ <span style="color: #98fb98;">int</span> <span style="color: #87cefa;">size</span>() <span style="color: #00ffff;">const</span> { <span style="color: #00ffff;">return</span> current; }
+ <span style="color: #98fb98;">int</span> <span style="color: #87cefa;">getcapacity</span>() <span style="color: #00ffff;">const</span> { <span style="color: #00ffff;">return</span> capacity; }
+ <span style="color: #98fb98;">bool</span> <span style="color: #00ffff;">operator</span><span style="color: #87cefa;">==</span>(<span style="color: #00ffff;">const</span> <span style="color: #98fb98;">MyList</span>&amp; <span style="color: #eedd82;">other</span>) <span style="color: #00ffff;">const</span> {
+   <span style="color: #00ffff;">if</span> (other.size() != size()) <span style="color: #00ffff;">return</span> <span style="color: #7fffd4;">false</span>;
+   <span style="color: #00ffff;">for</span> (<span style="color: #98fb98;">int</span> <span style="color: #eedd82;">i</span> = 0; i &lt; size(); i++)
+     <span style="color: #00ffff;">if</span> (<span style="color: #00ffff;">not</span> ((*<span style="color: #00ffff;">this</span>)[i] == other[i])) {<span style="color: #00ffff;">return</span> <span style="color: #7fffd4;">false</span>;}
+   <span style="color: #00ffff;">return</span> <span style="color: #7fffd4;">true</span>;
+ }
+
+
+ <span style="color: #98fb98;">bool</span> <span style="color: #87cefa;">search</span>(<span style="color: #00ffff;">const</span> <span style="color: #98fb98;">T</span> <span style="color: #eedd82;">key</span>) <span style="color: #00ffff;">const</span> {
+   <span style="color: #00ffff;">for</span> (<span style="color: #98fb98;">int</span> <span style="color: #eedd82;">i</span> = 0; i &lt; size(); i++){
+     <span style="color: #00ffff;">if</span> ((*<span style="color: #00ffff;">this</span>)[i] == key) {<span style="color: #00ffff;">return</span> <span style="color: #7fffd4;">true</span>;}
+   }
+   <span style="color: #00ffff;">return</span> <span style="color: #7fffd4;">false</span>;
+ }
+
+ <span style="color: #98fb98;">void</span> <span style="color: #87cefa;">pop</span>() { <span style="color: #00ffff;">if</span>(current &gt; 0) {current--;} }
+ <span style="color: #98fb98;">void</span> <span style="color: #87cefa;">clear</span>() { current = 0; }
+ <span style="color: #98fb98;">void</span> <span style="color: #87cefa;">reserve</span>(<span style="color: #98fb98;">int</span> <span style="color: #eedd82;">new_capacity</span>) {
+   <span style="color: #00ffff;">if</span> (new_capacity &gt; capacity) {
+     <span style="color: #98fb98;">T</span>* <span style="color: #eedd82;">temp</span> = <span style="color: #00ffff;">new</span> <span style="color: #98fb98;">T</span>[new_capacity];
+     <span style="color: #00ffff;">for</span> (<span style="color: #98fb98;">int</span> <span style="color: #eedd82;">i</span> = 0; i &lt; current; i++)
+       temp[i] = arr[i];
+     <span style="color: #00ffff;">delete</span>[] arr;
+     arr = temp;
+     capacity = new_capacity;
+   }
+ }
+ <span style="color: #87cefa;">MyList</span>(<span style="color: #00ffff;">const</span> <span style="color: #98fb98;">MyList</span>&amp; <span style="color: #eedd82;">other</span>) : capacity(other.capacity), current(other.current) {
+   arr = <span style="color: #00ffff;">new</span> <span style="color: #98fb98;">T</span>[capacity];
+   <span style="color: #00ffff;">for</span> (<span style="color: #98fb98;">int</span> <span style="color: #eedd82;">i</span> = 0; i &lt; current; i++) {
+     arr[i] = other.arr[i];
+   }
+ }
+
+ <span style="color: #98fb98;">MyList</span>&amp; <span style="color: #00ffff;">operator</span><span style="color: #87cefa;">=</span>(<span style="color: #00ffff;">const</span> <span style="color: #98fb98;">MyList</span>&amp; <span style="color: #eedd82;">other</span>) {
+   <span style="color: #00ffff;">if</span> (<span style="color: #00ffff;">this</span> != &amp;other) {
+     <span style="color: #00ffff;">delete</span>[] arr;
+     capacity = other.capacity;
+     current = other.current;
+     arr = <span style="color: #00ffff;">new</span> <span style="color: #98fb98;">T</span>[capacity];
+     <span style="color: #00ffff;">for</span> (<span style="color: #98fb98;">int</span> <span style="color: #eedd82;">i</span> = 0; i &lt; current; i++)
+       arr[i] = other.arr[i];
+   }
+   <span style="color: #00ffff;">return</span> *<span style="color: #00ffff;">this</span>;
+ }
+
+ ~<span style="color: #87cefa;">MyList</span>() { <span style="color: #00ffff;">delete</span>[] arr; }
+ };
+
+</pre>
+</div>
+
+</details>
+
+
+<p>
+Hello! This is part 3 in a <code>TBD</code> part series on creating an LLM from scratch! You can see part 2, creating lists, <a href="https://amitav.net/building-lists.html">here</a>, and part 3, creating matrices, <a href="https://amitav.net/building-matrices.html">here</a>.<br />
+</p>
+
+<p>
+First, before we create a vector class, we should clarify what we really mean when we say vector. For our purposes, a vector is an <b>ordered list of numbers</b>. Here's an example of a 2-dimensional vector:<br />
+[5, 7]<br />
+</p>
+
+<p>
+and here's an example of a 5-dimensional vector:<br />
+[3.5, 4, 2, 1.2, 943.89]<br />
+</p>
+
+<p>
+As you can see, the idea of a vector is actually extremely simple<sup><a id="fnr.1" class="footref" href="#fn.1" role="doc-backlink">1</a></sup>. We use multi-dimensional vectors to represent things like words and sentences and paragraphs, because the hope is that each vector will allow us to encode <b>multiple independent aspects</b> of a token at once. At a high-level, we're guessing<sup><a id="fnr.2" class="footref" href="#fn.2" role="doc-backlink">2</a></sup> that the vector will begin to associate different numbers with different attributes: maybe we want the first number to roughly correlate to how dog-like the word is, the second number to correlate to royalty, the third number to correlate with age, &amp;c. For more information, see <a href="https://arxiv.org/pdf/1301.3781">this paper</a> on word representations in vector space. Let's get cracking on the initial implementation:<br />
+</p>
+
+
+<p>
+<code>vector-test-1</code><br />
+</p>
+
+<div class="org-src-container">
+<pre class="src src-C++" id="orgc6a5b93"><span style="color: #b0c4de;">#include</span> <span style="color: #ffa07a;">&lt;iostream&gt;</span>
+<span style="color: #b0c4de;">#include</span> <span style="color: #ffa07a;">&lt;stdexcept&gt;</span>
+
+&lt;&lt;list-<span style="color: #00ffff;">template</span>-2&gt;&gt;
+<span style="color: #98fb98;">int</span> main() {
+   <span style="color: #98fb98;">MyList</span>&lt;<span style="color: #98fb98;">float</span>&gt; <span style="color: #eedd82;">vector</span>;
+   vector.push(10);
+   vector.push(20);
+
+   <span style="color: #00ffff;">for</span> (<span style="color: #98fb98;">int</span> <span style="color: #eedd82;">i</span> = 0; i &lt; vector.size(); i++) {
+     <span style="color: #7fffd4;">std</span>::cout &lt;&lt; vector[i] &lt;&lt; <span style="color: #7fffd4;">std</span>::endl;
+     }
+
+
+
+  <span style="color: #00ffff;">return</span> 0;
+}
+</pre>
+</div>
+
+<pre class="example">
+10
+20
+</pre>
+
+
+
+<p>
+Amazing! While this is great, we do sadly have to add some more features, though. Namely:<br />
+</p>
+
+<ul class="org-ul">
+<li>Element-wise addition and subtraction<br /></li>
+<li>Dot product<sup><a id="fnr.3" class="footref" href="#fn.3" role="doc-backlink">3</a></sup><br /></li>
+<li>Scalar multiplication<br /></li>
+</ul>
+
+<p>
+and that's pretty much it! Adding vectors is not actually that complicated, so let's get to work!<br />
+</p>
+
+<p>
+<code>vector-class-1</code><br />
+</p>
+<div class="org-src-container">
+<pre class="src src-C++" id="org8a76e4d">&lt;&lt;list-<span style="color: #00ffff;">template</span>-2&gt;&gt;
+<span style="color: #b0c4de;">#include</span> <span style="color: #ffa07a;">&lt;stdexcept&gt;</span>
+  <span style="color: #00ffff;">class</span> mathVector : <span style="color: #00ffff;">public</span> <span style="color: #98fb98;">MyList</span>&lt;<span style="color: #98fb98;">float</span>&gt; {
+    <span style="color: #00ffff;">public</span>:
+    <span style="color: #00ffff;">using</span> <span style="color: #7fffd4;">MyList</span>&lt;<span style="color: #98fb98;">float</span>&gt;::MyList;
+    <span style="color: #00ffff;">explicit</span> <span style="color: #87cefa;">mathVector</span>(<span style="color: #98fb98;">int</span> <span style="color: #eedd82;">n</span>) {
+      <span style="color: #00ffff;">for</span> (<span style="color: #98fb98;">int</span> <span style="color: #eedd82;">i</span> = 0; i &lt; n; i++) {push(0.0f);}
+      }
+
+    <span style="color: #00ffff;">friend</span> <span style="color: #7fffd4;">std</span>::<span style="color: #98fb98;">ostream</span>&amp; <span style="color: #00ffff;">operator</span><span style="color: #87cefa;">&lt;&lt;</span>(<span style="color: #7fffd4;">std</span>::<span style="color: #98fb98;">ostream</span>&amp; <span style="color: #eedd82;">os</span>, <span style="color: #00ffff;">const</span> <span style="color: #98fb98;">mathVector</span>&amp; <span style="color: #eedd82;">vec</span>) {
+    os &lt;&lt; <span style="color: #ffa07a;">"["</span>;
+    <span style="color: #00ffff;">for</span> (<span style="color: #98fb98;">int</span> <span style="color: #eedd82;">i</span> = 0; i &lt; vec.size(); i++) {
+      os &lt;&lt; vec[i];
+      <span style="color: #00ffff;">if</span> (i != vec.size() - 1) os &lt;&lt; <span style="color: #ffa07a;">", "</span>;
+    }
+    os &lt;&lt; <span style="color: #ffa07a;">"]"</span>;
+    <span style="color: #00ffff;">return</span> os;
+    }
+    <span style="color: #98fb98;">void</span> <span style="color: #87cefa;">scalarMultiplication</span>(<span style="color: #98fb98;">float</span> <span style="color: #eedd82;">scalar</span>) {
+      <span style="color: #00ffff;">for</span> (<span style="color: #98fb98;">int</span> <span style="color: #eedd82;">i</span> = 0; i &lt; size(); i++) {
+        (*<span style="color: #00ffff;">this</span>)[i] *= scalar;
+        }
+      }
+    <span style="color: #98fb98;">mathVector</span> <span style="color: #00ffff;">operator</span><span style="color: #87cefa;">+</span>(<span style="color: #00ffff;">const</span> <span style="color: #98fb98;">mathVector</span>&amp; <span style="color: #eedd82;">other</span>) <span style="color: #00ffff;">const</span> {
+    <span style="color: #00ffff;">if</span> (size() != other.size()) {
+       <span style="color: #00ffff;">throw</span> <span style="color: #7fffd4;">std</span>::invalid_argument(<span style="color: #ffa07a;">"Vectors must be of the same dimension"</span>);
+       }
+
+    <span style="color: #98fb98;">mathVector</span> <span style="color: #eedd82;">result</span>;
+    result.reserve(size());
+    <span style="color: #00ffff;">for</span> (<span style="color: #98fb98;">int</span> <span style="color: #eedd82;">i</span> = 0; i &lt; size(); i++) {
+        result.push((*<span style="color: #00ffff;">this</span>)[i] + other[i]);
+        }
+    <span style="color: #00ffff;">return</span> result;
+}
+
+<span style="color: #98fb98;">mathVector</span> <span style="color: #00ffff;">operator</span><span style="color: #87cefa;">-</span>(<span style="color: #00ffff;">const</span> <span style="color: #98fb98;">mathVector</span>&amp; <span style="color: #eedd82;">other</span>) <span style="color: #00ffff;">const</span> {
+    <span style="color: #00ffff;">if</span> (size() != other.size()) {
+        <span style="color: #00ffff;">throw</span> <span style="color: #7fffd4;">std</span>::invalid_argument(<span style="color: #ffa07a;">"Vectors must be of the same dimension"</span>);
+        }
+
+    <span style="color: #98fb98;">mathVector</span> <span style="color: #eedd82;">result</span>;
+    result.reserve(size());
+    <span style="color: #00ffff;">for</span> (<span style="color: #98fb98;">int</span> <span style="color: #eedd82;">i</span> = 0; i &lt; size(); i++) {
+        result.push((*<span style="color: #00ffff;">this</span>)[i] - other[i]);
+        }
+    <span style="color: #00ffff;">return</span> result;
+}
+
+<span style="color: #98fb98;">float</span> <span style="color: #87cefa;">dotProduct</span>(<span style="color: #00ffff;">const</span> <span style="color: #98fb98;">mathVector</span>&amp; <span style="color: #eedd82;">other</span>) <span style="color: #00ffff;">const</span> {
+    <span style="color: #00ffff;">if</span> (size() != other.size()) {
+        <span style="color: #00ffff;">throw</span> <span style="color: #7fffd4;">std</span>::invalid_argument(<span style="color: #ffa07a;">"Dot product dimensions must match"</span>);
+        }
+    <span style="color: #98fb98;">float</span> <span style="color: #eedd82;">val</span> = 0.0f;
+    <span style="color: #00ffff;">for</span> (<span style="color: #98fb98;">int</span> <span style="color: #eedd82;">i</span> = 0; i &lt; size(); i++)
+        val += (*<span style="color: #00ffff;">this</span>)[i] * other[i];
+    <span style="color: #00ffff;">return</span> val;
+}
+};
+
+</pre>
+</div>
+
+
+<p>
+As you can see, none of it's too complicated. The first two lines just tell the compiler "Oi, this inherits from <code>MyList</code>". <code>Using MyList&lt;float&gt;::MyList;</code> tells the compiler that it uses all of <code>MyList</code>'s constructors. After that, we define a new constructor for <code>mathVector</code>, which allows us to provide a number as an argument and it will fill up the vector with that many zeroes, which is very convenient. The element-wise addition and subtraction are really nothing special, just looping over every element in the <code>mathVector</code>, adding it to the corresponding elment in the other <code>mathVector</code>, and then returning another <code>mathVector</code> with the result. Finally, the dotProduct function just loops through the current <code>mathVector</code>, multiplies the current item by the corresponding item in the other <code>mathVector</code>, and takes the sum of all of those products<sup><a id="fnr.3.3" class="footref" href="#fn.3" role="doc-backlink">3</a></sup>. Now, let's test all of this out!<br />
+</p>
+
+<p>
+<code>vector-test-2</code><br />
+</p>
+<div class="org-src-container">
+<pre class="src src-C++" id="orgc46d1d5"><span style="color: #b0c4de;">#include</span> <span style="color: #ffa07a;">&lt;iostream&gt;</span>
+&lt;&lt;vector-<span style="color: #00ffff;">class</span>-1&gt;&gt;
+<span style="color: #98fb98;">int</span> main() {
+  <span style="color: #98fb98;">mathVector</span> <span style="color: #eedd82;">vector_1</span>;
+  vector_1.push(10);
+  vector_1.push(20);
+  vector_1.push(30);
+
+  <span style="color: #7fffd4;">std</span>::cout &lt;&lt; vector_1 &lt;&lt; <span style="color: #7fffd4;">std</span>::endl;
+
+  <span style="color: #98fb98;">mathVector</span> <span style="color: #eedd82;">vector_2</span>;
+
+  vector_2.push(5);
+  vector_2.push(15);
+  vector_2.push(25);
+
+  <span style="color: #98fb98;">mathVector</span> <span style="color: #eedd82;">vector_3</span>;
+  vector_3 = vector_1 - vector_2;
+
+  <span style="color: #7fffd4;">std</span>::cout &lt;&lt; vector_3 &lt;&lt; <span style="color: #7fffd4;">std</span>::endl;
+
+  <span style="color: #98fb98;">float</span> <span style="color: #eedd82;">dot_product_1</span>{ };
+  dot_product_1 = vector_3.dotProduct(vector_1);
+
+  <span style="color: #7fffd4;">std</span>::cout &lt;&lt; dot_product_1 &lt;&lt; <span style="color: #7fffd4;">std</span>::endl;
+
+
+  vector_2.scalarMultiplication(2);
+
+  <span style="color: #7fffd4;">std</span>::cout &lt;&lt; vector_2;
+
+
+  <span style="color: #00ffff;">return</span> 0;
+  }
+</pre>
+</div>
+
+<pre class="example">
+[10, 20, 30]
+[5, 5, 5]
+300
+[10, 30, 50]
+</pre>
+
+
+<p>
+This piece was a bit of a shorter one, and the next piece will be implementing <b>matrices</b>.<br />
+</p>
+</div>
+</div>
+<div id="footnotes">
+<h2 class="footnotes">Footnotes: </h2>
+<div id="text-footnotes">
+
+<div class="footdef"><sup><a id="fn.1" class="footnum" href="#fnr.1" role="doc-backlink">1</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
+This definition has the mathematical rigour of a senile tortoise. If you're looking for a more rigorous definition, I'd recommend reading <a href="https://linear.axler.net/LADR4e.pdf">Linear Algebra Done Right</a> by Sheldon Axler.<br />
+</p></div></div>
+
+<div class="footdef"><sup><a id="fn.2" class="footnum" href="#fnr.2" role="doc-backlink">2</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
+I use the word "guess" here because we don't get to dictate what each number in a vector means, we can only speculate.<br />
+</p></div></div>
+
+<div class="footdef"><sup><a id="fn.3" class="footnum" href="#fnr.3" role="doc-backlink">3</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
+I'm leaving this explanation here because it took me an unreasonable amount of time to understand how the hell a dot product works, and I do not wish for the same fate to befall you. Firstly, let's cover the algebraic definition:<br />
+‎‎‎‎‎‎<br />
+\[\\ \vec{u} \cdot \vec{v} = \sum_{i=1}^{|u|} u_iv_i \newline \tag{1}\]<br />
+‎‎<br />
+If you're not familiar with this notation, you can think of a summation (\(\sum\)) sort of like a for loop. This is an example of a dot product implementation.<br />
+</p>
+
+<div class="org-src-container">
+<pre class="src src-C++" id="org5cbe996"><span style="color: #98fb98;">MyList</span>&lt;<span style="color: #98fb98;">float</span>&gt; <span style="color: #eedd82;">u</span>;
+<span style="color: #98fb98;">MyList</span>&lt;<span style="color: #98fb98;">float</span>&gt; <span style="color: #eedd82;">v</span>;
+<span style="color: #98fb98;">float</span> <span style="color: #eedd82;">dot_product_output</span>{ };
+u.push(3);
+u.push(4);
+u.push(5);
+v.push(6);
+v.push(7);
+v.push(8);
+
+<span style="color: #00ffff;">for</span> (<span style="color: #98fb98;">int</span> <span style="color: #eedd82;">i</span> = 0; i &lt; u.size(); i++) {
+   dot_product_output += (u[i] * v[i])
+}
+</pre>
+</div>
+<p class="footpara">
+What this does is go through every element in vector \(\vec{a}\)(the little arrow over the letter indicates a vector), multiply it by the corresponding element in vector \(\vec{b}\), and then add all of that up all of those products. Now, there is also another definition for a dot product, a <i>geometric</i> definition, like so:<br />
+‎‎‎‎<br />
+\[\\ \vec{a} \cdot \vec{b} = ||\vec{a}||||\vec{b}||\cos{\theta} \tag{2}\]<br />
+‎<br />
+Now, the summation in the last one was pretty scary, but it was pretty simple overall. This one however, will be a bit more involved to prove, but stick with me. Firstly, using the law of cosines, we know that<br />
+‎‎‎‎‎<br />
+\[||(\vec{a}-\vec{b})||^2 = ||\vec{a}||^2 + ||\vec{b}||^2 - 2||\vec{a}||||\vec{b}||\cos(\theta) \tag{3}\]<br />
+‎‎‎‎<br />
+You can imagine \(||\vec{a}||\) being the length from \(\vec{a}\) to the origin, \(||\vec{b}||\) being the length from \(\vec{b}\) to the origin, and \(||(\vec{a}-\vec{b})||\) being the length from \(\vec{a}\) to \(\vec{b}\). Next, let's compare that with<br />
+‎‎<br />
+\[(\vec{a}-\vec{b}) \cdot (\vec{a} - \vec{b}) \tag{4}\]<br />
+‎<br />
+Dot products have the following properties<br />
+‎‎‎<br />
+<b>Commmutative</b><br />
+\[\vec{u} \cdot \vec{v} = \vec{v} \cdot \vec{u} \tag{5}\]<br />
+This is because the formula for a dot product is:<br />
+‎‎‎‎<br />
+\[\vec{a} \cdot \vec{b} = \sum_{i=1}^{|a|} a_ib_i \newline \tag{1}\]<br />
+‎‎‎‎<br />
+As you can see, a dot product is just a series of multiplications. When we swap the order of the elements in the dot product, what we're doing is just swapping the order of those factors, and because we know that multiplication is commutative, we also know that dot products are commutative.<br />
+‎‎‎<br />
+<b>Distributive over addition</b><br />
+</p>
+
+<p class="footpara">
+$$<br />
+</p>
+\begin{align}
+\vec{u} \cdot (\vec{v} + \vec{w}) 
+&= \sum_{i=1}^{|u|} u_i(v_i + w_i) && \text{(def. of dot product)} \tag{6}\\
+&= \sum_{i=1}^{|u|} (u_i v_i + u_i w_i) && \text{(distributivity)} \tag{7}\\
+&= ((u_1v_1 + u_1w_1) + (u_2v_2 + u_2w_2) + \dots + (u_{|u|}v_{|u|} + u_{|u|}w_{|u|})) &&\text{(expand summations)} \tag{8}\\
+&= u_1v_1 + u_1w_1 + u_2v_2 + u_2w_2 + \dots + u_{|u|}v_{|u|} + u_{|u|}w_{|u|} && \text{(flatten parentheses)} \tag{9}\\
+&= (u_1v_1 + u_2v_2 + \dots + u_{|u|}v_{|u|}) + (u_1w_1 + u_2w_2 + \dots + u_{|u|}w_{|u|}) && \text{(group similar terms)} \tag{10}\\
+&= \sum_{i=1}^{|u|} u_i v_i + \sum_{i=1}^{|u|} u_i w_i && \text{(compress into summations)} \tag{11}\\
+&= \vec{u} \cdot \vec{v} + \vec{u} \cdot \vec{w} && \text{(def. of dot product)} \tag{12}
+\end{align}
+<p class="footpara">
+$$<br />
+</p>
+
+<p class="footpara">
+Tying those two properties together, let's try to evalute \(4\) again.<br />
+</p>
+
+<p class="footpara">
+$$<br />
+</p>
+\begin{align}
+& (\vec{u} - \vec{v}) \cdot (\vec{u} - \vec{v}) \tag{4} \\
+&= (\vec{u} \cdot (\vec{u} - \vec{v})) - (\vec{v} \cdot (\vec{u} - \vec{v})) && \text{distribute the other factor}\tag{13} \\
+&= (\vec{u} \cdot \vec{u} - \vec{u} \cdot \vec{v}) - (\vec{v} \cdot \vec{u} - \vec{v} \cdot \vec{v}) && \text{distribute again} \tag{14} \\
+&= \vec{u} \cdot \vec{u} - \vec{u} \cdot \vec{v} - \vec{v} \cdot \vec{u} + \vec{v} \cdot \vec{v} && \text{flatten parantheses} \tag{15} \\
+&= \vec{u} \cdot \vec{u} + \vec{v} \cdot \vec{v} - 2(\vec{u} \cdot \vec{v}) && \text{rearrange and group like terms} \tag{16} \\
+&= ||\vec{u}||^2 + ||\vec{v}||^2 - 2\vec{u} \cdot \vec{v} \tag{17} \\
+&= \text{since} ||a|| = \sqrt{\vec{a} \cdot \vec{a}} && \text{according to the Euclidean  norm} \tag{18} 
+\end{align}
+<p class="footpara">
+$$<br />
+</p>
+
+<p class="footpara">
+Now, finishing us off<br />
+$$<br />
+</p>
+\begin{align}
+(\vec{u}-\vec{v}) \cdot (\vec{u}-\vec{v})&=||(\vec{u}-\vec{v})||^2 && \text{by the Euclidean norm definition} \tag{19}\\
+||\vec{u}||^2 + ||\vec{v}||^2 - 2(\vec{u} \cdot \vec{v})&= ||\vec{u}||^2 + ||\vec{v}||^2 - 2||\vec{u}||||\vec{v}||\cos{\theta} && \text{substituting 3 and 17} \tag{20}\\
+-2(\vec{u} \cdot \vec{v}) &= -2||\vec{u}||||\vec{v}||\cos{\theta} && \text{subtract } \vec{u}^2 \text{and } \vec{v}^2\text{ from each side} \tag{21}\\
+\vec{u} \cdot \vec{v} &= ||\vec{u}||||\vec{v}||\cos{\theta} && \text{divide each side by -2} \tag{22}\\
+\end{align}
+<p class="footpara">
+$$<br />
+</p>
+
+<p class="footpara">
+Now that we've proved \(2\), let's dig a little bit deeper and rewrite \(22\) in terms of \(\cos(\theta)\).<br />
+</p>
+
+<p class="footpara">
+$$<br />
+</p>
+\begin{align}
+\vec{u} \cdot \vec{v} &= ||\vec{u}||||\vec{v}||\cos{\theta} \tag{22}\\
+\frac{\vec{u} \cdot \vec{v}}{||\vec{u}||||\vec{v}||} &= \cos(\theta) \tag{23}\\
+\frac{\sum_{i=1}^{|u|}u_iv_i}{||\vec{u}||||\vec{v}||} &= \cos(\theta) \tag{24}\\
+\frac{\sum_{i=1}^{|u|}u_iv_i}{\sqrt{\sum_{i=1}^{|u|}u_i^2}\sqrt{\sum_{i=1}^{|v|}v_i^2}} &= \cos(\theta) \tag{25}\\
+\end{align}
+<p class="footpara">
+$$<br />
+</p>
+
+<p class="footpara">
+Boom! We've now derived the formula for the <i><a href="https://en.wikipedia.org/wiki/Cosine_similarity">cosine similarity</a></i>. This formula is useful, because it allows us to compare the similarity of two vectors <i>independently</i> of their magnitudes, which is very useful for things like facial recognition. The cosine similarity always belongs to the interval \([-1, +1]\), with a cosine similarity of 1 indicating that two vectors point in the same direction and a cosine similarity -1.<br />
+</p></div></div>
+
+
+</div>
+</div></div>
+<div id="postamble" class="status">
+<p class="author">Author: Amitav Krishna</p>
+<p class="date">Created: 2025-10-12 Sun 10:44</p>
+<p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>

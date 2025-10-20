@@ -1,0 +1,578 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2025-10-09 Thu 01:49 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Building lists in C++</title>
+<meta name="author" content="Amitav Krishna" />
+<meta name="generator" content="Org Mode" />
+<style type="text/css">
+  #content { max-width: 60em; margin: auto; }
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #e6e6e6;
+    border-radius: 3px;
+    background-color: #f2f2f2;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: auto;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    top: -8px;
+    right: 12px;
+    padding: 3px;
+    color: #555;
+    background-color: #f2f2f299;
+  }
+  pre.src:hover:before { display: inline; margin-top: 14px;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { }
+</style>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body>
+<div id="content" class="content">
+<h1 class="title">Building lists in C++</h1>
+<p>
+Hello! This is part 2 in a <code>TBD</code> part series on creating an LLM from scratch! You can see part 1, the roadmap, <a href="https://amitav.net/roadmap-llm.html">here</a> and part 3, building vectors, <a href="https://amitav.net/building-vectors.html">here</a>.<br />
+</p>
+<div id="outline-container-org6e345ac" class="outline-2">
+<h2 id="org6e345ac"><span class="section-number-2">1.</span> Making a list</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+The first things that pop into my head when I’m thinking about vectors and matrices are <i>lists</i>. A vector is just a list of numbers, and a matrix is a list of vectors. Therefore, we should start with a list and then build our way up from there. Here are the features I want out of this specific list implementation:<br />
+</p>
+
+<ul class="org-ul">
+<li>the ability to insert items into the list, either at the end, or if a position is provided, in the provided position.<br /></li>
+<li>the ability to retrieve an item from said list using the position of said item in the list.<br /></li>
+<li>the ability to know whether or not an item is present in the list.<br /></li>
+<li>the ability to know the number of items present in the list, and the number of items it can hold.<br /></li>
+<li>the ability to clear the list (fill it with zeroes).<br /></li>
+</ul>
+
+
+<p>
+So, let’s get cracking! Firstly, let’s define our template:<br />
+</p>
+
+<p>
+<code>list-template-1</code><br />
+</p>
+<div class="org-src-container">
+<pre class="src src-C++" id="org12fc4c2"><span style="color: #00ffff;">template</span> &lt;<span style="color: #00ffff;">typename</span> <span style="color: #98fb98;">T</span>&gt;
+<span style="color: #00ffff;">class</span> <span style="color: #98fb98;">MyList</span> {
+<span style="color: #00ffff;">protected</span>:
+  <span style="color: #98fb98;">T</span>* <span style="color: #eedd82;">arr</span>;
+  <span style="color: #98fb98;">int</span> <span style="color: #eedd82;">capacity</span>;
+  <span style="color: #98fb98;">int</span> <span style="color: #eedd82;">current</span>;
+
+<span style="color: #00ffff;">public</span>:
+  <span style="color: #87cefa;">MyList</span>() : capacity(1), current(0) {
+    arr = <span style="color: #00ffff;">new</span> <span style="color: #98fb98;">T</span>[capacity];
+  }
+  <span style="color: #98fb98;">void</span> <span style="color: #87cefa;">push</span>(<span style="color: #98fb98;">T</span> <span style="color: #eedd82;">data</span>) {
+    <span style="color: #00ffff;">if</span> (current == capacity) {
+      <span style="color: #98fb98;">T</span>* <span style="color: #eedd82;">temp</span> = <span style="color: #00ffff;">new</span> <span style="color: #98fb98;">T</span>[2 * capacity];
+      <span style="color: #00ffff;">for</span> (<span style="color: #98fb98;">int</span> <span style="color: #eedd82;">i</span> = 0; i &lt; capacity; i++) { temp[i] = arr[i]; }
+      <span style="color: #00ffff;">delete</span>[] arr;
+      capacity *= 2;
+      arr = temp;
+    }
+    arr[current++] = data;
+  }
+   <span style="color: #98fb98;">T</span>&amp; <span style="color: #00ffff;">operator</span><span style="color: #87cefa;">[]</span>(<span style="color: #98fb98;">int</span> <span style="color: #eedd82;">index</span>)  {
+    <span style="color: #00ffff;">if</span> (index &gt;= current || index &lt; 0) {
+      <span style="color: #00ffff;">throw</span> <span style="color: #7fffd4;">std</span>::out_of_range(<span style="color: #ffa07a;">"Index out of range"</span>);
+    }
+    <span style="color: #00ffff;">return</span> arr[index];
+  }
+   <span style="color: #00ffff;">const</span> <span style="color: #98fb98;">T</span>&amp; <span style="color: #00ffff;">operator</span><span style="color: #87cefa;">[]</span>(<span style="color: #98fb98;">int</span> <span style="color: #eedd82;">index</span>) <span style="color: #00ffff;">const</span>  {
+    <span style="color: #00ffff;">if</span> (index &gt;= current || index &lt; 0) {
+      <span style="color: #00ffff;">throw</span> <span style="color: #7fffd4;">std</span>::out_of_range(<span style="color: #ffa07a;">"Index out of range"</span>);
+    }
+    <span style="color: #00ffff;">return</span> arr[index];
+      }
+
+
+</pre>
+</div>
+
+
+<p>
+The <i>structure</i> of the list itself is fully defined by three things: <code>capacity</code>, an integer representing the number of objects the list can hold; <code>current</code>, an integer representing the number of objects currently held in the list; and <code>arr</code>, a pointer (memory address) to the first element of the list. The constructor is used to initialize <code>capacity</code> to 1, and <code>current</code> to 0; in addition, we allocate enough memory to hold a number of objects of type <code>T</code><sup><a id="fnr.1" class="footref" href="#fn.1" role="doc-backlink">1</a></sup> equal to <code>capacity</code> (<code>T[capacity]</code>), create a pointer to the beginning of that chunk of memory (<code>new</code>), and then set <code>arr</code> to that pointer.<br />
+</p>
+
+<p>
+The <code>push</code> function appends an element to the end of the list. If there's enough space for it in the current list (i.e., <code>current</code> &lt; <code>capacity</code>) then we can just set the chunk of data after the current chunk of data to our new data. If there <i>isn't</i> enough space for it in the current list (i.e., <code>current</code> = <code>capacity</code>), then we first want to allocate some more space, in this case double the amount we currently have allocated<sup><a id="fnr.2" class="footref" href="#fn.2" role="doc-backlink">2</a></sup> into a new list (<code>T[2 * capacity]</code>), create a pointer to that block of memory (<code>new</code>), and then assign that to a temporary pointer (<code>T* temp</code>). Afterwards, we want to copy over all of the elements in our current list to the new list (<code>for (int i = 0; i &lt; capacity; i++) {temp[i] = arr[i];}</code>), deallocate the memory we're using for our current list (<code>delete[] arr</code>), double capacity (<code>capacity *= 2</code>), and then change <code>arr</code> to point to the first element of the new list (<code>arr = temp</code>).<br />
+</p>
+
+<p>
+For accessing elements, we use the <code>[]</code> operator. There's nothing special about this operator, it's just the most convenient for me to work with. It takes an index as input and ensures that the index is not a) greater than the number of elements present in the list, or b) negative<sup><a id="fnr.3" class="footref" href="#fn.3" role="doc-backlink">3</a></sup>. Then, we just return the object <code>arr</code> is pointing to at that index. Here's a test:<br />
+</p>
+
+<p>
+<code>lists-test-1</code><br />
+</p>
+<div class="org-src-container">
+<pre class="src src-C++" id="org3e9ab91"><span style="color: #b0c4de;">#include</span> <span style="color: #ffa07a;">&lt;iostream&gt;</span>
+<span style="color: #b0c4de;">#include</span> <span style="color: #ffa07a;">&lt;string&gt;</span>
+<span style="color: #b0c4de;">#include</span> <span style="color: #ffa07a;">&lt;stdexcept&gt;</span>
+<span style="color: #00ffff;">template</span> &lt;<span style="color: #00ffff;">typename</span> <span style="color: #98fb98;">T</span>&gt;
+<span style="color: #00ffff;">class</span> <span style="color: #98fb98;">MyList</span> {
+<span style="color: #00ffff;">protected</span>:
+  <span style="color: #98fb98;">T</span>* <span style="color: #eedd82;">arr</span>;
+  <span style="color: #98fb98;">int</span> <span style="color: #eedd82;">capacity</span>;
+  <span style="color: #98fb98;">int</span> <span style="color: #eedd82;">current</span>;
+
+<span style="color: #00ffff;">public</span>:
+  <span style="color: #87cefa;">MyList</span>() : capacity(1), current(0) {
+    arr = <span style="color: #00ffff;">new</span> <span style="color: #98fb98;">T</span>[capacity];
+  }
+  <span style="color: #98fb98;">void</span> <span style="color: #87cefa;">push</span>(<span style="color: #98fb98;">T</span> <span style="color: #eedd82;">data</span>) {
+    <span style="color: #00ffff;">if</span> (current == capacity) {
+      <span style="color: #98fb98;">T</span>* <span style="color: #eedd82;">temp</span> = <span style="color: #00ffff;">new</span> <span style="color: #98fb98;">T</span>[2 * capacity];
+      <span style="color: #00ffff;">for</span> (<span style="color: #98fb98;">int</span> <span style="color: #eedd82;">i</span> = 0; i &lt; capacity; i++) { temp[i] = arr[i]; }
+      <span style="color: #00ffff;">delete</span>[] arr;
+      capacity *= 2;
+      arr = temp;
+    }
+    arr[current++] = data;
+  }
+   <span style="color: #98fb98;">T</span>&amp; <span style="color: #00ffff;">operator</span><span style="color: #87cefa;">[]</span>(<span style="color: #98fb98;">int</span> <span style="color: #eedd82;">index</span>)  {
+    <span style="color: #00ffff;">if</span> (index &gt;= current || index &lt; 0) {
+      <span style="color: #00ffff;">throw</span> <span style="color: #7fffd4;">std</span>::out_of_range(<span style="color: #ffa07a;">"Index out of range"</span>);
+    }
+    <span style="color: #00ffff;">return</span> arr[index];
+  }
+   <span style="color: #00ffff;">const</span> <span style="color: #98fb98;">T</span>&amp; <span style="color: #00ffff;">operator</span><span style="color: #87cefa;">[]</span>(<span style="color: #98fb98;">int</span> <span style="color: #eedd82;">index</span>) <span style="color: #00ffff;">const</span>  {
+    <span style="color: #00ffff;">if</span> (index &gt;= current || index &lt; 0) {
+      <span style="color: #00ffff;">throw</span> <span style="color: #7fffd4;">std</span>::out_of_range(<span style="color: #ffa07a;">"Index out of range"</span>);
+    }
+    <span style="color: #00ffff;">return</span> arr[index];
+      }
+
+
+};
+
+<span style="color: #98fb98;">int</span> <span style="color: #87cefa;">main</span>() {
+  <span style="color: #98fb98;">MyList</span>&lt;<span style="color: #7fffd4;">std</span>::<span style="color: #98fb98;">string</span>&gt; <span style="color: #eedd82;">groceries</span>;
+  <span style="color: #7fffd4;">std</span>::<span style="color: #98fb98;">string</span> <span style="color: #eedd82;">y</span> = <span style="color: #ffa07a;">"Bananas"</span>;
+  <span style="color: #7fffd4;">std</span>::<span style="color: #98fb98;">string</span> <span style="color: #eedd82;">z</span> = <span style="color: #ffa07a;">"Apples"</span>;
+  groceries.push(y);
+  groceries.push(z);
+
+  <span style="color: #00ffff;">for</span> (<span style="color: #98fb98;">int</span> <span style="color: #eedd82;">i</span> = 0; i &lt; 2; i++) {
+    <span style="color: #7fffd4;">std</span>::cout &lt;&lt; x[i] &lt;&lt; <span style="color: #7fffd4;">std</span>::endl;
+  }
+
+  <span style="color: #00ffff;">return</span> 0;
+}
+</pre>
+</div>
+
+<p>
+Magnifique! Now, let's add some extra utility functions<br />
+</p>
+
+<p>
+<code>list-extra-methods-1</code><br />
+</p>
+<div class="org-src-container">
+<pre class="src src-C++" id="orge9b8ce9"><span style="color: #98fb98;">int</span> <span style="color: #87cefa;">size</span>() <span style="color: #00ffff;">const</span> { <span style="color: #00ffff;">return</span> current; }
+<span style="color: #98fb98;">int</span> <span style="color: #87cefa;">getcapacity</span>() <span style="color: #00ffff;">const</span> { <span style="color: #00ffff;">return</span> capacity; }
+<span style="color: #98fb98;">bool</span> <span style="color: #00ffff;">operator</span><span style="color: #87cefa;">==</span>(<span style="color: #00ffff;">const</span> <span style="color: #98fb98;">MyList</span>&amp; <span style="color: #eedd82;">other</span>) <span style="color: #00ffff;">const</span> {
+  <span style="color: #00ffff;">if</span> (other.size() != size()) <span style="color: #00ffff;">return</span> <span style="color: #7fffd4;">false</span>;
+  <span style="color: #00ffff;">for</span> (<span style="color: #98fb98;">int</span> <span style="color: #eedd82;">i</span> = 0; i &lt; size(); i++)
+    <span style="color: #00ffff;">if</span> (<span style="color: #00ffff;">not</span> ((*<span style="color: #00ffff;">this</span>)[i] == other[i])) {<span style="color: #00ffff;">return</span> <span style="color: #7fffd4;">false</span>;}
+  <span style="color: #00ffff;">return</span> <span style="color: #7fffd4;">true</span>;
+}
+
+
+<span style="color: #98fb98;">bool</span> <span style="color: #87cefa;">search</span>(<span style="color: #00ffff;">const</span> <span style="color: #98fb98;">T</span> <span style="color: #eedd82;">key</span>) <span style="color: #00ffff;">const</span> {
+  <span style="color: #00ffff;">for</span> (<span style="color: #98fb98;">int</span> <span style="color: #eedd82;">i</span> = 0; i &lt; size(); i++){
+    <span style="color: #00ffff;">if</span> ((*<span style="color: #00ffff;">this</span>)[i] == key) {<span style="color: #00ffff;">return</span> <span style="color: #7fffd4;">true</span>;}
+  }
+  <span style="color: #00ffff;">return</span> <span style="color: #7fffd4;">false</span>;
+}
+
+<span style="color: #98fb98;">void</span> <span style="color: #87cefa;">pop</span>() { <span style="color: #00ffff;">if</span>(current &gt; 0) {current--;} }
+<span style="color: #98fb98;">void</span> <span style="color: #87cefa;">clear</span>() { current = 0; }
+<span style="color: #98fb98;">void</span> <span style="color: #87cefa;">reserve</span>(<span style="color: #98fb98;">int</span> <span style="color: #eedd82;">new_capacity</span>) {
+  <span style="color: #00ffff;">if</span> (new_capacity &gt; capacity) {
+    <span style="color: #98fb98;">T</span>* <span style="color: #eedd82;">temp</span> = <span style="color: #00ffff;">new</span> <span style="color: #98fb98;">T</span>[new_capacity];
+    <span style="color: #00ffff;">for</span> (<span style="color: #98fb98;">int</span> <span style="color: #eedd82;">i</span> = 0; i &lt; current; i++)
+      temp[i] = arr[i];
+    <span style="color: #00ffff;">delete</span>[] arr;
+    arr = temp;
+    capacity = new_capacity;
+  }
+}
+<span style="color: #87cefa;">MyList</span>(<span style="color: #00ffff;">const</span> <span style="color: #98fb98;">MyList</span>&amp; <span style="color: #eedd82;">other</span>) : capacity(other.capacity), current(other.current) {
+  arr = <span style="color: #00ffff;">new</span> <span style="color: #98fb98;">T</span>[capacity];
+  <span style="color: #00ffff;">for</span> (<span style="color: #98fb98;">int</span> <span style="color: #eedd82;">i</span> = 0; i &lt; current; i++) {
+    arr[i] = other.arr[i];
+  }
+}
+
+<span style="color: #98fb98;">MyList</span>&amp; <span style="color: #00ffff;">operator</span><span style="color: #87cefa;">=</span>(<span style="color: #00ffff;">const</span> <span style="color: #98fb98;">MyList</span>&amp; <span style="color: #eedd82;">other</span>) {
+  <span style="color: #00ffff;">if</span> (<span style="color: #00ffff;">this</span> != &amp;other) {
+    <span style="color: #00ffff;">delete</span>[] arr;
+    capacity = other.capacity;
+    current = other.current;
+    arr = <span style="color: #00ffff;">new</span> <span style="color: #98fb98;">T</span>[capacity];
+    <span style="color: #00ffff;">for</span> (<span style="color: #98fb98;">int</span> <span style="color: #eedd82;">i</span> = 0; i &lt; current; i++)
+      arr[i] = other.arr[i];
+  }
+  <span style="color: #00ffff;">return</span> *<span style="color: #00ffff;">this</span>;
+}
+
+~<span style="color: #87cefa;">MyList</span>() { <span style="color: #00ffff;">delete</span>[] arr; }
+</pre>
+</div>
+
+<p>
+There's quite a few methods in there:<br />
+</p>
+
+<ul class="org-ul">
+<li><code>size()</code>: Returns the number of items in the list (<code>current</code>).<br /></li>
+<li><code>getcapacity()</code>: Returns the number of items the list can fit (<code>capacity</code>).<br /></li>
+<li><code>operator==(const MyList&amp; other)</code>: Returns whether or not this list is the same as the other list. First it checks whether or not the sizes are the same, because if the sizes differ, then the lists cannot be identical. After that, it goes through each element in the list and checks if it's identical to the corresponding element in the other list.<br /></li>
+<li><code>search(const T key)</code>: Checks if an element exists in a list.<br /></li>
+<li><code>pop()</code>: Reduces the length of the list by one. It doesn't delete that element<br /></li>
+<li><code>clear()</code>: Reduces the length to zero.<br /></li>
+<li><code>reserve(int new_capacity)</code>: Reserves space for the specified number of objects.<br /></li>
+<li><code>MyList(const MyList&amp; other)</code><sup><a id="fnr.4" class="footref" href="#fn.4" role="doc-backlink">4</a></sup>: This is a <i>copy contstructor</i>, copying the contents of the provided list to the new list.<br /></li>
+<li><code>MyList&amp; operator=(const MyList&amp; other)</code>: This is a <i>copy assignment operator</i>, which assigns the contents of the provided list to the list<sup><a id="fnr.4.4" class="footref" href="#fn.4" role="doc-backlink">4</a></sup>.<br /></li>
+<li><code>~MyList()</code><sup><a id="fnr.4.4" class="footref" href="#fn.4" role="doc-backlink">4</a></sup>: This is a destructor, which is called when the object goes out of scope or it is deleted, in order to free the memory.<br /></li>
+</ul>
+
+
+<p>
+Let's test all of this out!<br />
+</p>
+
+<p>
+<code>list-test-2</code><br />
+</p>
+<div class="org-src-container">
+<pre class="src src-C++" id="org4e23520"><span style="color: #b0c4de;">#include</span> <span style="color: #ffa07a;">&lt;iostream&gt;</span>
+<span style="color: #b0c4de;">#include</span> <span style="color: #ffa07a;">&lt;string&gt;</span>
+<span style="color: #b0c4de;">#include</span> <span style="color: #ffa07a;">&lt;stdexcept&gt;</span>
+<span style="color: #00ffff;">template</span> &lt;<span style="color: #00ffff;">typename</span> <span style="color: #98fb98;">T</span>&gt;
+<span style="color: #00ffff;">class</span> <span style="color: #98fb98;">MyList</span> {
+<span style="color: #00ffff;">protected</span>:
+  <span style="color: #98fb98;">T</span>* <span style="color: #eedd82;">arr</span>;
+  <span style="color: #98fb98;">int</span> <span style="color: #eedd82;">capacity</span>;
+  <span style="color: #98fb98;">int</span> <span style="color: #eedd82;">current</span>;
+
+<span style="color: #00ffff;">public</span>:
+  <span style="color: #87cefa;">MyList</span>() : capacity(1), current(0) {
+    arr = <span style="color: #00ffff;">new</span> <span style="color: #98fb98;">T</span>[capacity];
+  }
+  <span style="color: #98fb98;">void</span> <span style="color: #87cefa;">push</span>(<span style="color: #98fb98;">T</span> <span style="color: #eedd82;">data</span>) {
+    <span style="color: #00ffff;">if</span> (current == capacity) {
+      <span style="color: #98fb98;">T</span>* <span style="color: #eedd82;">temp</span> = <span style="color: #00ffff;">new</span> <span style="color: #98fb98;">T</span>[2 * capacity];
+      <span style="color: #00ffff;">for</span> (<span style="color: #98fb98;">int</span> <span style="color: #eedd82;">i</span> = 0; i &lt; capacity; i++) { temp[i] = arr[i]; }
+      <span style="color: #00ffff;">delete</span>[] arr;
+      capacity *= 2;
+      arr = temp;
+    }
+    arr[current++] = data;
+  }
+   <span style="color: #98fb98;">T</span>&amp; <span style="color: #00ffff;">operator</span><span style="color: #87cefa;">[]</span>(<span style="color: #98fb98;">int</span> <span style="color: #eedd82;">index</span>)  {
+    <span style="color: #00ffff;">if</span> (index &gt;= current || index &lt; 0) {
+      <span style="color: #00ffff;">throw</span> <span style="color: #7fffd4;">std</span>::out_of_range(<span style="color: #ffa07a;">"Index out of range"</span>);
+    }
+
+    <span style="color: #00ffff;">return</span> arr[index];
+  }
+   <span style="color: #00ffff;">const</span> <span style="color: #98fb98;">T</span>&amp; <span style="color: #00ffff;">operator</span><span style="color: #87cefa;">[]</span>(<span style="color: #98fb98;">int</span> <span style="color: #eedd82;">index</span>) <span style="color: #00ffff;">const</span>  {
+    <span style="color: #00ffff;">if</span> (index &gt;= current || index &lt; 0) {
+      <span style="color: #00ffff;">throw</span> <span style="color: #7fffd4;">std</span>::out_of_range(<span style="color: #ffa07a;">"Index out of range"</span>);
+    }
+
+    <span style="color: #00ffff;">return</span> arr[index];
+  }
+  &lt;&lt;list-extra-methods-1&gt;&gt;
+   };
+
+
+<span style="color: #98fb98;">int</span> <span style="color: #87cefa;">main</span>() {
+  <span style="color: #98fb98;">MyList</span>&lt;<span style="color: #7fffd4;">std</span>::string&gt; <span style="color: #eedd82;">groceries</span>;
+      <span style="color: #7fffd4;">std</span>::cout &lt;&lt; <span style="color: #ffa07a;">"Capacity: "</span> &lt;&lt; groceries.getcapacity() &lt;&lt; <span style="color: #7fffd4;">std</span>::endl;
+  <span style="color: #7fffd4;">std</span>::cout &lt;&lt; <span style="color: #ffa07a;">"Size: "</span> &lt;&lt;  groceries.size() &lt;&lt; <span style="color: #7fffd4;">std</span>::endl;
+  groceries.push(<span style="color: #ffa07a;">"Apples"</span>);
+  groceries.push(<span style="color: #ffa07a;">"Bananas"</span>);
+  <span style="color: #7fffd4;">std</span>::cout &lt;&lt; <span style="color: #ffa07a;">"Capacity: "</span> &lt;&lt; groceries.getcapacity() &lt;&lt; <span style="color: #7fffd4;">std</span>::endl;
+  <span style="color: #7fffd4;">std</span>::cout &lt;&lt; <span style="color: #ffa07a;">"Size: "</span> &lt;&lt;  groceries.size() &lt;&lt; <span style="color: #7fffd4;">std</span>::endl;
+  groceries.push(<span style="color: #ffa07a;">"Carrots"</span>);
+  <span style="color: #7fffd4;">std</span>::cout &lt;&lt; <span style="color: #ffa07a;">"Capacity: "</span> &lt;&lt; groceries.getcapacity() &lt;&lt; <span style="color: #7fffd4;">std</span>::endl;
+  <span style="color: #7fffd4;">std</span>::cout &lt;&lt; <span style="color: #ffa07a;">"Size: "</span> &lt;&lt;  groceries.size() &lt;&lt; <span style="color: #7fffd4;">std</span>::endl;
+
+
+
+  <span style="color: #00ffff;">for</span> (<span style="color: #98fb98;">int</span> <span style="color: #eedd82;">i</span> = 0; i &lt; groceries.size(); i++) {
+    <span style="color: #7fffd4;">std</span>::cout &lt;&lt; groceries[i] &lt;&lt; <span style="color: #7fffd4;">std</span>::endl;
+  }
+  groceries.pop();
+  groceries.push(<span style="color: #ffa07a;">"Dragonfruit"</span>);
+  <span style="color: #7fffd4;">std</span>::cout &lt;&lt; <span style="color: #ffa07a;">"Capacity: "</span> &lt;&lt; groceries.getcapacity() &lt;&lt; <span style="color: #7fffd4;">std</span>::endl;
+  <span style="color: #7fffd4;">std</span>::cout &lt;&lt; <span style="color: #ffa07a;">"Size: "</span> &lt;&lt;  groceries.size() &lt;&lt; <span style="color: #7fffd4;">std</span>::endl;
+  <span style="color: #00ffff;">for</span> (<span style="color: #98fb98;">int</span> <span style="color: #eedd82;">i</span> = 0; i &lt; groceries.size(); i++) {
+    <span style="color: #7fffd4;">std</span>::cout &lt;&lt; groceries[i] &lt;&lt; <span style="color: #7fffd4;">std</span>::endl;
+  }
+
+  groceries.reserve(5);
+  <span style="color: #7fffd4;">std</span>::cout &lt;&lt; <span style="color: #ffa07a;">"Capacity: "</span> &lt;&lt; groceries.getcapacity() &lt;&lt; <span style="color: #7fffd4;">std</span>::endl;
+
+  <span style="color: #98fb98;">MyList</span>&lt;<span style="color: #7fffd4;">std</span>::string&gt; <span style="color: #eedd82;">y</span>(groceries); <span style="color: #ff7f24;">// </span><span style="color: #ff7f24;">Copy constructor is called!
+</span>  <span style="color: #7fffd4;">std</span>::cout &lt;&lt; (y == groceries) &lt;&lt; <span style="color: #7fffd4;">std</span>::endl;
+  y.push(<span style="color: #ffa07a;">"Eggplant"</span>);
+  <span style="color: #7fffd4;">std</span>::cout &lt;&lt; (y == groceries) &lt;&lt; <span style="color: #7fffd4;">std</span>::endl;
+
+  groceries = y; <span style="color: #ff7f24;">// </span><span style="color: #ff7f24;">Copy assignment operator is called
+</span>
+  <span style="color: #7fffd4;">std</span>::cout &lt;&lt; y.search(<span style="color: #ffa07a;">"Apples"</span>) &lt;&lt; <span style="color: #7fffd4;">std</span>::endl;
+  <span style="color: #7fffd4;">std</span>::cout &lt;&lt; y.search(<span style="color: #ffa07a;">"Figs"</span>) &lt;&lt; <span style="color: #7fffd4;">std</span>::endl;
+
+
+
+
+  <span style="color: #00ffff;">return</span> 0;
+}
+</pre>
+</div>
+
+<pre class="example" id="orgc23ff6c">
+Capacity: 1
+Size: 0
+Capacity: 2
+Size: 2
+Capacity: 4
+Size: 3
+Apples
+Bananas
+Carrots
+Capacity: 4
+Size: 3
+Apples
+Bananas
+Dragonfruit
+Capacity: 5
+1
+0
+1
+0
+</pre>
+
+<p>
+Amazing! Now that we have our list structure sorted out, let's move on to <a href="https://amitav.net/building-vectors.html"><b>vectors</b></a>.<br />
+</p>
+
+
+
+
+
+
+<p>
+‎<br />
+</p>
+</div>
+</div>
+<div id="footnotes">
+<h2 class="footnotes">Footnotes: </h2>
+<div id="text-footnotes">
+
+<div class="footdef"><sup><a id="fn.1" class="footnum" href="#fnr.1" role="doc-backlink">1</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
+<code>T</code> is defined when the list is initialized.<br />
+</p></div></div>
+
+<div class="footdef"><sup><a id="fn.2" class="footnum" href="#fnr.2" role="doc-backlink">2</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
+You may be wondering, "Why not just allocate some more memory at the end of the allocated block and save ourselves having to copy over all of our data to a new list and then deallocate the current list?" The reason for this is <i>contiguity</i>. When I call <code>new</code>, it goes through the <i>C heap allocator</i>, which manages requests for memory on the <i>heap</i>. The <i>heap</i> is memory set aside for dynamic allocation, and allocated to the allocator by the operating system. If we try to extend our current block, chances are that the memory just beyond the end are already reserved for something else. Touching it would mean stepping into memory we don't own, which would cause the operating system to go, "Whoa there buddy, you don't have permission to access that", and cause a segmentation fault, killing the program. Allocators can <i>sometimes</i> extend in place if they happen to control the neighbouring block, but you can't rely on that. Another option would be to use something like a linked list, where each element points to the next element, so that way the list can be made up of a bunch of discontinuous objects, which would increase the efficiency of insertion and deletion, but would <i>greatly</i> increase the time it takes to access an element, because every access would require traversing the list from the beginning. In our case, we care most about accessing elements quickly and less so about insertions and erasures, the operations in which linked lists shine.<br />
+</p></div></div>
+
+<div class="footdef"><sup><a id="fn.3" class="footnum" href="#fnr.3" role="doc-backlink">3</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
+In many languages, most notably Python, Ruby, and Perl, negative indices are allowed and translate <code>list[-k]</code> to <code>list[length-k]</code>. It would be trivial to implement negative indices; you just check if the index is negative, and if so, add it to <code>current</code> and use that as the index. For the sake of simplicity, however, I've decided to omit negative indices.<br />
+</p></div></div>
+
+<div class="footdef"><sup><a id="fn.4" class="footnum" href="#fnr.4" role="doc-backlink">4</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
+You may be wondering: don't we already have a copy operator? How's this any different from <code>MyList(const MyList&amp; other)</code>? Well, the <code>operator=</code>, the copy <i>assignment operator</i> is performed on a list that <i>already exists</i>, and so also includes a <code>delete[] arr</code> to free the currently allocated memory. The other operation, the copy <i>constructor</i>, is used to create a <i>new list</i> with the contents of the provided list. For the detail-oriented among you this may have been obvious, however I had trouble wrapping my head around the difference between these two. C++ has something called the rule of three, which states that "if a class requires a user-defined destructor, a user-defined copy constructor, or a user-defined copy assignment, it almost certainly requires all three"(<a href="https://en.cppreference.com/w/cpp/language/rule_of_three.html">Further reading</a>). In short: a destructor is used to free the resources held by an object once it goes out of scope or is deleted; a copy constructor is used to copy an existing object to a new object; and a copy assignment operator is used to copy an existing object to another existing object. The reason the rule of three exists is mostly because, unless otherwise defined, the compiler defaults to a <b>shallow copy</b>, meaning that it simply copies the pointers to the new object. If we have two objects each pointing to the same place in memory, then we have a risk of a <b>double delete</b>. When we first call <code>delete arr[]</code> on the memory, it correctly frees the memory, as one would expect. When we try the second <code>delete</code> is when it really hits the fan: best case scenario, it touches memory that's been returned to the operating system and triggers a segmentation fault. Worst case scenario, it "appears to work", but the heap has actually put that block in the free list <i>twice</i>, which can be used by <a href="https://owasp.org/www-community/vulnerabilities/Doubly_freeing_memory">bad actors to execute arbitrary code</a>.<br />
+</p></div></div>
+
+
+</div>
+</div></div>
+<div id="postamble" class="status">
+<p class="author">Author: Amitav Krishna</p>
+<p class="date">Created: 2025-10-09 Thu 01:49</p>
+<p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>

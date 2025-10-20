@@ -1,0 +1,56 @@
+#+BEGIN_SRC jupyter-python :results output :exports none  :session manim
+from manim import *
+from pathlib import Path
+
+config.media_dir = "/home/amitav/blogs/media"
+config.video_dir = "/home/amitav/blogs/media/videos"
+config.quality = "low_quality"
+config.output_file = "SquareToCircle.mp4"
+
+
+
+class SquareToCircle(Scene):
+    def construct(self):
+        square = Square()
+        circle = Circle()
+        circle.set_fill(PINK, opacity=0.5)
+        self.play(Create(square))
+        self.play(Transform(square, circle))
+        self.wait()
+
+scene = SquareToCircle()
+scene.render()
+
+#+END_SRC
+
+#+BEGIN_SRC jupyter-python :results raw html :exports both :session manim
+from IPython.display import Video
+Video("/home/amitav/blogs/media/videos/SquareToCircle.mp4", embed=True)._repr_html_()
+#+END_SRC
+
+#+BEGIN_SRC jupyter-python :session manim :exports none
+
+  config.output_file = "vector_1.png"
+  class VectorExample(Scene):
+      def construct(self):
+          plane = NumberPlane()
+          vector_1 = Vector([1,2])
+          vector_2 = Vector([-5,-2])
+          self.add(plane, vector_1, vector_2)
+
+  scene = VectorExample()
+  scene.render()
+#+END_SRC
+
+
+
+#+BEGIN_SRC jupyter-python :results raw html :exports both :session manim
+import base64
+path = "/home/amitav/blogs/media/images/vector_1.png"
+
+with open(path, "rb") as f:
+    data = base64.b64encode(f.read()).decode("utf-8")
+
+html = f"<img src='data:image/png;base64,{data}' width='640'/>"
+print(html)
+#+END_SRC

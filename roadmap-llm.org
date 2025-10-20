@@ -1,0 +1,18 @@
+* Building an LLM from scratch in C++ 
+
+
+Hello! This is part 1 in a =TBD= part series on creating an LLM from scratch! Part 2 can be found [[https://amitav.net/building-matrices-and-vectors][here]].
+
+In this document I will be talking about how I'll be approaching this. This project is currently in progress, so for now it'll be mostly high-level, and as I go through it I'll update it with more detail and links to relevant articles.
+
+** Math & Linear Algebra Foundations
+- [[https://amitav.net/building-lists.html][Lists]], [[https://amitav.net/building-vectors.html][vectors]], and [[https://amitav.net/building-matrices.html][matrices]].
+- Randomness
+
+** Neurons, Chain Rule, and Autodiff
+
+** Optimization & Training Mechanics
+
+** Probabilistic Language Modeling
+
+** Embeddings and a (Tiny) Transformer

@@ -1,0 +1,3 @@
+#+TITLE: A simpler way to visualize higher dimensions.
+
+I've been thinking a lot lately about how one teaches the concepts of functions that operate at higher-dimensions, like a function that takes two inputs and returns two outputs. This is hard, because most of our 

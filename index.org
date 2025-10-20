@@ -1,0 +1,31 @@
+#+TITLE: About Boundless Blue
+#+OPTIONS: toc:nil ^:nil
+
+#+CAPTION: Amitav (me) standing next to Mr. Goose
+#+ATTR_HTML: :width 300px
+[[./images/headshot_high_quality.jpg]]
+
+[[https://amitav.net/now.html][Now]]
+
+Hello! My name is Amitav, and this parcel of internet real-estate is my blog. The page you are currently reading is my "about" page, a mix of a portfolio / auto-biography / memoir. This website is called *Boundless Blue* as a [[https://en.wikipedia.org/wiki/Calque][calque]] of my name: "amitābha" roughly translates to "infinite light" or "infinite life"([[https://www.dharmasite.net/Amita_Buddha.htm][Source]]), and "krishna" roughly translates to "black" or "dark blue"([[https://web.archive.org/web/20200206183139/https://www.sanskrit-lexicon.uni-koeln.de/cgi-bin/monier/serveimg.pl?file=/scans/MWScan/MWScanjpg/mw0306-kRzanAvat.jpg][Source]]). while "Infinite Life Dark Blue" does have a certain ring to it, I decided instead on *Boundless Blue*.
+
+I'm keeping this blog as a sort of public journal for my future self. I live in a community where there are quite a few elderly people, and it's interesting hearing about their stories from when they were younger, but also kind of sad, because it's clear that the people they were 20, 30, 40 years ago are not just [[https://www.cgpgrey.com/blog/i-have-died-many-times][dead]], but their corpses have been left to rot in the mind of their future selves, slowly warping the thing that they once were. Who I was 10 years ago is completely unrecognizable from who I am today. This blog is meant as a way to capture my thoughts as they happen, so that they will be spared by the ruthless onslaught of forgetfulness. Maybe in 20, 30, 40 years, some kid will listen to me ramble on stories and stories within stories and stories within stories within stories, and will then will stumble upon this, and realize that I've been like this the entire time.
+
+I use [[https://fedoraproject.org/][Fedora]] 42 w/ [[https://swaywm.org/][Sway]]. You can find my Sway config [[https://github.com/Amitav-Krishna/sway_config/tree/main][here]]. I do pretty much all of my text editing in [[https://www.gnu.org/software/emacs/][Emacs]], God's editor. This blog is currently being written in Emacs. I may write a longer piece in the future about how I make my website[fn:1], but long story short is that I write all of these in [[https://orgmode.org/][Org mode]], then I use the [[https://orgmode.org/manual/HTML-Export.html][HTML export]] feature to export these to HTML, and then I use rsync to send these to the server. These are served using a simple Ruby script I had ChatGPT cook up, which you can find [[https://amitav.net/server.rb][here]], which adds a list of articles at the bottom. 
+
+If you'd like to see what I'm reading, I'd recommend taking a look at my [[https://amitav.net/rss][RSS reader]], in which I recieve updates from all of my favourite blogs. 
+
+** Deprecated Amitav
+[[https://medium.com/@amtiavkrishna2011][Medium]]
+
+** About me
+Here are a few things about me:
+- I enjoy mathematics,
+- I enjoy programming,
+- I enjoy biking.
+
+That's all for now! In the future, I may see fit to update this page, however this should suffice for now :^)
+
+* Footnotes
+
+[fn:1]If it's after 2025-02-19T23:59:43Z and I haven't linked to a blog about this blog (a metablog?), [[mailto:amitavkrishna@proton.me][shoot me an email]] to remind me. 
