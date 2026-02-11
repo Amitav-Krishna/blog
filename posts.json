@@ -1,0 +1,9 @@
+{
+  "posts": [
+    {"title": "Building vectors in C++", "file": "building-vectors.html"},
+    {"title": "Building lists in C++", "file": "building-lists.html"},
+    {"title": "Building matrices in C++", "file": "building-matrices.html"},
+    {"title": "Creating a heatmap of residential school deaths", "file": "creating_a_heatmap_of_residential_school_deaths.html"},
+    {"title": "Roadmap to LLM", "file": "roadmap-llm.html"}
+  ]
+}

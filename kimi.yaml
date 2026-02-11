@@ -1,0 +1,51 @@
+# Kimi code configuration for blog navigation auto-generation
+# Usage: kimi run build
+
+targets:
+  build:
+    description: "Regenerate blog navigation in all posts"
+    steps:
+      - name: "Load posts manifest"
+        run: |
+          cat posts.json
+      
+      - name: "Update navigation in all posts"
+        run: python3 build.py
+        
+      - name: "Verify updates"
+        run: |
+          echo "Updated posts:"
+          grep -l "blog-nav" *.html | head -10
+
+  add-post:
+    description: "Add a new blog post to the manifest"
+    args:
+      - name: title
+        required: true
+        help: "Post title"
+      - name: file
+        required: true  
+        help: "HTML filename (e.g., my-post.html)"
+    steps:
+      - name: "Add to posts.json"
+        run: |
+          python3 << 'EOF'
+          import json
+          import sys
+          
+          title = "${{ args.title }}"
+          filename = "${{ args.file }}"
+          
+          with open('posts.json', 'r') as f:
+              data = json.load(f)
+          
+          data['posts'].append({"title": title, "file": filename})
+          
+          with open('posts.json', 'w') as f:
+              json.dump(data, f, indent=2)
+          
+          print(f"Added: {title} -> {filename}")
+          EOF
+      
+      - name: "Rebuild navigation"
+        run: python3 build.py
