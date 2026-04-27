@@ -1,0 +1,16 @@
+---
+title: "Rotary Exchange Essay"
+date: 2024-03-15T10:00:00-05:00
+draft: false
+tags: ["essay", "canada", "exchange"]
+---
+
+The disconnect between Canada's intellectual strength and its lack of private innovation fascinates and concerns me. Canada has produced pioneers like Geoffrey Hinton and Yoshua Bengio, the Godfathers of AI, and innovations like the Canadarm and CANDU reactor. Yet few of these breakthroughs translate to jobs and prosperity here at home. Research is essential, but you can't build an economy on research alone: research proposes value, while business creates value.
+
+I want to understand what drives other countries' technology ecosystems, and how we can bring it back to Canada. The Rotary Exchange program would allow me to learn from the greatest innovators in the world. I've always loved digging deep and understanding how things work. When I was younger, I would take apart pens and put them back together at family gatherings while my parents talked with their friends. I would always stare at the individual parts for a few minutes until I understood how everything pushed and pulled, and then I'd spend minutes just opening and closing the pen again and again, watching it do everything I had expected it to do, and nothing more. There were no invisible parts. Afterwards, I would try taking out certain parts and seeing how that affected the operation of the pen. For me, the greatest virtue is in the application, however, I also believe that understanding is crucial to application. I don't believe that progress comes from invisible forces; it comes from those who understand their systems enough to improve them. I want to study how culture, policy, and education interact in foreign countries to grow (or shrink) their technology industries, and how we can bring these things back home.
+
+Rotary's motto, *Service Above Self*, resonates deeply with me. My mother often told me stories of my grandfather, a quality assurance engineer in a factory that produced tractors, who worked even on religious holidays while the rest of the family celebrated. For him, his work *was his worship*, which is a lesson I take forward with me, even today.
+
+I believe that we can — and must — be more ambitious with our service. Too often, we only serve the Canadians of today; I want to serve the Canadians of tomorrow. Representing Canada abroad would be both an honour and a responsibility. I want to show the world that Canada has not stagnated. Through Rotary, I hope not just to bring home good ideas, but to put those ideas into practice.
+
+— Amitav Krishna

@@ -33,14 +33,15 @@ class ExcludingFileHandler < WEBrick::HTTPServlet::FileHandler
               #{links}
             </ul>
           HTML
-          res.body << footer
+          body_content = res.body.respond_to?(:read) ? res.body.read : res.body.to_s
+          res.body = body_content + footer
         end
       end
     end
   end
 end
 
-root = Dir.pwd
+root = File.join(Dir.pwd, 'hugo-site', 'public')
 require "mime/types"
 
 module WEBrick
@@ -56,7 +57,7 @@ module WEBrick
 end
 
 server = WEBrick::HTTPServer.new(
-  :Port => 4567,
+  :Port => 4568,
   :DocumentRoot => root,
   :DirectoryIndex => ["index.html", "index.htm"],
   :FancyIndexing => true

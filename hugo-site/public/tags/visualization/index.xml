@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Visualization on Amitav Krishna</title>
+    <link>https://amitav.net/tags/visualization.html</link>
+    <description>Recent content in Visualization on Amitav Krishna</description>
+    <generator>Hugo -- 0.146.5</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 13 Feb 2025 10:00:00 -0500</lastBuildDate>
+    <atom:link href="https://amitav.net/tags/visualization/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>A Simpler Way to Visualize Higher Dimensions</title>
+      <link>https://amitav.net/posts/visualizing-higher-dimensions.html</link>
+      <pubDate>Thu, 13 Feb 2025 10:00:00 -0500</pubDate>
+      <guid>https://amitav.net/posts/visualizing-higher-dimensions.html</guid>
+      <description>&lt;p&gt;I&amp;rsquo;ve been thinking a lot lately about how one teaches the concepts of functions that operate at higher-dimensions, like a function that takes two inputs and returns two outputs. This is hard, because most of our&amp;hellip;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Note: This post is a work in progress.&lt;/em&gt;&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

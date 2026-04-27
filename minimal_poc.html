@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amitav Krishna</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #fff;
+            color: #000;
+            line-height: 1.7;
+            font-size: 18px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 5em 2.5em;
+            display: flex;
+            gap: 3em;
+        }
+
+        .sidebar {
+            flex-shrink: 0;
+            width: 220px;
+        }
+
+        .sidebar img {
+            width: 210px;
+            height: 210px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 1.5em;
+        }
+
+        .sidebar h1 {
+            font-size: 1.6em;
+            font-weight: 600;
+            margin-bottom: 0.2em;
+        }
+
+        .sidebar .role {
+            color: #666;
+            font-size: 1em;
+            margin-bottom: 1.5em;
+        }
+
+        .sidebar .links {
+            display: flex;
+            flex-direction: column;
+            gap: 0.6em;
+        }
+
+        .sidebar .links a {
+            color: #666;
+            text-decoration: none;
+            font-size: 1em;
+        }
+
+        .sidebar .links a:hover {
+            color: #000;
+        }
+
+        .main {
+            flex: 1;
+            max-width: 700px;
+        }
+
+        section {
+            margin-bottom: 3.5em;
+        }
+
+        p {
+            color: #222;
+            margin-bottom: 1em;
+        }
+
+        a {
+            color: #0066cc;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 768px) {
+            body {
+                font-size: 16px;
+            }
+
+            .container {
+                flex-direction: column;
+                padding: 1.5em;
+                gap: 1.5em;
+            }
+
+            .sidebar {
+                width: 100%;
+                display: flex;
+                flex-direction: row;
+                align-items: flex-start;
+                gap: 1em;
+            }
+
+            .sidebar img {
+                width: 60px;
+                height: 60px;
+                margin-bottom: 0;
+                flex-shrink: 0;
+            }
+
+            .sidebar h1 {
+                font-size: 1.2em;
+            }
+
+            .sidebar .role {
+                display: none;
+            }
+
+            .sidebar .links {
+                display: flex;
+                flex-direction: row;
+                flex-wrap: wrap;
+                gap: 0.5em 1em;
+            }
+
+            .sidebar .links a {
+                font-size: 0.9em;
+            }
+
+            .main {
+                max-width: 100%;
+            }
+
+            p, a {
+                word-wrap: break-word;
+                overflow-wrap: break-word;
+                word-break: break-word;
+            }
+        }
+
+        footer {
+            margin-top: 3em;
+            padding-top: 1.5em;
+            border-top: 1px solid #ddd;
+            color: #666;
+            font-size: 0.85em;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <aside class="sidebar">
+            <img src="./images/amitav.jpg" alt="Amitav Krishna" />
+            <h1>Amitav Krishna</h1>
+            <div class="role">Researcher · Software Engineer · Student</div>
+            <div class="links">
+                <a href="mailto:krishna@amitav.net">Email</a>
+                <a href="https://github.com/amitav-krishna">GitHub</a>
+                <a href="https://linkedin.com/in/amitav-krishna">LinkedIn</a>
+                <a href="https://x.com/amitavkrshna">Twitter</a>
+                <a href="https://youtube.com/@amitavkrishna">YouTube</a>
+                <a href="./blog.html">Blog</a>
+            </div>
+        </aside>
+
+        <main class="main">
+            <section>
+                <p>
+                    Current research focuses on distributed training, making models stable, and figuring out what happens in the black box. 
+                    I have a paper under review at IEEE qCCL 2026 on the use of Frobenius normalization for quantum states and how it enables scaling of neural networks for quantum state reconstruction to larger systems. A quantum state is a matrix describing how likely a quantum system is to be in any given outcome from any given observation. Now, the problem is that even though we may want that information, our systems tend to decohere over time, meaning that they stop giving us their information and instead give away all of the information to the environment. My goal starting out was to take these incomplete measurements and map them to the full, clean measurements using neural networks. However, the problem is that as these states become more and more mixed, they become smaller and smaller, meaning that the model has to learn not only how to rotate these states but also how to stretch them, which becomes overwhelming as you scale up the number of qubits. My solution was to artificially scale up the inputs.
+                </p>
+
+                <p>
+                    I built <a href="https://github.com/amitav-krishna/cerebras-challenge">cerebras-challenge</a>, 
+                    an LLM token visualizer that shows perplexity across generation paths and highlights high-saliency tokens 
+                    as a passive assistant rather than an autonomous agent. 
+                    <a href="https://github.com/amitav-krishna/tinygrad-verilog">tinygrad-verilog</a> (ongoing) started as a 
+                    Verilog neural network trained on XOR, then evolved into a Python backend that generates Verilog from 
+                    tinygrad compute graphs. I documented the process in a <a href="https://www.youtube.com/watch?v=q7xqA4lmbC4">devlog series</a>. 
+                    <a href="https://github.com/amitav-krishna/llm-from-scratch">llm-from-scratch</a> is a neural network framework in C++ 
+                    with an autograd engine, math primitives, and layers implemented from nothing to understand fundamentals. 
+                    <a href="https://github.com/amitav-krishna/gpu_torrent">gpu_torrent</a> (ongoing) is a BitTorrent-like protocol 
+                    for distributed token generation across self-hosted GPUs, built with FastAPI, Redis, and PostgreSQL. 
+                    <a href="https://github.com/amitav-krishna/stock_news">stock_news</a> is a full-stack Next.js app that 
+                    overlays stock price timelines with news articles to surface patterns between media coverage and price movement. 
+                    I implemented <a href="https://github.com/amitav-krishna/search_engine">search_engine</a>, 
+                    a word2vec model from scratch with skip-gram and negative sampling trained on a custom corpus. 
+                    <a href="https://github.com/amitav-krishna/face_recognition_ai">face_recognition_ai</a> uses DeepFace 
+                    (Facenet) embeddings with cosine similarity for face matching. 
+                    <a href="https://github.com/amitav-krishna/eye-tracking">eye-tracking</a> is a Python + OpenCV + dlib 
+                    tool that uses a webcam to track gaze and control the mouse cursor. My first real project, 
+                    <a href="https://github.com/amitav-krishna/Stock_Email_Notifications">Stock Email Notifications</a> 
+                    from Grade 7, sent automated alerts for stocks near 52-week highs and lows using Python, yfinance, 
+                    and the Google Sheets API. It reached around 80 users before I shut it down.
+                </p>
+
+                <p>
+                    I am a Grade 10 student at Holy Trinity Catholic High School in Simcoe, Ontario, mentored by <a href="https://tks.world">The Knowledge Society (TKS)</a>, 
+                    and work as a software engineer at <a href="https://8090.inc">8090.inc</a>. My tools are Python, PyTorch, 
+                    Emacs, and Fedora with Sway. I also write a <a href="./about.html">blog</a>.
+                </p>
+            </section>
+
+            <footer>
+                For research collaborations or questions, reach out via email.
+            </footer>
+        </main>
+    </div>
+</body>
+</html>

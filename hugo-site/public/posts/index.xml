@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Posts on Amitav Krishna</title>
+    <link>https://amitav.net/posts.html</link>
+    <description>Recent content in Posts on Amitav Krishna</description>
+    <generator>Hugo -- 0.146.5</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 13 Feb 2025 10:00:00 -0500</lastBuildDate>
+    <atom:link href="https://amitav.net/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>A Simpler Way to Visualize Higher Dimensions</title>
+      <link>https://amitav.net/posts/visualizing-higher-dimensions.html</link>
+      <pubDate>Thu, 13 Feb 2025 10:00:00 -0500</pubDate>
+      <guid>https://amitav.net/posts/visualizing-higher-dimensions.html</guid>
+      <description>&lt;p&gt;I&amp;rsquo;ve been thinking a lot lately about how one teaches the concepts of functions that operate at higher-dimensions, like a function that takes two inputs and returns two outputs. This is hard, because most of our&amp;hellip;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Note: This post is a work in progress.&lt;/em&gt;&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Now</title>
+      <link>https://amitav.net/posts/now.html</link>
+      <pubDate>Thu, 13 Feb 2025 10:00:00 -0500</pubDate>
+      <guid>https://amitav.net/posts/now.html</guid>
+      <description>&lt;p&gt;&lt;em&gt;(This is &lt;a href=&#34;https://nownownow.com/about&#34;&gt;a now page&lt;/a&gt;, and if you have your own site, you should make one too.)&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;(Last updated: 2025-02-13)&lt;/em&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Right now I&amp;rsquo;m working on &lt;a href=&#34;https://amitav.net/building-an-llm-from-scratch&#34;&gt;building an LLM&lt;/a&gt; from scratch.&lt;/li&gt;
+&lt;li&gt;I&amp;rsquo;m also trying to use transformers to denoise quantum sensor readings. Heavily inspired by &lt;a href=&#34;https://arxiv.org/abs/2509.16242&#34;&gt;this paper&lt;/a&gt; using CNNs to denoise quantum sensor readings and &lt;a href=&#34;https://arxiv.org/abs/2206.06287&#34;&gt;this paper&lt;/a&gt; on creating physics-informed networks. Finished the first model with 10,000 circuits, which underperformed the current SOTA, so now I&amp;rsquo;m scaling it up to a million circuits.&lt;/li&gt;
+&lt;/ul&gt;</description>
+    </item>
+    <item>
+      <title>Rotary Exchange Essay</title>
+      <link>https://amitav.net/posts/rotary-exchange-essay.html</link>
+      <pubDate>Fri, 15 Mar 2024 10:00:00 -0500</pubDate>
+      <guid>https://amitav.net/posts/rotary-exchange-essay.html</guid>
+      <description>&lt;p&gt;The disconnect between Canada&amp;rsquo;s intellectual strength and its lack of private innovation fascinates and concerns me. Canada has produced pioneers like Geoffrey Hinton and Yoshua Bengio, the Godfathers of AI, and innovations like the Canadarm and CANDU reactor. Yet few of these breakthroughs translate to jobs and prosperity here at home. Research is essential, but you can&amp;rsquo;t build an economy on research alone: research proposes value, while business creates value.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>How to Use This Blog Efficiently</title>
+      <link>https://amitav.net/posts/how-to-use-this-blog.html</link>
+      <pubDate>Thu, 01 Feb 2024 10:00:00 -0500</pubDate>
+      <guid>https://amitav.net/posts/how-to-use-this-blog.html</guid>
+      <description>&lt;p&gt;Hello! This page is on the rules of engagement on this website.&lt;/p&gt;
+&lt;h2 id=&#34;i-want-to-get-more-content-from-you-but-im-worried-ill-forget-about-your-existence&#34;&gt;&amp;ldquo;I want to get more content from you, but I&amp;rsquo;m worried I&amp;rsquo;ll forget about your existence&amp;rdquo;&lt;/h2&gt;
+&lt;p&gt;Has this ever happened to you? We have a revolutionary new technology to ease your woes: &lt;a href=&#34;https://en.wikipedia.org/wiki/RSS&#34;&gt;RSS&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;I use an RSS reader for most of my browsing, and I would highly recommend you do as well! The one I use is &lt;a href=&#34;https://github.com/georgemandis/bubo-rss&#34;&gt;Bubo Reader&lt;/a&gt;, which I use because it&amp;rsquo;s extremely simple, and can be deployed on your own server. You can also deploy it on &lt;a href=&#34;https://netlify.com&#34;&gt;Netlify&lt;/a&gt;, as seen in this &lt;a href=&#34;https://bubo-rss-demo.netlify.app&#34;&gt;demo&lt;/a&gt;.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Building Matrices in C&#43;&#43;</title>
+      <link>https://amitav.net/posts/building-matrices-in-cpp.html</link>
+      <pubDate>Thu, 18 Jan 2024 10:00:00 -0500</pubDate>
+      <guid>https://amitav.net/posts/building-matrices-in-cpp.html</guid>
+      <description>&lt;h2 id=&#34;what-the-hell-is-a-matrix-anyways&#34;&gt;What the hell is a matrix, anyways?&lt;/h2&gt;
+&lt;p&gt;When I say matrix, you probably don&amp;rsquo;t have a great idea of what a matrix actually &lt;em&gt;is&lt;/em&gt;, and that&amp;rsquo;s what I aim to solve.&lt;/p&gt;
+&lt;h3 id=&#34;what-the-hell-is-a-vector-really&#34;&gt;What the hell is a vector, really?&lt;/h3&gt;
+&lt;p&gt;&lt;em&gt;This section draws heavily on the textbook Linear Algebra Done Right by Sheldon Axler&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;In the previous issue I didn&amp;rsquo;t go that deeply into the mathematical definition behind a vector. Sadly, before we can truly understand what a matrix is, we must first understand what a vector is.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Building Vectors in C&#43;&#43;</title>
+      <link>https://amitav.net/posts/building-vectors-in-cpp.html</link>
+      <pubDate>Mon, 15 Jan 2024 10:00:00 -0500</pubDate>
+      <guid>https://amitav.net/posts/building-vectors-in-cpp.html</guid>
+      <description>&lt;p&gt;Hello! This is part 3 in a TBD part series on creating an LLM from scratch! You can see part 2, creating lists, &lt;a href=&#34;https://amitav.net/building-lists-in-cpp&#34;&gt;here&lt;/a&gt;, and part 4, creating matrices, &lt;a href=&#34;https://amitav.net/building-matrices-in-cpp&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;h2 id=&#34;what-is-a-vector&#34;&gt;What is a vector?&lt;/h2&gt;
+&lt;p&gt;For our purposes, a vector is an &lt;em&gt;ordered list of numbers&lt;/em&gt;. Here&amp;rsquo;s an example of a 2-dimensional vector:&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;[5, 7]
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;And here&amp;rsquo;s an example of a 5-dimensional vector:&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;[3.5, 4, 2, 1.2, 943.89]
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;We use multi-dimensional vectors to represent things like words and sentences and paragraphs, because the hope is that each vector will allow us to encode &lt;em&gt;multiple independent aspects&lt;/em&gt; of a token at once. At a high-level, we&amp;rsquo;re guessing that the vector will begin to associate different numbers with different attributes: maybe we want the first number to roughly correlate to how dog-like the word is, the second number to correlate to royalty, the third number to correlate with age, etc. For more information, see &lt;a href=&#34;https://arxiv.org/pdf/1301.3781&#34;&gt;this paper&lt;/a&gt; on word representations in vector space.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Building Lists in C&#43;&#43;</title>
+      <link>https://amitav.net/posts/building-lists-in-cpp.html</link>
+      <pubDate>Fri, 12 Jan 2024 10:00:00 -0500</pubDate>
+      <guid>https://amitav.net/posts/building-lists-in-cpp.html</guid>
+      <description>&lt;p&gt;Hello! This is part 2 in a TBD part series on creating an LLM from scratch! You can see part 1, the roadmap, &lt;a href=&#34;https://amitav.net/building-an-llm-from-scratch&#34;&gt;here&lt;/a&gt; and part 3, building vectors, &lt;a href=&#34;https://amitav.net/building-vectors-in-cpp&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;h2 id=&#34;making-a-list&#34;&gt;Making a list&lt;/h2&gt;
+&lt;p&gt;The first things that pop into my head when I&amp;rsquo;m thinking about vectors and matrices are &lt;em&gt;lists&lt;/em&gt;. A vector is just a list of numbers, and a matrix is a list of vectors. Therefore, we should start with a list and then build our way up from there. Here are the features I want out of this specific list implementation:&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Building an LLM from Scratch in C&#43;&#43;</title>
+      <link>https://amitav.net/posts/building-an-llm-from-scratch.html</link>
+      <pubDate>Wed, 10 Jan 2024 10:00:00 -0500</pubDate>
+      <guid>https://amitav.net/posts/building-an-llm-from-scratch.html</guid>
+      <description>&lt;p&gt;This is part 1 in a TBD part series on creating an LLM from scratch! Part 2 can be found &lt;a href=&#34;https://amitav.net/building-lists-in-cpp&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;In this document I will be talking about how I&amp;rsquo;ll be approaching this. This project is currently in progress, so for now it&amp;rsquo;ll be mostly high-level, and as I go through it I&amp;rsquo;ll update it with more detail and links to relevant articles.&lt;/p&gt;
+&lt;h2 id=&#34;math--linear-algebra-foundations&#34;&gt;Math &amp;amp; Linear Algebra Foundations&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://amitav.net/building-lists-in-cpp&#34;&gt;Lists&lt;/a&gt;, &lt;a href=&#34;https://amitav.net/building-vectors-in-cpp&#34;&gt;vectors&lt;/a&gt;, and &lt;a href=&#34;https://amitav.net/building-matrices-in-cpp&#34;&gt;matrices&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Randomness&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;neurons-chain-rule-and-autodiff&#34;&gt;Neurons, Chain Rule, and Autodiff&lt;/h2&gt;
+&lt;h2 id=&#34;optimization--training-mechanics&#34;&gt;Optimization &amp;amp; Training Mechanics&lt;/h2&gt;
+&lt;h2 id=&#34;probabilistic-language-modeling&#34;&gt;Probabilistic Language Modeling&lt;/h2&gt;
+&lt;h2 id=&#34;embeddings-and-a-tiny-transformer&#34;&gt;Embeddings and a (Tiny) Transformer&lt;/h2&gt;</description>
+    </item>
+  </channel>
+</rss>

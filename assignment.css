@@ -1,0 +1,65 @@
+
+#introduction-paragraph::first-letter {
+    float: left;
+    font-size: 200%;
+    margin-right: 2px;
+    font-weight: bold;
+    font-style: normal;
+}
+
+
+#title {
+    margin-bottom: 0px;
+}
+#introduction-paragraph::first-line {
+    font-style: italic;
+    font-size: 150%;
+}
+
+a:link {
+    color: rgb(0, 0, 255)
+}
+a:visited {
+    color:green
+}
+a:hover,
+a:focus {
+    color:red;
+}
+a:active {
+    color:purple
+}
+#schedule {
+    display: flex;
+    flex: auto
+
+}
+#time {
+    font-weight: bold;
+}
+
+#activity {
+    flex: auto;
+    margin-left: 10px
+}
+
+.time-div:hover {
+    color:blue;
+    content: "Hello!";
+}
+.details {
+    visibility: hidden;
+    max-height: 0;           /* collapsed by default */
+    overflow: hidden;        /* hide the content */
+
+}
+.summary:hover + .details {
+    visibility: visible;
+    max-height:fit-content
+}
+
+
+.details:hover {
+    visibility: visible;
+    max-height:fit-content
+}

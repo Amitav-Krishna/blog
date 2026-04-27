@@ -1,31 +1,136 @@
-#+TITLE: About Boundless Blue
+#+TITLE: Amitav Krishna
 #+OPTIONS: toc:nil ^:nil
 
-#+CAPTION: Amitav (me) standing next to Mr. Goose
-#+ATTR_HTML: :width 300px
-[[./images/headshot_high_quality.jpg]]
+#+BEGIN_EXPORT html
+<style>
+.profile-container {
+  display: flex;
+  align-items: flex-start;
+  gap: 2em;
+  margin: 2em 0;
+}
+.profile-image {
+  flex-shrink: 0;
+}
+.profile-image img {
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+.profile-info h1 {
+  margin-top: 0;
+  font-size: 2em;
+}
+.profile-info .subtitle {
+  color: #666;
+  font-size: 1.1em;
+  margin-bottom: 1em;
+}
+.nav-links {
+  margin: 1.5em 0;
+}
+.nav-links a {
+  margin-right: 1.5em;
+  text-decoration: none;
+  color: #0066cc;
+}
+.nav-links a:hover {
+  text-decoration: underline;
+}
+.section {
+  margin: 2em 0;
+}
+.publication {
+  margin: 1em 0;
+  padding: 1em;
+  background: #f8f8f8;
+  border-left: 3px solid #0066cc;
+}
+.publication-title {
+  font-weight: bold;
+  margin-bottom: 0.3em;
+}
+.publication-venue {
+  color: #666;
+  font-size: 0.9em;
+}
+.blog-notice {
+  background: #f0f7ff;
+  border: 1px solid #cce5ff;
+  padding: 1em;
+  border-radius: 4px;
+  margin: 1em 0;
+}
+</style>
+#+END_EXPORT
 
-[[https://amitav.net/now.html][Now]]
+#+BEGIN_EXPORT html
+<div class="profile-container">
+  <div class="profile-image">
+    <img src="./images/amitav.jpg" alt="Amitav Krishna" width="200px" />
+  </div>
+  <div class="profile-info">
+    <h1>Amitav Krishna</h1>
+    <div class="subtitle">Researcher · Software Engineer · Student</div>
+    <p>
+      High school researcher working at the intersection of quantum computing and machine learning.
+      Currently focused on neural approaches to quantum state reconstruction and denoising.
+    </p>
+    <div class="nav-links">
+      <a href="mailto:krishna@amitav.net">Email</a>
+      <a href="https://github.com/amitav-krishna">GitHub</a>
+      <a href="https://linkedin.com/in/amitav-krishna">LinkedIn</a>
+      <a href="https://x.com/amitavkrshna">Twitter</a>
+      <a href="./about.html">Blog</a>
+    </div>
+  </div>
+</div>
+#+END_EXPORT
 
-Hello! My name is Amitav, and this parcel of internet real-estate is my blog. The page you are currently reading is my "about" page, a mix of a portfolio / auto-biography / memoir. This website is called *Boundless Blue* as a [[https://en.wikipedia.org/wiki/Calque][calque]] of my name: "amitābha" roughly translates to "infinite light" or "infinite life"([[https://www.dharmasite.net/Amita_Buddha.htm][Source]]), and "krishna" roughly translates to "black" or "dark blue"([[https://web.archive.org/web/20200206183139/https://www.sanskrit-lexicon.uni-koeln.de/cgi-bin/monier/serveimg.pl?file=/scans/MWScan/MWScanjpg/mw0306-kRzanAvat.jpg][Source]]). while "Infinite Life Dark Blue" does have a certain ring to it, I decided instead on *Boundless Blue*.
+* Research
 
-I'm keeping this blog as a sort of public journal for my future self. I live in a community where there are quite a few elderly people, and it's interesting hearing about their stories from when they were younger, but also kind of sad, because it's clear that the people they were 20, 30, 40 years ago are not just [[https://www.cgpgrey.com/blog/i-have-died-many-times][dead]], but their corpses have been left to rot in the mind of their future selves, slowly warping the thing that they once were. Who I was 10 years ago is completely unrecognizable from who I am today. This blog is meant as a way to capture my thoughts as they happen, so that they will be spared by the ruthless onslaught of forgetfulness. Maybe in 20, 30, 40 years, some kid will listen to me ramble on stories and stories within stories and stories within stories within stories, and will then will stumble upon this, and realize that I've been like this the entire time.
+My work focuses on quantum state reconstruction using neural networks. The central challenge is recovering clean quantum states from noisy tomographic measurements — essential for near-term quantum computing where full Quantum Error Correction remains impractical.
 
-I use [[https://fedoraproject.org/][Fedora]] 42 w/ [[https://swaywm.org/][Sway]]. You can find my Sway config [[https://github.com/Amitav-Krishna/sway_config/tree/main][here]]. I do pretty much all of my text editing in [[https://www.gnu.org/software/emacs/][Emacs]], God's editor. This blog is currently being written in Emacs. I may write a longer piece in the future about how I make my website[fn:1], but long story short is that I write all of these in [[https://orgmode.org/][Org mode]], then I use the [[https://orgmode.org/manual/HTML-Export.html][HTML export]] feature to export these to HTML, and then I use rsync to send these to the server. These are served using a simple Ruby script I had ChatGPT cook up, which you can find [[https://amitav.net/server.rb][here]], which adds a list of articles at the bottom. 
+**Current Projects**
 
-If you'd like to see what I'm reading, I'd recommend taking a look at my [[https://amitav.net/rss][RSS reader]], in which I recieve updates from all of my favourite blogs. 
+- *Frobenius Normalization for Quantum State Denoising* — A data preprocessing method that enables neural networks to scale from 5-qubit to 8-qubit quantum systems by addressing gradient suppression caused by decoherence-induced scale mismatches.
 
-** Deprecated Amitav
-[[https://medium.com/@amtiavkrishna2011][Medium]]
+*Coming soon:* Paper under review at IEEE QCCL 2026.
 
-** About me
-Here are a few things about me:
-- I enjoy mathematics,
-- I enjoy programming,
-- I enjoy biking.
+**Research Interests**
 
-That's all for now! In the future, I may see fit to update this page, however this should suffice for now :^)
+- Quantum machine learning
+- Neural approaches to quantum error mitigation
+- Large-scale optimization and training dynamics
+- Statistical learning theory
 
-* Footnotes
+* About
 
-[fn:1]If it's after 2025-02-19T23:59:43Z and I haven't linked to a blog about this blog (a metablog?), [[mailto:amitavkrishna@proton.me][shoot me an email]] to remind me. 
+I am a Grade 10 student at [redacted] in Simcoe, Ontario. My research has been supported by mentorship from The Knowledge Society (TKS).
+I also work as a software engineer at 8090.inc.
+
+My technical work is primarily in Python, using PyTorch for ML research and Emacs for everything else. I run Fedora with Sway as my daily driver.
+
+**Education & Affiliations**
+
+- The Knowledge Society (TKS), Toronto — Student (mentorship program)
+- 8090.inc — Software Engineer
+- [School], Simcoe ON — Grade 10
+
+* Blog
+
+#+BEGIN_EXPORT html
+<div class="blog-notice">
+  <strong>Personal Writing:</strong> I also maintain a blog where I write about philosophy, 
+  technology, and capturing thoughts before they fade. 
+  <a href="./about.html">Read the blog →</a>
+</div>
+#+END_EXPORT
+
+The blog, called *Boundless Blue*, serves as a public journal. The name is a calque: "amitābha" (infinite light/life) and "krishna" (dark/blue) combining into something like "infinite blue" or "boundless blue."
+
+* Contact
+
+- Research: [[mailto:krishna@amitav.net][krishna@amitav.net]]
+- Personal: [[mailto:amitavkrishna@proton.me][amitavkrishna@proton.me]]
+
+For research collaborations, speaking opportunities, or questions about my work, please reach out via my research email.

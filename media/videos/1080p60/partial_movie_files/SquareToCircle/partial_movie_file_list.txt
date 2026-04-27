@@ -1,0 +1,4 @@
+# This file is used internally by FFMPEG.
+file 'file:/home/amitav/blogs/media/videos/1080p60/partial_movie_files/SquareToCircle/3977891868_513577100_223132457.mp4'
+file 'file:/home/amitav/blogs/media/videos/1080p60/partial_movie_files/SquareToCircle/2852726489_175856529_557880437.mp4'
+file 'file:/home/amitav/blogs/media/videos/1080p60/partial_movie_files/SquareToCircle/2852726489_1754310298_2600911402.mp4'

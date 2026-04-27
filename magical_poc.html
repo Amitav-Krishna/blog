@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amitav Krishna — Boundless Blue</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --deep-ocean: #0a0a1a;
+            --midnight: #121228;
+            --bioluminescent: #00d4ff;
+            --deep-purple: #7c3aed;
+            --cyan-glow: #22d3ee;
+            --glass-bg: rgba(255, 255, 255, 0.03);
+            --glass-border: rgba(255, 255, 255, 0.08);
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--deep-ocean);
+            color: #e2e8f0;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Animated Background Mesh */
+        .bg-mesh {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: 
+                radial-gradient(ellipse at 20% 30%, rgba(0, 212, 255, 0.08) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 20%, rgba(124, 58, 237, 0.06) 0%, transparent 40%),
+                radial-gradient(ellipse at 60% 80%, rgba(34, 211, 238, 0.05) 0%, transparent 45%),
+                radial-gradient(ellipse at 30% 70%, rgba(124, 58, 237, 0.04) 0%, transparent 35%);
+            animation: meshDrift 20s ease-in-out infinite;
+        }
+
+        @keyframes meshDrift {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            25% { transform: translate(2%, 1%) scale(1.02); }
+            50% { transform: translate(-1%, 2%) scale(1); }
+            75% { transform: translate(1%, -1%) scale(1.01); }
+        }
+
+        /* Floating Particles */
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        .particle {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: var(--bioluminescent);
+            border-radius: 50%;
+            opacity: 0;
+            animation: float 15s infinite;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(100vh) scale(0); opacity: 0; }
+            10% { opacity: 0.6; }
+            90% { opacity: 0.6; }
+            100% { transform: translateY(-10vh) scale(1); opacity: 0; }
+        }
+
+        /* Main Container */
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 3em 2em;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Profile Section */
+        .profile-section {
+            display: flex;
+            gap: 2.5em;
+            align-items: flex-start;
+            margin-bottom: 4em;
+            padding: 2em;
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 16px;
+            backdrop-filter: blur(10px);
+            box-shadow: 
+                0 4px 30px rgba(0, 0, 0, 0.3),
+                0 0 60px rgba(0, 212, 255, 0.05);
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 0.8s ease forwards;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .profile-image {
+            flex-shrink: 0;
+            position: relative;
+        }
+
+        .profile-image::before {
+            content: '';
+            position: absolute;
+            inset: -4px;
+            background: linear-gradient(135deg, var(--bioluminescent), var(--deep-purple));
+            border-radius: 12px;
+            z-index: -1;
+            opacity: 0.6;
+            animation: glowPulse 3s ease-in-out infinite;
+        }
+
+        @keyframes glowPulse {
+            0%, 100% { opacity: 0.4; transform: scale(1); }
+            50% { opacity: 0.7; transform: scale(1.02); }
+        }
+
+        .profile-image img {
+            width: 180px;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 8px;
+            display: block;
+        }
+
+        .profile-info h1 {
+            font-size: 2.5em;
+            font-weight: 700;
+            margin-bottom: 0.2em;
+            background: linear-gradient(135deg, #fff 0%, var(--cyan-glow) 50%, var(--deep-purple) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .profile-info .subtitle {
+            color: var(--cyan-glow);
+            font-size: 1.1em;
+            font-weight: 500;
+            margin-bottom: 1em;
+            opacity: 0.9;
+        }
+
+        .profile-info p {
+            color: #94a3b8;
+            margin-bottom: 1.5em;
+            line-height: 1.7;
+        }
+
+        /* Navigation Links */
+        .nav-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1em;
+        }
+
+        .nav-links a {
+            color: #e2e8f0;
+            text-decoration: none;
+            padding: 0.5em 1em;
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            font-size: 0.9em;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .nav-links a::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(0, 212, 255, 0.2), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .nav-links a:hover::before {
+            left: 100%;
+        }
+
+        .nav-links a:hover {
+            border-color: var(--bioluminescent);
+            box-shadow: 0 0 20px rgba(0, 212, 255, 0.2);
+            transform: translateY(-2px);
+        }
+
+        /* Section Styling */
+        .section {
+            margin-bottom: 3em;
+            padding: 2em;
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 12px;
+            backdrop-filter: blur(10px);
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.6s ease;
+        }
+
+        .section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .section h2 {
+            color: #fff;
+            font-size: 1.8em;
+            margin-bottom: 1em;
+            padding-bottom: 0.5em;
+            border-bottom: 2px solid var(--glass-border);
+            position: relative;
+        }
+
+        .section h2::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 60px;
+            height: 2px;
+            background: linear-gradient(90deg, var(--bioluminescent), var(--deep-purple));
+        }
+
+        .section h3 {
+            color: var(--cyan-glow);
+            font-size: 1.2em;
+            margin: 1.5em 0 0.5em 0;
+        }
+
+        /* Publication Cards */
+        .publication {
+            margin: 1em 0;
+            padding: 1.2em;
+            background: rgba(0, 0, 0, 0.2);
+            border-left: 3px solid var(--bioluminescent);
+            border-radius: 0 8px 8px 0;
+            transition: all 0.3s ease;
+        }
+
+        .publication:hover {
+            background: rgba(0, 212, 255, 0.05);
+            border-left-width: 4px;
+            transform: translateX(5px);
+        }
+
+        .publication-title {
+            font-weight: 600;
+            color: #fff;
+            margin-bottom: 0.3em;
+        }
+
+        .publication-title a {
+            color: var(--cyan-glow);
+            text-decoration: none;
+        }
+
+        .publication-title a:hover {
+            text-decoration: underline;
+        }
+
+        .publication-venue {
+            color: #64748b;
+            font-size: 0.9em;
+        }
+
+        .unfinished {
+            border-left-color: #f59e0b;
+        }
+
+        .unfinished .publication-title a {
+            color: #fbbf24;
+        }
+
+        /* Lists */
+        ul {
+            padding-left: 1.5em;
+            color: #94a3b8;
+        }
+
+        li {
+            margin: 0.5em 0;
+        }
+
+        li strong {
+            color: #e2e8f0;
+        }
+
+        /* Blog Notice */
+        .blog-notice {
+            background: linear-gradient(135deg, rgba(0, 212, 255, 0.1), rgba(124, 58, 237, 0.1));
+            border: 1px solid rgba(0, 212, 255, 0.3);
+            padding: 1.2em;
+            border-radius: 8px;
+            margin: 1em 0;
+        }
+
+        .blog-notice strong {
+            color: var(--cyan-glow);
+        }
+
+        /* Footer */
+        .footer-note {
+            color: #64748b;
+            font-size: 0.9em;
+            margin-top: 3em;
+            padding-top: 2em;
+            border-top: 1px solid var(--glass-border);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                padding: 1.5em;
+            }
+            
+            .profile-section {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+            
+            .profile-image img {
+                width: 150px;
+                height: 150px;
+            }
+            
+            .profile-info h1 {
+                font-size: 2em;
+            }
+            
+            .nav-links {
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Animated Background Mesh -->
+    <div class="bg-mesh"></div>
+    
+    <!-- Floating Particles -->
+    <div class="particles" id="particles"></div>
+
+    <div class="container">
+        <!-- Profile Section -->
+        <div class="profile-section">
+            <div class="profile-image">
+                <img src="./images/amitav.jpg" alt="Amitav Krishna" />
+            </div>
+            <div class="profile-info">
+                <h1>Amitav Krishna</h1>
+                <div class="subtitle">Researcher · Software Engineer · Student</div>
+                <p>High school student building neural networks from scratch. Mostly focused on making loss curves go down efficiently.</p>
+                <div class="nav-links">
+                    <a href="mailto:krishna@amitav.net">Email</a>
+                    <a href="https://github.com/amitav-krishna">GitHub</a>
+                    <a href="https://linkedin.com/in/amitav-krishna">LinkedIn</a>
+                    <a href="https://x.com/amitavkrshna">Twitter</a>
+                    <a href="https://youtube.com/@amitavkrishna">YouTube</a>
+                    <a href="./blog.html">Blog</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Research Section -->
+        <div class="section">
+            <h2>Research</h2>
+            <p>Current work is mostly distributed training, making models stable, and figuring out what happens in the black box.</p>
+            
+            <h3>Publications</h3>
+            <div class="publication">
+                <div class="publication-title">Frobenius Normalization Enables Stable Training for Quantum State Denoising</div>
+                <div class="publication-venue">Under review at IEEE QCCL 2026</div>
+                <p style="margin: 0.5em 0 0 0; font-size: 0.95em; color: #94a3b8;">
+                    A data preprocessing method that stabilizes neural network training by normalizing input distributions. 
+                    Demonstrated scaling from small to large problem sizes (5-qubit to 8-qubit quantum systems).
+                </p>
+            </div>
+
+            <h3>Research Interests</h3>
+            <ul>
+                <li>Distributed training on cheap hardware</li>
+                <li>Multimodal models</li>
+                <li>Data normalization tricks</li>
+            </ul>
+        </div>
+
+        <!-- Projects Section -->
+        <div class="section">
+            <h2>Projects</h2>
+            <p style="color: #94a3b8; margin-bottom: 1.5em;">Side projects exploring systems, ML infrastructure, and developer tools.</p>
+            
+            <div class="publication">
+                <div class="publication-title"><a href="https://github.com/amitav-krishna/cerebras-challenge">cerebras-challenge</a> — LLM Token Visualizer</div>
+                <p style="margin: 0.5em 0 0 0; font-size: 0.95em; color: #94a3b8;">
+                    Developer tool for visualizing LLM token perplexity, suggesting alternate generation paths.
+                </p>
+            </div>
+
+            <div class="publication unfinished">
+                <div class="publication-title"><a href="https://github.com/amitav-krishna/tinygrad-verilog">tinygrad-verilog</a> — ML Compiler to Hardware</div>
+                <p style="margin: 0.5em 0 0 0; font-size: 0.95em; color: #94a3b8;">
+                    Python backend generating Verilog from tinygrad compute graphs.
+                </p>
+            </div>
+
+            <div class="publication">
+                <div class="publication-title"><a href="https://github.com/amitav-krishna/llm-from-scratch">llm-from-scratch</a> — Neural Network Framework in C++</div>
+                <p style="margin: 0.5em 0 0 0; font-size: 0.95em; color: #94a3b8;">
+                    Autograd engine, math primitives, and neural network layers from scratch.
+                </p>
+            </div>
+        </div>
+
+        <!-- About Section -->
+        <div class="section">
+            <h2>About</h2>
+            <p style="color: #94a3b8; margin-bottom: 1em;">
+                I am a Grade 10 student in Simcoe, Ontario. My research has been supported by mentorship from 
+                <a href="https://tks.world" style="color: var(--cyan-glow);">The Knowledge Society (TKS)</a>.
+                I also work as a software engineer at <a href="https://8090.inc" style="color: var(--cyan-glow);">8090.inc</a>.
+            </p>
+            <p style="color: #94a3b8;">
+                My technical work is primarily in Python, using PyTorch for ML research and Emacs for everything else. 
+                I run Fedora with Sway as my daily driver.
+            </p>
+
+            <div class="blog-notice" style="margin-top: 2em;">
+                <strong>Personal Writing:</strong> I also maintain a blog where I write about philosophy, 
+                technology, and capturing thoughts before they fade. 
+                <a href="./about.html" style="color: var(--cyan-glow);">Read the blog →</a>
+            </div>
+        </div>
+
+        <p class="footer-note">
+            For research collaborations, speaking opportunities, or questions about my work, 
+            please reach out via my research email.
+        </p>
+    </div>
+
+    <script>
+        // Create floating particles
+        const particlesContainer = document.getElementById('particles');
+        for (let i = 0; i < 30; i++) {
+            const particle = document.createElement('div');
+            particle.className = 'particle';
+            particle.style.left = Math.random() * 100 + '%';
+            particle.style.animationDelay = Math.random() * 15 + 's';
+            particle.style.animationDuration = (10 + Math.random() * 10) + 's';
+            particlesContainer.appendChild(particle);
+        }
+
+        // Scroll reveal animation
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.section').forEach(section => {
+            observer.observe(section);
+        });
+
+        // Interactive cursor glow (subtle)
+        let cursorGlow = document.createElement('div');
+        cursorGlow.style.cssText = `
+            position: fixed;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(0, 212, 255, 0.03) 0%, transparent 70%);
+            pointer-events: none;
+            z-index: 0;
+            transform: translate(-50%, -50%);
+            transition: opacity 0.3s ease;
+        `;
+        document.body.appendChild(cursorGlow);
+
+        document.addEventListener('mousemove', (e) => {
+            cursorGlow.style.left = e.clientX + 'px';
+            cursorGlow.style.top = e.clientY + 'px';
+        });
+    </script>
+</body>
+</html>

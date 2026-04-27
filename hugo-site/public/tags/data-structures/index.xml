@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Data-Structures on Amitav Krishna</title>
+    <link>https://amitav.net/tags/data-structures.html</link>
+    <description>Recent content in Data-Structures on Amitav Krishna</description>
+    <generator>Hugo -- 0.146.5</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 12 Jan 2024 10:00:00 -0500</lastBuildDate>
+    <atom:link href="https://amitav.net/tags/data-structures/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Building Lists in C&#43;&#43;</title>
+      <link>https://amitav.net/posts/building-lists-in-cpp.html</link>
+      <pubDate>Fri, 12 Jan 2024 10:00:00 -0500</pubDate>
+      <guid>https://amitav.net/posts/building-lists-in-cpp.html</guid>
+      <description>&lt;p&gt;Hello! This is part 2 in a TBD part series on creating an LLM from scratch! You can see part 1, the roadmap, &lt;a href=&#34;https://amitav.net/building-an-llm-from-scratch&#34;&gt;here&lt;/a&gt; and part 3, building vectors, &lt;a href=&#34;https://amitav.net/building-vectors-in-cpp&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;h2 id=&#34;making-a-list&#34;&gt;Making a list&lt;/h2&gt;
+&lt;p&gt;The first things that pop into my head when I&amp;rsquo;m thinking about vectors and matrices are &lt;em&gt;lists&lt;/em&gt;. A vector is just a list of numbers, and a matrix is a list of vectors. Therefore, we should start with a list and then build our way up from there. Here are the features I want out of this specific list implementation:&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

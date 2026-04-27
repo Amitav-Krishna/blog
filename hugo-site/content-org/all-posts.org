@@ -1,0 +1,85 @@
+#+title: Content
+#+author: Amitav Krishna
+#+hugo_base_dir: ../
+#+hugo_section: posts
+#+hugo_auto_set_lastmod: t
+
+* Home
+  :PROPERTIES:
+  :EXPORT_HUGO_SECTION: /
+  :EXPORT_FILE_NAME: _index
+  :EXPORT_HUGO_CUSTOM_FRONT_MATTER: :type "page"
+  :END:
+
+** Intro
+
+Current research focuses on distributed training, making models stable, and figuring out what happens in the black box. I have a paper under review at IEEE qCCL 2026 on the use of Frobenius normalization for quantum states and how it enables scaling of neural networks for quantum state reconstruction to larger systems. A quantum state is a matrix describing how likely a quantum system is to be in any given outcome from any given observation. Now, the problem is that even though we may want that information, our systems tend to decohere over time, meaning that they stop giving us their information and instead give away all of the information to the environment. My goal starting out was to take these incomplete measurements and map them to the full, clean measurements using neural networks. However, the problem is that as these states become more and more mixed, they become smaller and smaller, meaning that the model has to learn not only how to rotate these states but also how to stretch them, which becomes overwhelming as you scale up the number of qubits. My solution was to artificially scale up the inputs.
+
+I built [[https://github.com/amitav-krishna/cerebras-challenge][cerebras-challenge]], an LLM token visualizer that shows perplexity across generation paths and highlights high-saliency tokens as a passive assistant rather than an autonomous agent. [[https://github.com/amitav-krishna/tinygrad-verilog][tinygrad-verilog]] (ongoing) started as a Verilog neural network trained on XOR, then evolved into a Python backend that generates Verilog from tinygrad compute graphs. I documented the process in a [[https://www.youtube.com/watch?v=q7xqA4lmbC4][devlog series]]. [[https://github.com/amitav-krishna/llm-from-scratch][llm-from-scratch]] is a neural network framework in C++ with an autograd engine, math primitives, and layers implemented from nothing to understand fundamentals. [[https://github.com/amitav-krishna/gpu_torrent][gpu_torrent]] (ongoing) is a BitTorrent-like protocol for distributed token generation across self-hosted GPUs, built with FastAPI, Redis, and PostgreSQL. [[https://github.com/amitav-krishna/stock_news][stock_news]] is a full-stack Next.js app that overlays stock price timelines with news articles to surface patterns between media coverage and price movement. I implemented [[https://github.com/amitav-krishna/search_engine][search_engine]], a word2vec model from scratch with skip-gram and negative sampling trained on a custom corpus. [[https://github.com/amitav-krishna/face_recognition_ai][face_recognition_ai]] uses DeepFace (Facenet) embeddings with cosine similarity for face matching. [[https://github.com/amitav-krishna/eye-tracking][eye-tracking]] is a Python + OpenCV + dlib tool that uses a webcam to track gaze and control the mouse cursor. My first real project, [[https://github.com/amitav-krishna/Stock_Email_Notifications][Stock Email Notifications]] from Grade 7, sent automated alerts for stocks near 52-week highs and lows using Python, yfinance, and the Google Sheets API. It reached around 80 users before I shut it down.
+
+I am a Grade 10 student at Holy Trinity Catholic High School in Simcoe, Ontario, mentored by [[https://tks.world][The Knowledge Society (TKS)]], and work as a software engineer at [[https://8090.inc][8090.inc]]. My tools are Python, PyTorch, Emacs, and Fedora with Sway. I also write a [[./about.html][blog]].
+
+* About
+  :PROPERTIES:
+  :EXPORT_HUGO_SECTION: /
+  :EXPORT_FILE_NAME: about
+  :EXPORT_HUGO_CUSTOM_FRONT_MATTER: :type "page"
+  :END:
+
+** Bio
+
+I am a Grade 10 student at Holy Trinity Catholic High School in Simcoe, Ontario. My research focuses on distributed training, model stability, and understanding what happens inside the black box of neural networks.
+
+I am mentored by [[https://tks.world][The Knowledge Society (TKS)]] and work as a software engineer at [[https://8090.inc][8090.inc]].
+
+** Tools
+
+Python, PyTorch, Emacs, Fedora, Sway.
+
+** Contact
+
+- Email: [[mailto:krishna@amitav.net][krishna@amitav.net]]
+- GitHub: [[https://github.com/amitav-krishna][@amitav-krishna]]
+- LinkedIn: [[https://linkedin.com/in/amitav-krishna][amitav-krishna]]
+- Twitter: [[https://x.com/amitavkrshna][@amitavkrshna]]
+- YouTube: [[https://youtube.com/@amitavkrishna][@amitavkrishna]]
+
+* Research
+  :PROPERTIES:
+  :EXPORT_HUGO_SECTION: /
+  :EXPORT_FILE_NAME: research
+  :EXPORT_HUGO_CUSTOM_FRONT_MATTER: :type "page"
+  :END:
+
+** Publications
+
+I have a paper under review at IEEE qCCL 2026 on the use of Frobenius normalization for quantum states and how it enables scaling of neural networks for quantum state reconstruction to larger systems.
+
+** Research Interests
+
+- Distributed training
+- Model stability
+- Interpretability
+- Quantum machine learning
+
+* Projects
+  :PROPERTIES:
+  :EXPORT_HUGO_SECTION: /
+  :EXPORT_FILE_NAME: projects
+  :EXPORT_HUGO_CUSTOM_FRONT_MATTER: :type "page"
+  :END:
+
+** Active Projects
+
+- [[https://github.com/amitav-krishna/cerabras-challenge][cerebras-challenge]] :: LLM token visualizer with perplexity tracking
+- [[https://github.com/amitav-krishna/tinygrad-verilog][tinygrad-verilog]] :: tinygrad to Verilog compiler
+- [[https://github.com/amitav-krishna/gpu_torrent][gpu_torrent]] :: BitTorrent-like protocol for distributed inference
+
+** Completed Projects
+
+- [[https://github.com/amitav-krishna/llm-from-scratch][llm-from-scratch]] :: C++ autograd/ML framework
+- [[https://github.com/amitav-krishna/stock_news][stock_news]] :: Stock price + news overlay
+- [[https://github.com/amitav-krishna/search_engine][search_engine]] :: word2vec from scratch
+- [[https://github.com/amitav-krishna/face_recognition_ai][face_recognition_ai]] :: Face matching with DeepFace
+- [[https://github.com/amitav-krishna/eye-tracking][eye-tracking]] :: Webcam gaze tracking
+- [[https://github.com/amitav-krishna/Stock_Email_Notifications][Stock Email Notifications]] :: Stock alerts service (2019)

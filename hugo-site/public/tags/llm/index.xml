@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Llm on Amitav Krishna</title>
+    <link>https://amitav.net/tags/llm.html</link>
+    <description>Recent content in Llm on Amitav Krishna</description>
+    <generator>Hugo -- 0.146.5</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 10 Jan 2024 10:00:00 -0500</lastBuildDate>
+    <atom:link href="https://amitav.net/tags/llm/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Building an LLM from Scratch in C&#43;&#43;</title>
+      <link>https://amitav.net/posts/building-an-llm-from-scratch.html</link>
+      <pubDate>Wed, 10 Jan 2024 10:00:00 -0500</pubDate>
+      <guid>https://amitav.net/posts/building-an-llm-from-scratch.html</guid>
+      <description>&lt;p&gt;This is part 1 in a TBD part series on creating an LLM from scratch! Part 2 can be found &lt;a href=&#34;https://amitav.net/building-lists-in-cpp&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;In this document I will be talking about how I&amp;rsquo;ll be approaching this. This project is currently in progress, so for now it&amp;rsquo;ll be mostly high-level, and as I go through it I&amp;rsquo;ll update it with more detail and links to relevant articles.&lt;/p&gt;
+&lt;h2 id=&#34;math--linear-algebra-foundations&#34;&gt;Math &amp;amp; Linear Algebra Foundations&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://amitav.net/building-lists-in-cpp&#34;&gt;Lists&lt;/a&gt;, &lt;a href=&#34;https://amitav.net/building-vectors-in-cpp&#34;&gt;vectors&lt;/a&gt;, and &lt;a href=&#34;https://amitav.net/building-matrices-in-cpp&#34;&gt;matrices&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Randomness&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;neurons-chain-rule-and-autodiff&#34;&gt;Neurons, Chain Rule, and Autodiff&lt;/h2&gt;
+&lt;h2 id=&#34;optimization--training-mechanics&#34;&gt;Optimization &amp;amp; Training Mechanics&lt;/h2&gt;
+&lt;h2 id=&#34;probabilistic-language-modeling&#34;&gt;Probabilistic Language Modeling&lt;/h2&gt;
+&lt;h2 id=&#34;embeddings-and-a-tiny-transformer&#34;&gt;Embeddings and a (Tiny) Transformer&lt;/h2&gt;</description>
+    </item>
+  </channel>
+</rss>

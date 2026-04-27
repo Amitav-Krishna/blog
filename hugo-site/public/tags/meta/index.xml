@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Meta on Amitav Krishna</title>
+    <link>https://amitav.net/tags/meta.html</link>
+    <description>Recent content in Meta on Amitav Krishna</description>
+    <generator>Hugo -- 0.146.5</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 01 Feb 2024 10:00:00 -0500</lastBuildDate>
+    <atom:link href="https://amitav.net/tags/meta/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>How to Use This Blog Efficiently</title>
+      <link>https://amitav.net/posts/how-to-use-this-blog.html</link>
+      <pubDate>Thu, 01 Feb 2024 10:00:00 -0500</pubDate>
+      <guid>https://amitav.net/posts/how-to-use-this-blog.html</guid>
+      <description>&lt;p&gt;Hello! This page is on the rules of engagement on this website.&lt;/p&gt;
+&lt;h2 id=&#34;i-want-to-get-more-content-from-you-but-im-worried-ill-forget-about-your-existence&#34;&gt;&amp;ldquo;I want to get more content from you, but I&amp;rsquo;m worried I&amp;rsquo;ll forget about your existence&amp;rdquo;&lt;/h2&gt;
+&lt;p&gt;Has this ever happened to you? We have a revolutionary new technology to ease your woes: &lt;a href=&#34;https://en.wikipedia.org/wiki/RSS&#34;&gt;RSS&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;I use an RSS reader for most of my browsing, and I would highly recommend you do as well! The one I use is &lt;a href=&#34;https://github.com/georgemandis/bubo-rss&#34;&gt;Bubo Reader&lt;/a&gt;, which I use because it&amp;rsquo;s extremely simple, and can be deployed on your own server. You can also deploy it on &lt;a href=&#34;https://netlify.com&#34;&gt;Netlify&lt;/a&gt;, as seen in this &lt;a href=&#34;https://bubo-rss-demo.netlify.app&#34;&gt;demo&lt;/a&gt;.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

@@ -1,0 +1,8 @@
+# Autosave files
+*~
+*#*
+
+
+# Syncthing
+.stfolder/
+

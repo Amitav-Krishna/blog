@@ -3,248 +3,279 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2025-10-18 Sat 22:37 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>About Boundless Blue</title>
+<title>Amitav Krishna</title>
 <meta name="author" content="Amitav Krishna" />
-<meta name="generator" content="Org Mode" />
 <style type="text/css">
-  #content { max-width: 60em; margin: auto; }
-  .title  { text-align: center;
-             margin-bottom: .2em; }
-  .subtitle { text-align: center;
-              font-size: medium;
-              font-weight: bold;
-              margin-top:0; }
-  .todo   { font-family: monospace; color: red; }
-  .done   { font-family: monospace; color: green; }
-  .priority { font-family: monospace; color: orange; }
-  .tag    { background-color: #eee; font-family: monospace;
-            padding: 2px; font-size: 80%; font-weight: normal; }
-  .timestamp { color: #bebebe; }
-  .timestamp-kwd { color: #5f9ea0; }
-  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
-  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
-  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
-  .underline { text-decoration: underline; }
-  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
-  p.verse { margin-left: 3%; }
-  pre {
-    border: 1px solid #e6e6e6;
-    border-radius: 3px;
-    background-color: #f2f2f2;
-    padding: 8pt;
-    font-family: monospace;
-    overflow: auto;
-    margin: 1.2em;
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background: #fff;
   }
-  pre.src {
-    position: relative;
-    overflow: auto;
+  .profile-container {
+    display: flex;
+    align-items: flex-start;
+    gap: 2em;
+    margin: 2em 0;
+    padding-bottom: 2em;
+    border-bottom: 1px solid #eee;
   }
-  pre.src:before {
-    display: none;
-    position: absolute;
-    top: -8px;
-    right: 12px;
-    padding: 3px;
-    color: #555;
-    background-color: #f2f2f299;
+  .profile-image {
+    flex-shrink: 0;
   }
-  pre.src:hover:before { display: inline; margin-top: 14px;}
-  /* Languages per Org manual */
-  pre.src-asymptote:before { content: 'Asymptote'; }
-  pre.src-awk:before { content: 'Awk'; }
-  pre.src-authinfo::before { content: 'Authinfo'; }
-  pre.src-C:before { content: 'C'; }
-  /* pre.src-C++ doesn't work in CSS */
-  pre.src-clojure:before { content: 'Clojure'; }
-  pre.src-css:before { content: 'CSS'; }
-  pre.src-D:before { content: 'D'; }
-  pre.src-ditaa:before { content: 'ditaa'; }
-  pre.src-dot:before { content: 'Graphviz'; }
-  pre.src-calc:before { content: 'Emacs Calc'; }
-  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
-  pre.src-fortran:before { content: 'Fortran'; }
-  pre.src-gnuplot:before { content: 'gnuplot'; }
-  pre.src-haskell:before { content: 'Haskell'; }
-  pre.src-hledger:before { content: 'hledger'; }
-  pre.src-java:before { content: 'Java'; }
-  pre.src-js:before { content: 'Javascript'; }
-  pre.src-latex:before { content: 'LaTeX'; }
-  pre.src-ledger:before { content: 'Ledger'; }
-  pre.src-lisp:before { content: 'Lisp'; }
-  pre.src-lilypond:before { content: 'Lilypond'; }
-  pre.src-lua:before { content: 'Lua'; }
-  pre.src-matlab:before { content: 'MATLAB'; }
-  pre.src-mscgen:before { content: 'Mscgen'; }
-  pre.src-ocaml:before { content: 'Objective Caml'; }
-  pre.src-octave:before { content: 'Octave'; }
-  pre.src-org:before { content: 'Org mode'; }
-  pre.src-oz:before { content: 'OZ'; }
-  pre.src-plantuml:before { content: 'Plantuml'; }
-  pre.src-processing:before { content: 'Processing.js'; }
-  pre.src-python:before { content: 'Python'; }
-  pre.src-R:before { content: 'R'; }
-  pre.src-ruby:before { content: 'Ruby'; }
-  pre.src-sass:before { content: 'Sass'; }
-  pre.src-scheme:before { content: 'Scheme'; }
-  pre.src-screen:before { content: 'Gnu Screen'; }
-  pre.src-sed:before { content: 'Sed'; }
-  pre.src-sh:before { content: 'shell'; }
-  pre.src-sql:before { content: 'SQL'; }
-  pre.src-sqlite:before { content: 'SQLite'; }
-  /* additional languages in org.el's org-babel-load-languages alist */
-  pre.src-forth:before { content: 'Forth'; }
-  pre.src-io:before { content: 'IO'; }
-  pre.src-J:before { content: 'J'; }
-  pre.src-makefile:before { content: 'Makefile'; }
-  pre.src-maxima:before { content: 'Maxima'; }
-  pre.src-perl:before { content: 'Perl'; }
-  pre.src-picolisp:before { content: 'Pico Lisp'; }
-  pre.src-scala:before { content: 'Scala'; }
-  pre.src-shell:before { content: 'Shell Script'; }
-  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
-  /* additional language identifiers per "defun org-babel-execute"
-       in ob-*.el */
-  pre.src-cpp:before  { content: 'C++'; }
-  pre.src-abc:before  { content: 'ABC'; }
-  pre.src-coq:before  { content: 'Coq'; }
-  pre.src-groovy:before  { content: 'Groovy'; }
-  /* additional language identifiers from org-babel-shell-names in
-     ob-shell.el: ob-shell is the only babel language using a lambda to put
-     the execution function name together. */
-  pre.src-bash:before  { content: 'bash'; }
-  pre.src-csh:before  { content: 'csh'; }
-  pre.src-ash:before  { content: 'ash'; }
-  pre.src-dash:before  { content: 'dash'; }
-  pre.src-ksh:before  { content: 'ksh'; }
-  pre.src-mksh:before  { content: 'mksh'; }
-  pre.src-posh:before  { content: 'posh'; }
-  /* Additional Emacs modes also supported by the LaTeX listings package */
-  pre.src-ada:before { content: 'Ada'; }
-  pre.src-asm:before { content: 'Assembler'; }
-  pre.src-caml:before { content: 'Caml'; }
-  pre.src-delphi:before { content: 'Delphi'; }
-  pre.src-html:before { content: 'HTML'; }
-  pre.src-idl:before { content: 'IDL'; }
-  pre.src-mercury:before { content: 'Mercury'; }
-  pre.src-metapost:before { content: 'MetaPost'; }
-  pre.src-modula-2:before { content: 'Modula-2'; }
-  pre.src-pascal:before { content: 'Pascal'; }
-  pre.src-ps:before { content: 'PostScript'; }
-  pre.src-prolog:before { content: 'Prolog'; }
-  pre.src-simula:before { content: 'Simula'; }
-  pre.src-tcl:before { content: 'tcl'; }
-  pre.src-tex:before { content: 'TeX'; }
-  pre.src-plain-tex:before { content: 'Plain TeX'; }
-  pre.src-verilog:before { content: 'Verilog'; }
-  pre.src-vhdl:before { content: 'VHDL'; }
-  pre.src-xml:before { content: 'XML'; }
-  pre.src-nxml:before { content: 'XML'; }
-  /* add a generic configuration mode; LaTeX export needs an additional
-     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
-  pre.src-conf:before { content: 'Configuration File'; }
-
-  table { border-collapse:collapse; }
-  caption.t-above { caption-side: top; }
-  caption.t-bottom { caption-side: bottom; }
-  td, th { vertical-align:top;  }
-  th.org-right  { text-align: center;  }
-  th.org-left   { text-align: center;   }
-  th.org-center { text-align: center; }
-  td.org-right  { text-align: right;  }
-  td.org-left   { text-align: left;   }
-  td.org-center { text-align: center; }
-  dt { font-weight: bold; }
-  .footpara { display: inline; }
-  .footdef  { margin-bottom: 1em; }
-  .figure { padding: 1em; }
-  .figure p { text-align: center; }
-  .equation-container {
-    display: table;
-    text-align: center;
-    width: 100%;
+  .profile-image img {
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
   }
-  .equation {
-    vertical-align: middle;
+  .profile-info h1 {
+    margin-top: 0;
+    font-size: 2.2em;
+    font-weight: 600;
+    color: #222;
   }
-  .equation-label {
-    display: table-cell;
-    text-align: right;
-    vertical-align: middle;
+  .profile-info .subtitle {
+    color: #666;
+    font-size: 1.1em;
+    margin-bottom: 1em;
   }
-  .inlinetask {
-    padding: 10px;
-    border: 2px solid gray;
-    margin: 10px;
-    background: #ffffcc;
+  .nav-links {
+    margin: 1.5em 0;
   }
-  #org-div-home-and-up
-   { text-align: right; font-size: 70%; white-space: nowrap; }
-  textarea { overflow-x: auto; }
-  .linenr { font-size: smaller }
-  .code-highlighted { background-color: #ffff00; }
-  .org-info-js_info-navigation { border-style: none; }
-  #org-info-js_console-label
-    { font-size: 10px; font-weight: bold; white-space: nowrap; }
-  .org-info-js_search-highlight
-    { background-color: #ffff00; color: #000000; font-weight: bold; }
-  .org-svg { }
+  .nav-links a {
+    margin-right: 1.5em;
+    text-decoration: none;
+    color: #0066cc;
+    font-weight: 500;
+  }
+  .nav-links a:hover {
+    text-decoration: underline;
+  }
+  h2 {
+    color: #222;
+    border-bottom: 2px solid #eee;
+    padding-bottom: 0.3em;
+    margin-top: 2em;
+  }
+  h3 {
+    color: #333;
+    margin-top: 1.5em;
+  }
+  .publication {
+    margin: 1em 0;
+    padding: 1em;
+    background: #f8f9fa;
+    border-left: 3px solid #0066cc;
+    border-radius: 0 4px 4px 0;
+  }
+  .publication-title {
+    font-weight: 600;
+    margin-bottom: 0.3em;
+  }
+  .publication-venue {
+    color: #666;
+    font-size: 0.9em;
+  }
+  .blog-notice {
+    background: #f0f7ff;
+    border: 1px solid #cce5ff;
+    padding: 1em;
+    border-radius: 4px;
+    margin: 1em 0;
+  }
+  ul {
+    padding-left: 1.5em;
+  }
+  li {
+    margin: 0.3em 0;
+  }
+  a {
+    color: #0066cc;
+  }
+  em {
+    font-style: italic;
+  }
+  .unfinished {
+    border-left-color: #dc3545;
+  }
+  .unfinished .publication-title a {
+    color: #dc3545;
+  }
 </style>
 </head>
 <body>
-<div id="content" class="content">
-<h1 class="title">About Boundless Blue</h1>
 
-<div id="org3270c6a" class="figure">
-<p><img src="./images/headshot_high_quality.jpg" alt="headshot_high_quality.jpg" width="300px" />
-</p>
-<p><span class="figure-number">Figure 1: </span>Amitav (me) standing next to Mr. Goose</p>
+<div class="profile-container">
+  <div class="profile-image">
+    <img src="./images/amitav.jpg" alt="Amitav Krishna" width="180px" />
+  </div>
+  <div class="profile-info">
+    <h1>Amitav Krishna</h1>
+    <div class="subtitle">Researcher · Software Engineer · Student</div>
+    <p>
+      High school student building neural networks from scratch. Mostly focused on making loss curves go down efficiently.
+    </p>
+    <div class="nav-links">
+      <a href="mailto:krishna@amitav.net">Email</a>
+      <a href="https://github.com/amitav-krishna">GitHub</a>
+      <a href="https://linkedin.com/in/amitav-krishna">LinkedIn</a>
+      <a href="https://x.com/amitavkrshna">Twitter</a>
+      <a href="https://youtube.com/@amitavkrishna">YouTube</a>
+      <a href="./blog.html">Blog</a>
+    </div>
+  </div>
 </div>
 
-<p>
-<a href="https://amitav.net/now.html">Now</a>
-</p>
+<h2>Research</h2>
 
 <p>
-Hello! My name is Amitav, and this parcel of internet real-estate is my blog. The page you are currently reading is my "about" page, a mix of a portfolio / auto-biography / memoir. This website is called <b>Boundless Blue</b> as a <a href="https://en.wikipedia.org/wiki/Calque">calque</a> of my name: "amitābha" roughly translates to "infinite light" or "infinite life"(<a href="https://www.dharmasite.net/Amita_Buddha.htm">Source</a>), and "krishna" roughly translates to "black" or "dark blue"(<a href="https://web.archive.org/web/20200206183139/https://www.sanskrit-lexicon.uni-koeln.de/cgi-bin/monier/serveimg.pl?file=/scans/MWScan/MWScanjpg/mw0306-kRzanAvat.jpg">Source</a>). while "Infinite Life Dark Blue" does have a certain ring to it, I decided instead on <b>Boundless Blue</b>.
+Current work is mostly distributed training, making models stable, and figuring out what happens in the black box.
 </p>
 
-<p>
-I'm keeping this blog as a sort of public journal for my future self. I live in a community where there are quite a few elderly people, and it's interesting hearing about their stories from when they were younger, but also kind of sad, because it's clear that the people they were 20, 30, 40 years ago are not just <a href="https://www.cgpgrey.com/blog/i-have-died-many-times">dead</a>, but their corpses have been left to rot in the mind of their future selves, slowly warping the thing that they once were. Who I was 10 years ago is completely unrecognizable from who I am today. This blog is meant as a way to capture my thoughts as they happen, so that they will be spared by the ruthless onslaught of forgetfulness. Maybe in 20, 30, 40 years, some kid will listen to me ramble on stories and stories within stories and stories within stories within stories, and will then will stumble upon this, and realize that I've been like this the entire time.
-</p>
-<div id="outline-container-orga2aebf8" class="outline-2">
-<h2 id="orga2aebf8"><span class="section-number-2">1.</span> Deprecated Amitav</h2>
-<div class="outline-text-2" id="text-1">
-<p>
-<a href="https://medium.com/@amtiavkrishna2011">Medium</a>
-</p>
+<h3>Publications</h3>
+
+<div class="publication">
+  <div class="publication-title">Frobenius Normalization Enables Stable Training for Quantum State Denoising</div>
+  <div class="publication-venue">Under review at IEEE QCCL 2026</div>
+  <p style="margin: 0.5em 0 0 0; font-size: 0.95em;">
+    A data preprocessing method that stabilizes neural network training by normalizing input distributions. 
+    Demonstrated scaling from small to large problem sizes (5-qubit to 8-qubit quantum systems) 
+    by addressing gradient suppression from scale mismatches.
+  </p>
 </div>
-</div>
-<div id="outline-container-org26cd14f" class="outline-2">
-<h2 id="org26cd14f"><span class="section-number-2">2.</span> About me</h2>
-<div class="outline-text-2" id="text-2">
-<p>
-Here are a few things about me:
-</p>
-<ul class="org-ul">
-<li>I enjoy mathematics,</li>
-<li>I enjoy programming,</li>
-<li>I enjoy biking.</li>
+
+<h3>Research Interests</h3>
+
+<ul>
+  <li>Distributed training on cheap hardware</li>
+  <li>Multimodal models</li>
+  <li>Data normalization tricks</li>
 </ul>
 
+<h2>Projects</h2>
+
+<p>Side projects exploring systems, ML infrastructure, and developer tools.</p>
+
+<div class="publication">
+  <div class="publication-title"><a href="https://github.com/amitav-krishna/cerebras-challenge">cerebras-challenge</a> — LLM Token Visualizer</div>
+  <p style="margin: 0.5em 0 0 0; font-size: 0.95em;">
+    Developer tool for visualizing LLM token perplexity, suggesting alternate generation paths, 
+    and highlighting high-saliency tokens. Designed as a passive assistant rather than autonomous agent.
+  </p>
+</div>
+
+<div class="publication unfinished">
+  <div class="publication-title"><a href="https://github.com/amitav-krishna/tinygrad-verilog">tinygrad-verilog</a> — ML Compiler to Hardware</div>
+  <p style="margin: 0.5em 0 0 0; font-size: 0.95em;">
+    Started as Verilog neural network (XOR training), evolved into Python backend generating Verilog from tinygrad compute graphs. 
+    <a href="https://www.youtube.com/watch?v=q7xqA4lmbC4&amp;list=PLevS1LOx-F2MYXmWgaT42rcpAw5EAL9NP&amp;pp=sAgC">Devlog playlist</a>.
+  </p>
+</div>
+
+<div class="publication">
+  <div class="publication-title"><a href="https://github.com/amitav-krishna/llm-from-scratch">llm-from-scratch</a> — Neural Network Framework in C++</div>
+  <p style="margin: 0.5em 0 0 0; font-size: 0.95em;">
+    Autograd engine, math primitives, and neural network layers implemented from scratch in C++. 
+    Educational project exploring automatic differentiation and linear algebra foundations.
+  </p>
+</div>
+
+<div class="publication unfinished">
+  <div class="publication-title"><a href="https://github.com/amitav-krishna/gpu_torrent">gpu_torrent</a> — Distributed GPU Inference</div>
+  <p style="margin: 0.5em 0 0 0; font-size: 0.95em;">
+    BitTorrent-like protocol for distributed token generation across self-hosted GPUs. 
+    Built with FastAPI, Redis, PostgreSQL. <a href="https://www.youtube.com/watch?v=IkGKqSoUP4M">Demo video</a>.
+  </p>
+</div>
+
+<div class="publication">
+  <div class="publication-title"><a href="https://github.com/amitav-krishna/stock_news">stock_news</a> — Full-Stack Stock Research</div>
+  <p style="margin: 0.5em 0 0 0; font-size: 0.95em;">
+    Next.js app displaying stock price timelines with overlaid news articles to identify 
+    patterns between coverage and price movement. PostgreSQL, yfinance, GNews API.
+  </p>
+</div>
+
+<div class="publication">
+  <div class="publication-title"><a href="https://github.com/amitav-krishna/search_engine">search_engine</a> — Word2Vec from Scratch</div>
+  <p style="margin: 0.5em 0 0 0; font-size: 0.95em;">
+    Implementation of word embeddings following <a href="https://jaketae.github.io/study/word2vec/">Jake Tae's tutorial</a>. 
+    Skip-gram model with negative sampling trained on custom corpus.
+  </p>
+</div>
+
+<div class="publication">
+  <div class="publication-title"><a href="https://github.com/amitav-krishna/face_recognition_ai">face_recognition_ai</a> — Face Matching with DeepFace</div>
+  <p style="margin: 0.5em 0 0 0; font-size: 0.95em;">
+    Face detection and recognition using DeepFace (Facenet) embeddings with cosine similarity matching. 
+    <a href="https://www.youtube.com/watch?v=EdkMhLFBxEA">Demo video</a>.
+  </p>
+</div>
+
+<div class="publication">
+  <div class="publication-title"><a href="https://github.com/amitav-krishna/Stock_Email_Notifications">Stock Email Notifications</a> — First Project (Grade 7)</div>
+  <p style="margin: 0.5em 0 0 0; font-size: 0.95em;">
+    Automated email alerts for stocks near 52-week highs/lows. Python, yfinance, smtplib, Google Sheets API. 
+    Reached ~80 users before shutting down.
+  </p>
+</div>
+
+<div class="publication">
+  <div class="publication-title"><a href="https://github.com/amitav-krishna/eye-tracking">eye-tracking</a> — Gaze-Controlled Cursor</div>
+  <p style="margin: 0.5em 0 0 0; font-size: 0.95em;">
+    Python + OpenCV + dlib for webcam-based eye tracking to control mouse cursor. 
+    <a href="https://www.youtube.com/shorts/bgoYFcs19TY">Demo video</a>.
+  </p>
+</div>
+
+<h2>About</h2>
+
 <p>
-That's all for now! In the future, I may see fit to update this page, however this should suffice for now :^)
+I am a Grade 10 student in Simcoe, Ontario. My research has been supported by mentorship from <a href="https://tks.world">The Knowledge Society (TKS)</a>.
+I also work as a software engineer at <a href="https://8090.inc">8090.inc</a>.
 </p>
+
+<p>
+My technical work is primarily in Python, using PyTorch for ML research and Emacs for everything else. 
+I run Fedora with Sway as my daily driver.
+</p>
+
+<h3>Education &amp; Affiliations</h3>
+
+<ul>
+  <li><strong>The Knowledge Society (TKS)</strong>, Toronto — Student (mentorship program)</li>
+  <li><strong>8090.inc</strong> — Software Engineer</li>
+  <li>High School, Simcoe ON — Grade 10</li>
+</ul>
+
+<h2>Blog</h2>
+
+<div class="blog-notice">
+  <strong>Personal Writing:</strong> I also maintain a blog where I write about philosophy, 
+  technology, and capturing thoughts before they fade. 
+  <a href="./about.html">Read the blog →</a>
 </div>
-</div>
-</div>
-<div id="postamble" class="status">
-<p class="author">Author: Amitav Krishna</p>
-<p class="date">Created: 2025-10-18 Sat 22:37</p>
-<p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
-</div>
+
+<p>
+The blog, called <em>Boundless Blue</em>, serves as a public journal. The name is a calque of my name: 
+"amitābha" (infinite light/life) and "krishna" (dark/blue) combining into something like 
+"infinite blue" or "boundless blue."
+</p>
+
+<h2>Contact</h2>
+
+<ul>
+  <li><strong>Research:</strong> <a href="mailto:krishna@amitav.net">krishna@amitav.net</a></li>
+  <li><strong>Personal:</strong> <a href="mailto:amitavkrishna@proton.me">amitavkrishna@proton.me</a></li>
+</ul>
+
+<p style="color: #666; font-size: 0.9em; margin-top: 2em; padding-top: 1em; border-top: 1px solid #eee;">
+For research collaborations, speaking opportunities, or questions about my work, please reach out via my research email.
+</p>
+
 </body>
 </html>

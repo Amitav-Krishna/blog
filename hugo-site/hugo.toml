@@ -1,0 +1,107 @@
+baseURL = "https://amitav.net"
+languageCode = "en-us"
+title = "Amitav Krishna"
+theme = "PaperMod"
+uglyURLs = true
+
+[params]
+  author = "Amitav Krishna"
+  description = "Aspiring AI researcher and software engineer"
+  defaultTheme = "light"
+  disableThemeToggle = true
+  ShowReadingTime = false
+  ShowPostNavLinks = false
+  ShowBreadCrumbs = false
+  ShowCodeCopyButtons = false
+  ShowWordCount = false
+  ShowRssButtonInSectionTermList = false
+  UseHugoToc = true
+  disableSpecial1stPost = true
+  disableScrollToTop = false
+  comments = false
+  hidemeta = false
+  hideSummary = false
+  showtoc = false
+  tocopen = false
+
+  [params.profileMode]
+    enabled = true
+    title = "Amitav Krishna"
+    subtitle = "Researcher · Software Engineer · Student"
+    imageUrl = "/images/amitav.jpg"
+    imageTitle = "Amitav Krishna"
+    imageWidth = 150
+    imageHeight = 150
+
+    [[params.profileMode.buttons]]
+      name = "Research"
+      url = "/research"
+
+    [[params.profileMode.buttons]]
+      name = "Projects"
+      url = "/projects"
+
+    [[params.profileMode.buttons]]
+      name = "About"
+      url = "/about"
+
+  [[params.socialIcons]]
+    name = "substack"
+    url = "https://amitavthegreat.substack.com/"
+    color = "#FF6719"
+
+  [[params.socialIcons]]
+    name = "email"
+    url = "mailto:krishna@amitav.net"
+
+  [[params.socialIcons]]
+    name = "github"
+    url = "https://github.com/amitav-krishna"
+
+  [[params.socialIcons]]
+    name = "linkedin"
+    url = "https://linkedin.com/in/amitav-krishna"
+
+  [[params.socialIcons]]
+    name = "x"
+    url = "https://x.com/amitavkrshna"
+
+  [[params.socialIcons]]
+    name = "youtube"
+    url = "https://youtube.com/@amitavkrishna"
+
+[menu]
+  [[menu.main]]
+    identifier = "home"
+    name = "Home"
+    url = "/"
+    weight = 10
+
+  [[menu.main]]
+    identifier = "research"
+    name = "Research"
+    url = "/research"
+    weight = 20
+
+  [[menu.main]]
+    identifier = "projects"
+    name = "Projects"
+    url = "/projects"
+    weight = 30
+
+  [[menu.main]]
+    identifier = "about"
+    name = "About"
+    url = "/about"
+    weight = 40
+
+  [[menu.main]]
+    identifier = "posts"
+    name = "Blog"
+    url = "/posts"
+    weight = 50
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true

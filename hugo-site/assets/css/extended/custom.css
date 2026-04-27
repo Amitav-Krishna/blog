@@ -1,0 +1,16 @@
+/* Custom styles for Substack icon */
+.social-icons a[title="Substack"] svg {
+    fill: #FF6719 !important;
+    color: #FF6719 !important;
+}
+
+.social-icons a[title="Substack"]:hover svg {
+    fill: #E55A15 !important;
+    color: #E55A15 !important;
+}
+
+/* Also target by href */
+.social-icons a[href*="substack"] svg {
+    fill: #FF6719 !important;
+    color: #FF6719 !important;
+}

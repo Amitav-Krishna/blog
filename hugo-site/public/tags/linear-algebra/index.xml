@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Linear-Algebra on Amitav Krishna</title>
+    <link>https://amitav.net/tags/linear-algebra.html</link>
+    <description>Recent content in Linear-Algebra on Amitav Krishna</description>
+    <generator>Hugo -- 0.146.5</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 18 Jan 2024 10:00:00 -0500</lastBuildDate>
+    <atom:link href="https://amitav.net/tags/linear-algebra/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Building Matrices in C&#43;&#43;</title>
+      <link>https://amitav.net/posts/building-matrices-in-cpp.html</link>
+      <pubDate>Thu, 18 Jan 2024 10:00:00 -0500</pubDate>
+      <guid>https://amitav.net/posts/building-matrices-in-cpp.html</guid>
+      <description>&lt;h2 id=&#34;what-the-hell-is-a-matrix-anyways&#34;&gt;What the hell is a matrix, anyways?&lt;/h2&gt;
+&lt;p&gt;When I say matrix, you probably don&amp;rsquo;t have a great idea of what a matrix actually &lt;em&gt;is&lt;/em&gt;, and that&amp;rsquo;s what I aim to solve.&lt;/p&gt;
+&lt;h3 id=&#34;what-the-hell-is-a-vector-really&#34;&gt;What the hell is a vector, really?&lt;/h3&gt;
+&lt;p&gt;&lt;em&gt;This section draws heavily on the textbook Linear Algebra Done Right by Sheldon Axler&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;In the previous issue I didn&amp;rsquo;t go that deeply into the mathematical definition behind a vector. Sadly, before we can truly understand what a matrix is, we must first understand what a vector is.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Building Vectors in C&#43;&#43;</title>
+      <link>https://amitav.net/posts/building-vectors-in-cpp.html</link>
+      <pubDate>Mon, 15 Jan 2024 10:00:00 -0500</pubDate>
+      <guid>https://amitav.net/posts/building-vectors-in-cpp.html</guid>
+      <description>&lt;p&gt;Hello! This is part 3 in a TBD part series on creating an LLM from scratch! You can see part 2, creating lists, &lt;a href=&#34;https://amitav.net/building-lists-in-cpp&#34;&gt;here&lt;/a&gt;, and part 4, creating matrices, &lt;a href=&#34;https://amitav.net/building-matrices-in-cpp&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;h2 id=&#34;what-is-a-vector&#34;&gt;What is a vector?&lt;/h2&gt;
+&lt;p&gt;For our purposes, a vector is an &lt;em&gt;ordered list of numbers&lt;/em&gt;. Here&amp;rsquo;s an example of a 2-dimensional vector:&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;[5, 7]
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;And here&amp;rsquo;s an example of a 5-dimensional vector:&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;[3.5, 4, 2, 1.2, 943.89]
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;We use multi-dimensional vectors to represent things like words and sentences and paragraphs, because the hope is that each vector will allow us to encode &lt;em&gt;multiple independent aspects&lt;/em&gt; of a token at once. At a high-level, we&amp;rsquo;re guessing that the vector will begin to associate different numbers with different attributes: maybe we want the first number to roughly correlate to how dog-like the word is, the second number to correlate to royalty, the third number to correlate with age, etc. For more information, see &lt;a href=&#34;https://arxiv.org/pdf/1301.3781&#34;&gt;this paper&lt;/a&gt; on word representations in vector space.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

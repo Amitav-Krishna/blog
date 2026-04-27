@@ -12,7 +12,7 @@ def generate_nav(current_file, posts):
     other_posts = [p for p in posts if p['file'] != current_file]
     links = "\n".join([f'<li><a href="./{p["file"]}">{p["title"]}</a></li>' for p in other_posts])
     
-    return f'''<div id="blog-nav" style="max-width: 60em; margin: 2em auto; padding: 1em; border-top: 1px solid #eee;">
+    return f'''<div id="blog-nav">
 <h3>Other Posts</h3>
 <ul>
 {links}
