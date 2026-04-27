@@ -101,7 +101,7 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://amitav.net/about.html</guid>
       <description>&lt;p&gt;I am a Grade 10 student at Holy Trinity Catholic High School in Simcoe, Ontario.&lt;/p&gt;
-&lt;p&gt;My research focuses on distributed training, model stability, and interpretability. I have a paper accepted at IEEE qCCL 2026 on Frobenius normalization for quantum state reconstruction.&lt;/p&gt;
+&lt;p&gt;My research focuses on distributed training, model stability, and interpretability. I have a paper accepted at IEEE qCCL 2026 on Frobenius normalization for quantum state denoising.&lt;/p&gt;
 &lt;p&gt;I am mentored by &lt;a href=&#34;https://tks.world&#34;&gt;The Knowledge Society (TKS)&lt;/a&gt; and work as a software engineer at &lt;a href=&#34;https://8090.inc&#34;&gt;8090.inc&lt;/a&gt;. My tools are Python, PyTorch, Neovim, and Ubuntu with i3.&lt;/p&gt;
 &lt;h2 id=&#34;contact&#34;&gt;Contact&lt;/h2&gt;
 &lt;ul&gt;
@@ -139,7 +139,7 @@ word2vec from scratch with skip-gram and negative sampling.&lt;/p&gt;</descripti
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://amitav.net/research.html</guid>
       <description>&lt;h2 id=&#34;publications&#34;&gt;Publications&lt;/h2&gt;
-&lt;p&gt;&lt;strong&gt;Frobenius Normalization for Quantum State Reconstruction&lt;/strong&gt; — Accepted at IEEE qCCL 2026&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Frobenius Normalization for Quantum State Denoising&lt;/strong&gt; — Accepted at IEEE qCCL 2026&lt;/p&gt;
 &lt;p&gt;A quantum state describes the probabilities of a quantum system. The problem: systems decohere over time, losing information to the environment. I use neural networks to reconstruct full states from incomplete measurements. The challenge is that mixed states become smaller, requiring the model to learn both rotation and stretching. My solution uses Frobenius normalization to artificially scale inputs, enabling the model to handle larger systems.&lt;/p&gt;</description>
     </item>
   </channel>
