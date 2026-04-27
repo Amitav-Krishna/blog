@@ -4,9 +4,9 @@ title: "About"
 
 I am a Grade 10 student at Holy Trinity Catholic High School in Simcoe, Ontario.
 
-My research focuses on distributed training, model stability, and interpretability. I have a paper under review at IEEE qCCL 2026 on Frobenius normalization for quantum state reconstruction.
+My research focuses on distributed training, model stability, and interpretability. I have a paper accepted at IEEE qCCL 2026 on Frobenius normalization for quantum state reconstruction.
 
-I am mentored by [The Knowledge Society (TKS)](https://tks.world) and work as a software engineer at [8090.inc](https://8090.inc). My tools are Python, PyTorch, Emacs, and Fedora with Sway.
+I am mentored by [The Knowledge Society (TKS)](https://tks.world) and work as a software engineer at [8090.inc](https://8090.inc). My tools are Python, PyTorch, Neovim, and Ubuntu with i3.
 
 ## Contact
 
