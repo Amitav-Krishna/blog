@@ -1,9 +1,36 @@
 {
   "posts": [
-    {"title": "Building vectors in C++", "file": "building-vectors.html"},
-    {"title": "Building lists in C++", "file": "building-lists.html"},
-    {"title": "Building matrices in C++", "file": "building-matrices.html"},
-    {"title": "Creating a heatmap of residential school deaths", "file": "creating_a_heatmap_of_residential_school_deaths.html"},
-    {"title": "Roadmap to LLM", "file": "roadmap-llm.html"}
+    {
+      "title": "Building vectors in C++",
+      "file": "building-vectors.html"
+    },
+    {
+      "title": "Building lists in C++",
+      "file": "building-lists.html"
+    },
+    {
+      "title": "Building matrices in C++",
+      "file": "building-matrices.html"
+    },
+    {
+      "title": "Creating a heatmap of residential school deaths",
+      "file": "creating_a_heatmap_of_residential_school_deaths.html"
+    },
+    {
+      "title": "Roadmap to LLM",
+      "file": "roadmap-llm.html"
+    },
+    {
+      "title": "My first post from the admin portal",
+      "file": "my-first-post-from-the-admin-portal.html"
+    },
+    {
+      "title": "2026-05-17 and 2026-05-18 Daily Update",
+      "file": "2026-05-17-and-2026-05-18-daily-update.html"
+    },
+    {
+      "title": "Meta surveils their own employees",
+      "file": "meta-surveils-their-own-employees.html"
+    }
   ]
 }
