@@ -1,13 +1,14 @@
 ---
 title: "Now"
-date: 2025-02-13T10:00:00-05:00
+date: 2026-05-20T10:00:00-05:00
 draft: false
 tags: ["now", "status"]
 ---
 
 *(This is [a now page](https://nownownow.com/about), and if you have your own site, you should make one too.)*
 
-*(Last updated: 2025-02-13)*
+*(Last updated: 2026-05-20)*
 
-- Right now I'm working on [building an LLM](/building-an-llm-from-scratch) from scratch.
-- I'm also trying to use transformers to denoise quantum sensor readings. Heavily inspired by [this paper](https://arxiv.org/abs/2509.16242) using CNNs to denoise quantum sensor readings and [this paper](https://arxiv.org/abs/2206.06287) on creating physics-informed networks. Finished the first model with 10,000 circuits, which underperformed the current SOTA, so now I'm scaling it up to a million circuits.
+- Right now I'm an intern member of technical staff at [8090 Solutions](https://8090.ai/),
+- I've been accepted to present a poster at [IEEE qCCL 2026](https://ieeeqccl2026.com), so I'm currently revising my final paper and creating my poster,
+- On the side I'm trying to become a more skilled researcher, whatever that means.
