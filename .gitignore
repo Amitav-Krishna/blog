@@ -1,8 +1,2 @@
-# Autosave files
-*~
-*#*
-
-
-# Syncthing
-.stfolder/
-
+__pycache__/
+*.pyc

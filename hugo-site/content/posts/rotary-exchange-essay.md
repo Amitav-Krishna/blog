@@ -1,6 +1,6 @@
 ---
 title: "Rotary Exchange Essay"
-date: 2024-03-15T10:00:00-05:00
+date: 2025-09-15T10:00:00-05:00
 draft: false
 tags: ["essay", "canada", "exchange"]
 ---
@@ -14,3 +14,6 @@ Rotary's motto, *Service Above Self*, resonates deeply with me. My mother often 
 I believe that we can — and must — be more ambitious with our service. Too often, we only serve the Canadians of today; I want to serve the Canadians of tomorrow. Representing Canada abroad would be both an honour and a responsibility. I want to show the world that Canada has not stagnated. Through Rotary, I hope not just to bring home good ideas, but to put those ideas into practice.
 
 — Amitav Krishna
+
+---
+*The preceding was an essay I wrote for my Rotary Youth Exchange application.  I didn't end up making it past the interview.  I wasn't really a good fit, the program was mostly cultural as for better or for worse I am not a very cultured person.  My friend, [George-Owen](https://georgeowen.net), did get in though, and will (probably) be going to Japan, which is very exciting!*

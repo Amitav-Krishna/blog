@@ -4,10 +4,17 @@
     <title>Meta on Amitav Krishna</title>
     <link>https://amitav.net/tags/meta.html</link>
     <description>Recent content in Meta on Amitav Krishna</description>
-    <generator>Hugo -- 0.146.5</generator>
+    <generator>Hugo -- 0.146.6</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 01 Feb 2024 10:00:00 -0500</lastBuildDate>
+    <lastBuildDate>Tue, 19 May 2026 16:46:39 +0000</lastBuildDate>
     <atom:link href="https://amitav.net/tags/meta/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Meta surveils their own employees</title>
+      <link>https://amitav.net/posts/meta-surveils-their-own-employees.html</link>
+      <pubDate>Tue, 19 May 2026 16:46:39 +0000</pubDate>
+      <guid>https://amitav.net/posts/meta-surveils-their-own-employees.html</guid>
+      <description>&lt;p&gt;Via &lt;a href=&#34;https://tech.slashdot.org/story/26/05/18/179232/meta-layoffs-stress-harsh-ai-reality-inside-zuckerbergs-company#comments&#34;&gt;slashdot&lt;/a&gt;.  The news of the layoffs themselves aren&amp;rsquo;t that interesting, but the most interesting part was the news about them recording their employees to train their models.  There&amp;rsquo;s more about this &lt;a href=&#34;https://www.reuters.com/sustainability/boards-policy-regulation/meta-start-capturing-employee-mouse-movements-keystrokes-ai-training-data-2026-04-21/&#34;&gt;here&lt;/a&gt;, overall I think while I wouldn&amp;rsquo;t like to work somewhere where I&amp;rsquo;d be recorded for the entire day, for the purposes of replacing me no less, it is in interesting approach to gathering data.  Overall though it feels that Meta is losing the AI race.  Despite Llama being one of the first open-weight LLMs to gain a lot of mindshare, they&amp;rsquo;ve sort of stagnated.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>How to Use This Blog Efficiently</title>
       <link>https://amitav.net/posts/how-to-use-this-blog.html</link>

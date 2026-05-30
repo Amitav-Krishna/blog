@@ -14,3 +14,21 @@
     fill: #FF6719 !important;
     color: #FF6719 !important;
 }
+
+/* Make links blue only in blog post content */
+.post-content a {
+    color: #0066cc !important;
+}
+
+.post-content a:hover {
+    color: #0052a3 !important;
+}
+
+/* Tags should be lowercase, not sentence case or title case */
+.post-tags a,
+.post-tags li a,
+.entry-footer .post-tags a,
+footer .post-tags a,
+.post-tags a * {
+    text-transform: lowercase !important;
+}

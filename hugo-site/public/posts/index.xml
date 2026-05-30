@@ -4,10 +4,87 @@
     <title>Posts on Amitav Krishna</title>
     <link>https://amitav.net/posts.html</link>
     <description>Recent content in Posts on Amitav Krishna</description>
-    <generator>Hugo -- 0.146.5</generator>
+    <generator>Hugo -- 0.146.6</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 13 Feb 2025 10:00:00 -0500</lastBuildDate>
+    <lastBuildDate>Thu, 21 May 2026 04:42:14 +0000</lastBuildDate>
     <atom:link href="https://amitav.net/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>2026-05-20 Retrospective</title>
+      <link>https://amitav.net/posts/2026-05-20-retrospective.html</link>
+      <pubDate>Thu, 21 May 2026 04:42:14 +0000</pubDate>
+      <guid>https://amitav.net/posts/2026-05-20-retrospective.html</guid>
+      <description>&lt;p&gt;Hello!  My name is Amitav!&lt;/p&gt;
+&lt;p&gt;Today I did little work.  This is bad.  I read a lot of random things.  I practiced competitive programming, completing question 2 from the 2011 CCC Senior division and getting stuck on question 4 before spending some time learning about max flow graphs, though tomorrow I must continue learning about them further.  I finished listening to David Senra&amp;rsquo;s podcast on Claude Shannon, and began listening to his podcast on Phil Knight (Nike man).  In addition, I began listening to a podcast from &lt;a href=&#34;https://www.youtube.com/watch?v=DtePicx_kFY&amp;amp;t=3324s&#34;&gt;Machine Learning Street Talk with Llion Jones and Luke Darlow&lt;/a&gt; on a stagnating machine learning research landscape.  They also discussed their own model, Continuous Thought Machines, though I don&amp;rsquo;t have too many thoughts on it as I didn&amp;rsquo;t read &lt;a href=&#34;https://arxiv.org/abs/2505.05522&#34;&gt;the paper&lt;/a&gt; in much detail.  I completed none of the tasks I set out for myself yesterday.  It&amp;rsquo;s also late.  One thing I will try for tomorrow is restricting the set of media I am allowed to consume.  In particular, tomorrow I will only consume my work Slack, work email, school email, school brightspace page, and &amp;ldquo;The Death of Ivan Ilyich&amp;rdquo;, along with my music.  Another thing I began tracking today was how much &lt;a href=&#34;https://en.wikipedia.org/wiki/Profanity&#34;&gt;profanity&lt;/a&gt; I used, which came to 140, +/- 10-15.  That includes also times I had profane thoughts, with the number of times I spoke what I consider curse words probably in the single digits.  I am attempting to cut down my profanity usage as it&amp;rsquo;s unprofessional and I would not like to accidentally curse in front of coworkers.  My goal by next Monday is to bring that number down to at most 70/day, with at most one spoken instance per day.  I believe this may not be ambitious enough, as I suspect beginning tracking caused me to curse more out of awareness of my tracking.  My tasks for tomorrow are:&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Emergent Ventures Application: Neural Networks for Quantum Denoising</title>
+      <link>https://amitav.net/posts/emergent-ventures-application.html</link>
+      <pubDate>Thu, 21 May 2026 04:30:00 +0000</pubDate>
+      <guid>https://amitav.net/posts/emergent-ventures-application.html</guid>
+      <description>&lt;p&gt;I recently applied to &lt;a href=&#34;https://mercatuscenter.org/emergentventures&#34;&gt;Emergent Ventures&lt;/a&gt; for funding to continue my research on using neural networks to fix broken quantum measurements. Below is my full application.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;describe-your-proposal-in-a-tweet&#34;&gt;Describe your proposal in a tweet&lt;/h2&gt;
+&lt;p&gt;I&amp;rsquo;m using neural networks to fix broken quantum measurements. My work scaled prior results from 5 to 8 qubits, but I want to attack a bottleneck when scaling up the size of the models themselves with new representations.&lt;/p&gt;
+&lt;h2 id=&#34;about-me&#34;&gt;About me&lt;/h2&gt;
+&lt;p&gt;Quantum computers could transform drug discovery, materials science, epilepsy treatment, and many other fields that require high-fidelity simulations of the physical world. Their outputs are currently destroyed by noise, so I&amp;rsquo;m training neural networks to mend them. I&amp;rsquo;m Amitav, I&amp;rsquo;m 14, and I build things before I know how to build them. I&amp;rsquo;m also the youngest engineer at 8090 Solutions, Chamath&amp;rsquo;s company, where I make their software development platform more autonomous.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Why is some philosophy so math-ish?</title>
+      <link>https://amitav.net/posts/why-is-some-philosophy-so-math-ish.html</link>
+      <pubDate>Wed, 20 May 2026 18:55:23 +0000</pubDate>
+      <guid>https://amitav.net/posts/why-is-some-philosophy-so-math-ish.html</guid>
+      <description>&lt;p&gt;Hello!  Quick throwaway post here.  I was reading &lt;a href=&#34;https://static1.squarespace.com/static/5506078de4b02d88372eee4e/t/5bc723b5104c7bf5cc8f3881/1539777748456/MacAskill-Normative-Uncertainty.pdf&#34;&gt;Normative Uncertainty&lt;/a&gt; by &lt;a href=&#34;https://en.wikipedia.org/wiki/William_MacAskill&#34;&gt;William MacAskill&lt;/a&gt;(Effective Altruism man) when I was flashbanged by the math.  After some chatting with claude, apparently this is what makes analytic philosophy notable, as opposed to continental philosophy which is focused on society, culture, etc.  What they don&amp;rsquo;t learn about apparently is &lt;em&gt;analysis&lt;/em&gt;, which unlike &lt;em&gt;logic&lt;/em&gt;, deals with continuous things.&lt;/p&gt;
+&lt;p&gt;&lt;img alt=&#34;Meme comparing continental and analytic philosophy&#34; loading=&#34;lazy&#34; src=&#34;https://amitav.net/images/analyticvscontinentalphilosophymeme.jpg&#34;&gt;&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Now</title>
+      <link>https://amitav.net/posts/now.html</link>
+      <pubDate>Wed, 20 May 2026 10:00:00 -0500</pubDate>
+      <guid>https://amitav.net/posts/now.html</guid>
+      <description>&lt;p&gt;&lt;em&gt;(This is &lt;a href=&#34;https://nownownow.com/about&#34;&gt;a now page&lt;/a&gt;, and if you have your own site, you should make one too.)&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;(Last updated: 2026-05-20)&lt;/em&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Right now I&amp;rsquo;m an intern member of technical staff at &lt;a href=&#34;https://8090.ai/&#34;&gt;8090 Solutions&lt;/a&gt;,&lt;/li&gt;
+&lt;li&gt;I&amp;rsquo;ve been accepted to present a poster at &lt;a href=&#34;https://ieeeqccl2026.com&#34;&gt;IEEE qCCL 2026&lt;/a&gt;, so I&amp;rsquo;m currently revising my final paper and creating my poster,&lt;/li&gt;
+&lt;li&gt;On the side I&amp;rsquo;m trying to become a more skilled researcher, whatever that means.&lt;/li&gt;
+&lt;/ul&gt;</description>
+    </item>
+    <item>
+      <title>2026-05-19 Retrospective</title>
+      <link>https://amitav.net/posts/2026-05-19-retrospective.html</link>
+      <pubDate>Wed, 20 May 2026 04:41:21 +0000</pubDate>
+      <guid>https://amitav.net/posts/2026-05-19-retrospective.html</guid>
+      <description>&lt;p&gt;Hello!  My name is Amitav!  A good summary of today is that I did some work that then was invalidated, so I&amp;rsquo;m feeling a bit deflated.  I did quite a bit of work for 8090, but wasted quite a bit of time on setting up some infrastructure that was then nullified when my boss and I decided that it would make more sense for the system I&amp;rsquo;m working with to work with lighter-weight tools that would allow me to iterate faster as the system I&amp;rsquo;m working on will likely never see absurd levels of traffic.  That&amp;rsquo;s good for future Amitav, however it is somewhat saddening for current Amitav as quite a bit of work will be redone, but it is what it is I suppose.  In addition to that, today I read &lt;a href=&#34;https://vladfeinberg.com/2026/05/10/how-to-land-a-job-at-a-frontier-lab.html&#34;&gt;this article&lt;/a&gt; which was interesting (it was shared with me yesterday and I did read it yesterday, but did not share it on this blog).  There are a couple of action items there that I will not act on right now due to greater priorities, but that I defer instead to the 28th (the day after final paper submissions are due for qCCL).  In particular, I lack &lt;a href=&#34;https://en.wikipedia.org/wiki/Mathematical_maturity&#34;&gt;mathematical maturity&lt;/a&gt;, which is bad and must be solved.  Another interesting thing I read today was &lt;a href=&#34;https://www.slideshare.net/slideshow/event-streaming-a-paradigm-shift-in-enterprise-software-architecture/228574336&#34;&gt;this slideshow&lt;/a&gt; by my boss from a few years ago (not recommended to me by him, found it on my own), though I lack a lot of prerequisites in distributed systems and so it&amp;rsquo;s mostly gibberish to me.  One thing I&amp;rsquo;d like to do eventually is learn more about distributed systems.  Today, I also listened to the podcast by David Senra on &lt;a href=&#34;https://podcasts.apple.com/bb/podcast/95-claude-shannon/id1141877104?i=1000581808165&#34;&gt;Claude Shannon&lt;/a&gt;.  Overall it was interesting, I think my biggest takeaway is that you shouldn&amp;rsquo;t take things too seriously.  Now, back to Amitav, the tasks I set out for myself yesterday are as follows:&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Meta surveils their own employees</title>
+      <link>https://amitav.net/posts/meta-surveils-their-own-employees.html</link>
+      <pubDate>Tue, 19 May 2026 16:46:39 +0000</pubDate>
+      <guid>https://amitav.net/posts/meta-surveils-their-own-employees.html</guid>
+      <description>&lt;p&gt;Via &lt;a href=&#34;https://tech.slashdot.org/story/26/05/18/179232/meta-layoffs-stress-harsh-ai-reality-inside-zuckerbergs-company#comments&#34;&gt;slashdot&lt;/a&gt;.  The news of the layoffs themselves aren&amp;rsquo;t that interesting, but the most interesting part was the news about them recording their employees to train their models.  There&amp;rsquo;s more about this &lt;a href=&#34;https://www.reuters.com/sustainability/boards-policy-regulation/meta-start-capturing-employee-mouse-movements-keystrokes-ai-training-data-2026-04-21/&#34;&gt;here&lt;/a&gt;, overall I think while I wouldn&amp;rsquo;t like to work somewhere where I&amp;rsquo;d be recorded for the entire day, for the purposes of replacing me no less, it is in interesting approach to gathering data.  Overall though it feels that Meta is losing the AI race.  Despite Llama being one of the first open-weight LLMs to gain a lot of mindshare, they&amp;rsquo;ve sort of stagnated.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>2026-05-17 and 2026-05-18 Daily Update</title>
+      <link>https://amitav.net/posts/2026-05-17-and-2026-05-18-daily-update.html</link>
+      <pubDate>Tue, 19 May 2026 05:35:36 +0000</pubDate>
+      <guid>https://amitav.net/posts/2026-05-17-and-2026-05-18-daily-update.html</guid>
+      <description>&lt;p&gt;Hello, I am Amitav!  This is actually my daily update to be first posted on my personal website, amitav.net, before being syndicated to substack (see &lt;a href=&#34;https://indieweb.org/POSSE&#34;&gt;this&lt;/a&gt;).  The biggest reason for this is that I have an admin portal now on my website, which gives me a snazzy interface with which to write my posts.  You can see this for yourself &lt;a href=&#34;https://amitav.net/admin&#34;&gt;here&lt;/a&gt;, though I will warn you that this is password restricted so that I don&amp;rsquo;t get random folks posting stuff on my website.  Anyways, back to the task at hand, my daily update(s)!&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>My first post from the admin portal</title>
+      <link>https://amitav.net/posts/my-first-post-from-the-admin-portal.html</link>
+      <pubDate>Sun, 17 May 2026 20:52:47 +0000</pubDate>
+      <guid>https://amitav.net/posts/my-first-post-from-the-admin-portal.html</guid>
+      <description>&lt;h1 id=&#34;hello&#34;&gt;Hello!&lt;/h1&gt;
+&lt;p&gt;This is my first admin portal post, my previous posts have been uploaded manually using &lt;code&gt;scp&lt;/code&gt;.  The admin portal was created by my openclaw and allows me to write posts in a nice interface and is password protected.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Rotary Exchange Essay</title>
+      <link>https://amitav.net/posts/rotary-exchange-essay.html</link>
+      <pubDate>Mon, 15 Sep 2025 10:00:00 -0500</pubDate>
+      <guid>https://amitav.net/posts/rotary-exchange-essay.html</guid>
+      <description>&lt;p&gt;The disconnect between Canada&amp;rsquo;s intellectual strength and its lack of private innovation fascinates and concerns me. Canada has produced pioneers like Geoffrey Hinton and Yoshua Bengio, the Godfathers of AI, and innovations like the Canadarm and CANDU reactor. Yet few of these breakthroughs translate to jobs and prosperity here at home. Research is essential, but you can&amp;rsquo;t build an economy on research alone: research proposes value, while business creates value.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>A Simpler Way to Visualize Higher Dimensions</title>
       <link>https://amitav.net/posts/visualizing-higher-dimensions.html</link>
@@ -15,25 +92,6 @@
       <guid>https://amitav.net/posts/visualizing-higher-dimensions.html</guid>
       <description>&lt;p&gt;I&amp;rsquo;ve been thinking a lot lately about how one teaches the concepts of functions that operate at higher-dimensions, like a function that takes two inputs and returns two outputs. This is hard, because most of our&amp;hellip;&lt;/p&gt;
 &lt;p&gt;&lt;em&gt;Note: This post is a work in progress.&lt;/em&gt;&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Now</title>
-      <link>https://amitav.net/posts/now.html</link>
-      <pubDate>Thu, 13 Feb 2025 10:00:00 -0500</pubDate>
-      <guid>https://amitav.net/posts/now.html</guid>
-      <description>&lt;p&gt;&lt;em&gt;(This is &lt;a href=&#34;https://nownownow.com/about&#34;&gt;a now page&lt;/a&gt;, and if you have your own site, you should make one too.)&lt;/em&gt;&lt;/p&gt;
-&lt;p&gt;&lt;em&gt;(Last updated: 2025-02-13)&lt;/em&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Right now I&amp;rsquo;m working on &lt;a href=&#34;https://amitav.net/building-an-llm-from-scratch&#34;&gt;building an LLM&lt;/a&gt; from scratch.&lt;/li&gt;
-&lt;li&gt;I&amp;rsquo;m also trying to use transformers to denoise quantum sensor readings. Heavily inspired by &lt;a href=&#34;https://arxiv.org/abs/2509.16242&#34;&gt;this paper&lt;/a&gt; using CNNs to denoise quantum sensor readings and &lt;a href=&#34;https://arxiv.org/abs/2206.06287&#34;&gt;this paper&lt;/a&gt; on creating physics-informed networks. Finished the first model with 10,000 circuits, which underperformed the current SOTA, so now I&amp;rsquo;m scaling it up to a million circuits.&lt;/li&gt;
-&lt;/ul&gt;</description>
-    </item>
-    <item>
-      <title>Rotary Exchange Essay</title>
-      <link>https://amitav.net/posts/rotary-exchange-essay.html</link>
-      <pubDate>Fri, 15 Mar 2024 10:00:00 -0500</pubDate>
-      <guid>https://amitav.net/posts/rotary-exchange-essay.html</guid>
-      <description>&lt;p&gt;The disconnect between Canada&amp;rsquo;s intellectual strength and its lack of private innovation fascinates and concerns me. Canada has produced pioneers like Geoffrey Hinton and Yoshua Bengio, the Godfathers of AI, and innovations like the Canadarm and CANDU reactor. Yet few of these breakthroughs translate to jobs and prosperity here at home. Research is essential, but you can&amp;rsquo;t build an economy on research alone: research proposes value, while business creates value.&lt;/p&gt;</description>
     </item>
     <item>
       <title>How to Use This Blog Efficiently</title>

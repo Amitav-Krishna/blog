@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Grant on Amitav Krishna</title>
+    <link>https://amitav.net/tags/grant.html</link>
+    <description>Recent content in Grant on Amitav Krishna</description>
+    <generator>Hugo -- 0.146.6</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 21 May 2026 04:30:00 +0000</lastBuildDate>
+    <atom:link href="https://amitav.net/tags/grant/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Emergent Ventures Application: Neural Networks for Quantum Denoising</title>
+      <link>https://amitav.net/posts/emergent-ventures-application.html</link>
+      <pubDate>Thu, 21 May 2026 04:30:00 +0000</pubDate>
+      <guid>https://amitav.net/posts/emergent-ventures-application.html</guid>
+      <description>&lt;p&gt;I recently applied to &lt;a href=&#34;https://mercatuscenter.org/emergentventures&#34;&gt;Emergent Ventures&lt;/a&gt; for funding to continue my research on using neural networks to fix broken quantum measurements. Below is my full application.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;describe-your-proposal-in-a-tweet&#34;&gt;Describe your proposal in a tweet&lt;/h2&gt;
+&lt;p&gt;I&amp;rsquo;m using neural networks to fix broken quantum measurements. My work scaled prior results from 5 to 8 qubits, but I want to attack a bottleneck when scaling up the size of the models themselves with new representations.&lt;/p&gt;
+&lt;h2 id=&#34;about-me&#34;&gt;About me&lt;/h2&gt;
+&lt;p&gt;Quantum computers could transform drug discovery, materials science, epilepsy treatment, and many other fields that require high-fidelity simulations of the physical world. Their outputs are currently destroyed by noise, so I&amp;rsquo;m training neural networks to mend them. I&amp;rsquo;m Amitav, I&amp;rsquo;m 14, and I build things before I know how to build them. I&amp;rsquo;m also the youngest engineer at 8090 Solutions, Chamath&amp;rsquo;s company, where I make their software development platform more autonomous.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

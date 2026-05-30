@@ -6,7 +6,7 @@ uglyURLs = true
 
 [params]
   author = "Amitav Krishna"
-  description = "Aspiring AI researcher and software engineer"
+  description = "Researcher, engineer, student."
   defaultTheme = "light"
   disableThemeToggle = true
   ShowReadingTime = false
