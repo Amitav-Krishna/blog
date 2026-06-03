@@ -14,8 +14,8 @@ The introduction serves to present the tension in a question and "state that ten
 > The obvious answer is yes: to know something is to know that it exists, or is true, and observing something tells you that a thing exists.  However, this is not the full picture, as we almost never have the full picture.  Consider the sun.  From initial observation, it seems obvious that it is moving, and that the Earth is still.  However, we know this not to be the case; in fact, it is the Earth's rotation that makes it seem like the sun is moving with respect to a certain point.  This seems like a mark against observation as knowing, but it is, in fact, *not*: the reason we know that the Earth rotates, is by even more observation.  Observation in the limit is knowledge, however we can never know when we have exhausted the supply of observations to make. 
 
 > **Problematique**: How much observation is required to say one truly knows something?
-Claude pointed out a few flaws, the biggest one being that I stated a different question from the one asked and I resolved the tension in the introduction ("Observation in the limit is knowledge").  My goal for the next four weeks is to use 15-30 minutes every day to practice this.  This is the plan stolen from Claude:
 
+Claude pointed out a few flaws, the biggest one being that I stated a different question from the one asked and I resolved the tension in the introduction ("Observation in the limit is knowledge").  My goal for the next four weeks is to use 15-30 minutes every day to practice this.  This is the plan stolen from Claude:
 
 - Week 1 — problématique only. One bac prompt/day. Write just the problematization paragraph (~15 min), then self-grade on the rubric below (~5 min). Goal: stop resolving early; find the categorical tension.
 - Week 2 — problématique + three-part plan skeleton (one line justifying each part). Tests whether the tension you opened actually generates a progressive plan.
