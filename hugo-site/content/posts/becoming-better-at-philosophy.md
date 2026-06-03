@@ -16,12 +16,12 @@ The introduction serves to present the tension in a question and "state that ten
 > **Problematique**: How much observation is required to say one truly knows something?
 Claude pointed out a few flaws, the biggest one being that I stated a different question from the one asked and I resolved the tension in the introduction ("Observation in the limit is knowledge").  My goal for the next four weeks is to use 15-30 minutes every day to practice this.  This is the plan stolen from Claude:
 
-```
-Week 1 — problématique only. One bac prompt/day. Write just the problematization paragraph (~15 min), then self-grade on the rubric below (~5 min). Goal: stop resolving early; find the categorical tension.
-Week 2 — problématique + three-part plan skeleton (one line justifying each part). Tests whether the tension you opened actually generates a progressive plan.
-Week 3 — write one full partie with a real reference/example. This is where your knowledge gap bites, so pair each day with one Stanford Encyclopedia of Philosophy entry on that prompt's central notion — read it after drafting, to see what you missed.
-Week 4 — one full dissertation (weekend), and re-attempt a Week-1 prompt cold. The re-attempt is the point: it tells you whether the corrected move became automatic or you just understood it once.
-```
+
+- Week 1 — problématique only. One bac prompt/day. Write just the problematization paragraph (~15 min), then self-grade on the rubric below (~5 min). Goal: stop resolving early; find the categorical tension.
+- Week 2 — problématique + three-part plan skeleton (one line justifying each part). Tests whether the tension you opened actually generates a progressive plan.
+- Week 3 — write one full partie with a real reference/example. This is where your knowledge gap bites, so pair each day with one Stanford Encyclopedia of Philosophy entry on that prompt's central notion — read it after drafting, to see what you missed.
+- Week 4 — one full dissertation (weekend), and re-attempt a Week-1 prompt cold. The re-attempt is the point: it tells you whether the corrected move became automatic or you just understood it once.
+
 
 And gave me the following resources to read:
 - Prompt supply: https://pedagogie.ac-montpellier.fr/recueils-des-sujets-de-philo-du-bac
