@@ -22,7 +22,6 @@ Claude pointed out a few flaws, the biggest one being that I stated a different 
 - Week 3 — write one full partie with a real reference/example. This is where your knowledge gap bites, so pair each day with one Stanford Encyclopedia of Philosophy entry on that prompt's central notion — read it after drafting, to see what you missed.
 - Week 4 — one full dissertation (weekend), and re-attempt a Week-1 prompt cold. The re-attempt is the point: it tells you whether the corrected move became automatic or you just understood it once.
 
-
 And gave me the following resources to read:
 - Prompt supply: https://pedagogie.ac-montpellier.fr/recueils-des-sujets-de-philo-du-bac
 - More prompts: https://www.sujetdebac.fr/annales/philosophie/
