@@ -24,3 +24,7 @@ Netlify's free plan gives us 300 credits. Here's the credit breakdown:
 Using some back-of-the-envelope math: assuming under 10,000 requests per month and under 1GB of bandwidth, that leaves us with 20 production deploys. That's enough for a reload every 36 hours. I would recommend using branch deploys instead — unlimited deploys means you can reload your reader as often as you'd like!
 
 **TL;DR:** Use Bubo. If that seems like a hassle, the creator of this blog environment, [Karl Voit](https://karl-voit.at), recommends [NewsBlur](https://play.google.com/store/apps/details?id=com.newsblur&hl=en). The most reliable feed to use would be the links feed in the sidebar.
+
+---
+
+*2026-06-02 update: This was from when I was using [lazyblorg](https://github.com/novoid/lazyblorg).  For various reasons I no longer recall I shifted off of this to Hugo some months ago.  I am open to returning to it in the future as I like the styling but Hugo is simpler, and I don't want to change up the tooling until I have at least 100 posts out to avoid yak-shaving.  Also, I no longer use an RSS reader personally.*
