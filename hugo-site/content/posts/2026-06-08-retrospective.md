@@ -5,13 +5,12 @@ draft: false
 tags: ["daily-update"]
 ---
 
-
 Hello guys!  I worked out today (Upper B) for the first time since last week, had two meetings, and then goofed off for pretty much the rest of the night.  Today I also started my computer science culminating assignmetn.  Here's Claude's summary of my night from my browser history (all times in EDT):
 
 >  ~19:30–19:45 — Podcast / Reddit wind-down
   Started on Reddit reading about indie podcasts — CGP Grey's "State of the Workflow," the Unmade Podcast, Hello Internet, Cortex, 99% Invisible. Poked at 8090's Software Factory / {{REDACTED FOR LEGAL REASONS}}, briefly and checked your 8090 Google Calendar (week of June 8). Looked up Jeff Dujon (Unmade host).
 >  ~19:45–20:10 — Admin & paperwork
-  - Amazon.ca — checked Your Orders / Buy Again
+>  - Amazon.ca — checked Your Orders / Buy Again
 >  - Gmail (krishna@amitav.net) → {{REDACTED FOR CAREERIST/LEGAL REASONS}}
   Transfer / bank documents). Downloaded the zip/PDFs and asked Claude to help understand the EV form.
   ~20:15–20:35 — Focus-music rabbit hole
@@ -57,4 +56,5 @@ I spent a lot of time on Reddit :^(.  Here's my plan for tomorrow (all times in 
 - 19.45 - 20.00: Philo bac
 - 20.00 - 20.15: Write the daily update blog post (like I'm diong right now)
 - 20.45 - 04.00: sleep
+
 {{REDACTED FOR CAREERIST REASONS}}
