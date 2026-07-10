@@ -1,5 +1,5 @@
 ---
-title: "Reflections on \\\\\\\"250 YEARS: The United States – from independence to empire\\\\"
+title: "Reflections on \"250 YEARS: The United States – from independence to empire\""
 date: 2026-07-10T04:35:08.037924
 draft: false
 tags: ["politics", "marxism", "america", "history"]
