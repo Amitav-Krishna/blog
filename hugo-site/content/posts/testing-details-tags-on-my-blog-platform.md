@@ -5,7 +5,6 @@ draft: false
 tags: ["test"]
 ---
 
-<details>
- <summary>This is a test of details sections</summary>
- <p>I'm testing this because I read a book I want to discuss while giving people a good spoiler warning and this seems like the best method</p>
-</details>
+{{< collapse summary="This is a test of details sections" >}}
+I'm testing this because I read a book I want to discuss while giving people a good spoiler warning and this seems like the best method
+{{< /collapse >}}
