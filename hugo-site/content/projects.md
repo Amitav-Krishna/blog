@@ -36,7 +36,7 @@ Full-stack Next.js app overlaying stock price timelines with news articles.  Int
 word2vec from scratch with skip-gram and negative sampling.
 
 **[face_recognition_ai](https://github.com/amitav-krishna/face_recognition_ai)**
-Face matching using DeepFace (Facenet) embeddings.  You can read my write-up [here](https://medium.com/@amtiavkrishna2011/helping-dementia-patients-recognise-loved-ones-9b7de077f16c
+Face matching using DeepFace (Facenet) embeddings.  You can read my write-up [here](https://medium.com/@amtiavkrishna2011/helping-dementia-patients-recognise-loved-ones-9b7de077f16c)
 
 **[eye-tracking](https://github.com/amitav-krishna/eye-tracking)**
 Webcam gaze tracking for mouse control (Python, OpenCV, dlib).
