@@ -18,19 +18,3 @@ I was mentored by [The Knowledge Society (TKS)](https://tks.world) from Septembe
 - **YouTube:** [@amitavkrishna](https://youtube.com/@amitavkrishna)
 - **Substack:** [amitavthegreat](https://amitavthegreat.substack.com/) (This is pretty much shut down)
 
-My tools are (not exhaustively):
-- Python,
-- PyTorch,
-- JAX,
-- Quantum Espresso,
-- Cirq,
-- Gmail,
-- Claude Code,
-- Neovim, 
-- Obsidian,
-- Ubuntu,
-- i3,
-- Jupyter Notebook,
-- Marimo Notebook,
-- Zotero,
-- GitHub.
