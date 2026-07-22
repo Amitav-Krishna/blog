@@ -10,10 +10,13 @@ I was browsing [Chris Olah's website](https://colah.github.io/) and stumbled upo
 ## Completed / Killed
 **[AI YouTube Music Transfer](https://github.com/Amitav-Krishna/ai_yt_music_transfer)**
 This was created before I had a job.  I could search for a song (or any video), have it downloaded from YouTube, transferred over USB to my phone, and get recommendations for new songs.  Eventually simplified this to just downloading the songs directly using yt-dlp and using Nautilus to drag them over, and currently (as of 2026/07/21) I use Spotify because it's easier and has a nice algorithm.
+
 **[Expression evaluation](https://github.com/Amitav-Krishna/ics3u_coursework/blob/main/cca/Main.java)**
 Can't think of a better name for this, this was my culminating assignment for ICS3U (grade 11 computer science).  Would evaluate stuff like 3+1*2-5.  
+
 **[Genie from scratch](https://github.com/Amitav-Krishna/ics3u_coursework/blob/main/worldomdelgenienotebook.py)**
 This was a passion project for ICS3U (grade 11 computer science).  Because of lots of procrastination I did not finish it.  This is a good candidate to be revived, though.
+
 **[GPU Torrent](https://github.com/amitav-krishna/gpu_torrent)**
 BitTorrent-like protocol for distributed token generation across self-hosted GPUs (FastAPI, Redis, PostgreSQL).
 
