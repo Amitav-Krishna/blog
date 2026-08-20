@@ -211,6 +211,10 @@
     {
       "title": "hi-this-is-a-test-page-to-show-my-friend-george-owen-how-the-admin-page-works",
       "file": "hi-this-is-a-test-page-to-show-my-friend-george-owen-how-the-admin-page-works.html"
+    },
+    {
+      "title": "List of (cool) companies in Toronto",
+      "file": "list-of-cool-companies-in-toronto.html"
     }
   ]
 }
