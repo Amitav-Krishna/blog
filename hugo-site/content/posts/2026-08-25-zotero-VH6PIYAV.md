@@ -1,6 +1,6 @@
 ---
 title: "Reinforcement learning: an introduction"
-date: 2026-08-25T03:27:38.205932
+date: 2026-08-25T03:28:39.492502
 draft: false
 tags: ["literature-note"]
 ---
