@@ -1,6 +1,6 @@
 ---
 title: "Reinforcement learning: an introduction"
-date: 2026-08-25T03:40:42.416540
+date: 2026-08-25T03:49:18.420772
 draft: false
 tags: ["literature-note"]
 ---
@@ -9,100 +9,105 @@ tags: ["literature-note"]
 
 # Chapter 0: Preface
 ## Anki Notes
-### Components of the expected approximate action value function (Cloze)
+[Direct download of the preface Anki deck.](/files/Sutton_et_al._Chapter_0__Preface.apkg)
+### Naming components of the expected approximate action value function (Cloze)
 ```
 [latex]$\overline{V}_{t}(s) \doteq$[/latex] {{c1::[latex]$\sum_{a} \pi(a|s) Q_{t}(s, a)$[/latex]}}
 where a is {{c2::the action}}, s is {{c2::the current state}}, [latex]$\pi$[/latex] is {{c2::the current policy}}, and [latex]$Q_{t}(s, a)$[/latex] is {{c2::the action-value of action a given state s}}.
 ```
 
-[Basic]
+### Explaining components of the expected approximate action value function (Basic)
+```
 Front: The following function is the expected approximate action value at time [latex]$t$[/latex] and given state [latex]$s$[/latex] and policy [latex]$\pi$[/latex]:
 [latex]$\overline{V}_{t}(S) \doteq \sum_{a} \pi(a|s) Q_{t}(s, a)$[/latex]
 
 Explain what the function of the terms [latex]$\sum_{a}$[/latex], [latex]$\pi(a|s)$[/latex], and [latex]$Q_{t}(s, a)$[/latex] are.
 Back: Firstly, [latex]$\sum_{a}$[/latex] is used to execute the terms within the summation for every possible action in state s, therefore taking the action-value of every possible action.  [latex]$\pi(a|s)$[/latex] gives the probability of action [latex]$a$[/latex], and is used to weight the action-value of the action ([latex]$Q_{t}(s, a)$[/latex]) by how probable that action is to be taken.
-[/Basic]
-
-[Basic]
+```
+### Dynamic Programming Definition (Basic)
+```
 Front: What is dynamic programming in the context of reinforcement learning?
 Back: Dynamic programming is the family of algorithms that compute optimal value functions and policies given a perfect model of the environment.
-[/Basic]
-
-[Cloze]
+```
+### Definitions of a policy (Cloze)
+```
 An agent's policy is simultaneously {{c1::a decision-making rule}} and {{c2::a mapping from perceived states of the environment to actions to be taken when in those states}}.  
-[/Cloze]
-
-[Cloze]
+```
+### Definiton of a reinforcement learning system (Cloze)
+```
 A reinforcement learning system is a system that {{c1::wants something}}.
-[/Cloze]
-
-
-
-[Direct download of the preface Anki deck.](/files/Sutton_et_al._Chapter_0__Preface.apkg)
+```
 # Chapter 1: Introduction
 ## Anki Notes
-[Basic]
+[Direct download of the chapter 1 Anki deck.](/files/Sutton_et_al._Chapter_1__Introduction.apkg)
+### Purpose of a value function (Basic)
+```
 Front: What does an agent's value function do?
 Back: It gives the approximate total expected accumulated reward over the future, starting from the present state. 
-[/Basic]
-
-[Basic]
+```
+### Lack of exploration-exploitation issue in supervised learning (Basic)
+```
 Front: Why doesn't the exploration-exploitation issue appear in supervised learning?
 Back: In reinforcement learning, the exploitation-exploration trade-off exists because at each timestep, the agent must choose between learning about the reward of an unknown action via performing it or earning a predictable amount of reward via performing a known action. On the other hand, in supervised learning the model is explicitly told the correct label after each example, so unlike the reinforcement learning agent it needn't discover the most effective choice, it must merely remember it.
-[/Basic]
-
-[Basic]
+```
+### Optional subelement of a reinforcement learning system (Basic)
+```
 Front: Which of the four subelements of a reinforcment learning system (policy, reward signal, model of the environment, value function) is optional?
 Back: A model of the environment. 
-[/Basic]
-
-[Basic]
+```
+### Reward signal purpose (Basic)
+```
 Front: What does an agent's reward signal do?
 Back: It determines the agent's goal. 
-[/Basic]
-
-[Basic]
+```
+### Policy purpose (Basic)
+```
 Front: What does an agent's policy do?
 Back: It determines how an agent behaves.
-[/Basic]
-
-[Basic]
+```
+### Subelements of a reinforcement learning system (Basic) 
+```
 Front: The four subelements of a reinforcement learning system:
 Back: 1. Policy
 2. Reward signal
 3. Value function
 4. Model of the environment
-[/Basic]
+```
 
-[Basic]
+### Exploration-exploitation trade-off for stochastic tasks (Basic)
+```
 Front: How does the exploration-exploitation dilemma become more difficult when the task is stochastic? 
 Back: When the task is stochastic, the agent must attempt an action multiple times to build a good estimate of that action's reward and a previously high-reward action may occasionally produce low reward.  This results in exploration being more expensive and exploitation being more uncertain. 
-[/Basic]
+```
 
-[Basic]
+### Exploration-exploitation trade-off (Basic)
+```
 Front: What is the exploitation-exploration trade-off in reinforcement learning?
 Back: To obtain a high reward, the agent must prefer actions it has found effective at producing reward (i.e. exploiting the good actions), but in order to discover which actions produce high reward, the agent must explore many different actions, of which only a few might produce high reward while the others produce low reward.  Therefore, there is an inherent trade-off within reinforcement learning between maximizing near-term reward via exploitation of known high-reward actions and maximizing long-term value via exploration of the action space in search of the highest-value actions.  
-[/Basic]
+```
 
-[Basic]
+### Aspects of a reinforcement learning agent (Basic)
+```
 Front: A reinforcement learning agent has 3 aspects: 
 Back: 1. Sensation
 2. Action
 3. Goal
-[/Basic]
+```
 
-[Cloze]
+### Important features of reinforcement learning (Cloze)
+```
 The 2 most important distinguishing features of reinforcement learning are:
 - {{c1::trial-and-error search}},
 - {{c1::delayed reward}}
-[/Cloze]
+```
 
-[Cloze]
+### Reinforcement learning definition (Cloze)
+```
 Reinforcement learning is learning {{c1::what to do}} in order to {{c1::maximize a numerical reward signal}}.
-[/Cloze]
+```
 
 
 
-[Direct download of the chapter 1 Anki deck.](/files/Sutton_et_al._Chapter_1__Introduction.apkg)
+
 
 *[Zotero item: VH6PIYAV](/zotero/VH6PIYAV)*
