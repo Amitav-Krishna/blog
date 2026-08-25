@@ -1,6 +1,6 @@
 ---
 title: "Reinforcement learning: an introduction"
-date: 2026-08-25T03:24:36.270649
+date: 2026-08-25T03:26:56.435023
 draft: false
 tags: ["literature-note"]
 ---
@@ -10,8 +10,8 @@ tags: ["literature-note"]
 # Chapter 0: Preface
 ## Anki Notes
 [Cloze]
-[latex]$\overline{V}_{t}(s) \doteq$[/latex] {{c1::[latex]$\sum_{a} \pi(a|s) Q_{t}(s, a)$[/latex]}}
-where a is {{c2::the action}}, s is {{c2::the current state}}, [latex]$\pi$[/latex] is {{c2::the current policy}}, and [latex]$Q_{t}(s, a)$[/latex] is {{c2::the action-value of action a given state s}}.  
+```[latex]$\overline{V}_{t}(s) \doteq$[/latex] {{c1::[latex]$\sum_{a} \pi(a|s) Q_{t}(s, a)$[/latex]}}
+where a is {{c2::the action}}, s is {{c2::the current state}}, [latex]$\pi$[/latex] is {{c2::the current policy}}, and [latex]$Q_{t}(s, a)$[/latex] is {{c2::the action-value of action a given state s}}.```
 [/Cloze]
 
 [Basic]
@@ -34,6 +34,7 @@ An agent's policy is simultaneously {{c1::a decision-making rule}} and {{c2::a m
 [Cloze]
 A reinforcement learning system is a system that {{c1::wants something}}.
 [/Cloze]
+
 
 [Direct download of the preface Anki deck.](/files/Sutton_et_al._Chapter_0__Preface.apkg)
 
@@ -98,6 +99,8 @@ The 2 most important distinguishing features of reinforcement learning are:
 [Cloze]
 Reinforcement learning is learning {{c1::what to do}} in order to {{c1::maximize a numerical reward signal}}.
 [/Cloze]
+
+
 [Direct download of the chapter 1 Anki deck.](/files/Sutton_et_al._Chapter_1__Introduction.apkg)
 
 *[Zotero item: VH6PIYAV](/zotero/VH6PIYAV)*
