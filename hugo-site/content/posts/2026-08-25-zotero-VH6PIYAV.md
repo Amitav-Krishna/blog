@@ -1,11 +1,11 @@
 ---
 title: "Reinforcement learning: an introduction"
-date: 2026-08-25T03:49:18.420772
+date: 2026-08-25T03:50:31.412754
 draft: false
 tags: ["literature-note"]
 ---
 
-*Meta: I am reading [the free online copy](http://www.incompleteideas.net/book/RLbook2020trimmed.pdf) of this textbook published by one of the authors, the legendary Richard Sutton.  I have written my Anki notes below, and provided a link through which you can download the decks as APKGs for easy import into Anki.  If you notice any errors in my notes or have any advice for how I should write these notes, email me at [krishna@amitav.net](mailto:krishna@amitav.net).  This post is very likely to change over time as I read more and more of the textbook.  No spoiler warnings because this is a technical text.*
+*Meta: I am reading [the free online copy](http://www.incompleteideas.net/book/RLbook2020trimmed.pdf) of this textbook published by one of the authors, the legendary Richard Sutton.  I have written my [Anki](https://apps.ankiweb.net/) notes below, and provided a link through which you can download the decks as APKGs for easy import into Anki.  If you notice any errors in my notes or have any advice for how I should write these notes, email me at [krishna@amitav.net](mailto:krishna@amitav.net).  This post is very likely to change over time as I read more and more of the textbook.  No spoiler warnings because this is a technical text.*
 
 # Chapter 0: Preface
 ## Anki Notes
