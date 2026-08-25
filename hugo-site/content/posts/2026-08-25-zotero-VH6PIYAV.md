@@ -1,6 +1,6 @@
 ---
 title: "Reinforcement learning: an introduction"
-date: 2026-08-25T03:28:39.492502
+date: 2026-08-25T03:40:42.416540
 draft: false
 tags: ["literature-note"]
 ---
@@ -9,10 +9,11 @@ tags: ["literature-note"]
 
 # Chapter 0: Preface
 ## Anki Notes
-[Cloze]
-```[latex]$\overline{V}_{t}(s) \doteq$[/latex] {{c1::[latex]$\sum_{a} \pi(a|s) Q_{t}(s, a)$[/latex]}}
-where a is {{c2::the action}}, s is {{c2::the current state}}, [latex]$\pi$[/latex] is {{c2::the current policy}}, and [latex]$Q_{t}(s, a)$[/latex] is {{c2::the action-value of action a given state s}}.```
-[/Cloze]
+### Components of the expected approximate action value function (Cloze)
+```
+[latex]$\overline{V}_{t}(s) \doteq$[/latex] {{c1::[latex]$\sum_{a} \pi(a|s) Q_{t}(s, a)$[/latex]}}
+where a is {{c2::the action}}, s is {{c2::the current state}}, [latex]$\pi$[/latex] is {{c2::the current policy}}, and [latex]$Q_{t}(s, a)$[/latex] is {{c2::the action-value of action a given state s}}.
+```
 
 [Basic]
 Front: The following function is the expected approximate action value at time [latex]$t$[/latex] and given state [latex]$s$[/latex] and policy [latex]$\pi$[/latex]:
