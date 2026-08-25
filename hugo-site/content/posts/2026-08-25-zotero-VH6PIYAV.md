@@ -1,6 +1,6 @@
 ---
 title: "Reinforcement learning: an introduction"
-date: 2026-08-25T03:26:56.435023
+date: 2026-08-25T03:27:38.205932
 draft: false
 tags: ["literature-note"]
 ---
@@ -36,8 +36,8 @@ A reinforcement learning system is a system that {{c1::wants something}}.
 [/Cloze]
 
 
-[Direct download of the preface Anki deck.](/files/Sutton_et_al._Chapter_0__Preface.apkg)
 
+[Direct download of the preface Anki deck.](/files/Sutton_et_al._Chapter_0__Preface.apkg)
 # Chapter 1: Introduction
 ## Anki Notes
 [Basic]
@@ -99,6 +99,7 @@ The 2 most important distinguishing features of reinforcement learning are:
 [Cloze]
 Reinforcement learning is learning {{c1::what to do}} in order to {{c1::maximize a numerical reward signal}}.
 [/Cloze]
+
 
 
 [Direct download of the chapter 1 Anki deck.](/files/Sutton_et_al._Chapter_1__Introduction.apkg)
