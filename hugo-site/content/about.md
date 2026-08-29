@@ -11,7 +11,7 @@ I was mentored by [The Knowledge Society (TKS)](https://tks.world) from Septembe
 
 
 ## Contact / Socials
-- **Email:** [krishna@amitav.net](mailto:krishna@amitav.net)
+- **Email(s):** [krishna@amitav.net](mailto:krishna@amitav.net) (personal, most things should go here), [akrishn5@caltech.edu](mailto:akrishn5@caltech.edu) (research), [akrishna0511@bhncdsb.ca](mailto:akrishna0511@bhncdsb.ca) (student), [amitav@8090.inc](mailto:amitav@8090.inc) (work).
 - **GitHub:** [@amitav-krishna](https://github.com/amitav-krishna)
 - **X:** [@amitavkrshna](https://x.com/amitavkrshna) (I'm most active here)
 - **LinkedIn:** [amitav-krishna](https://linkedin.com/in/amitav-krishna) (I rarely use this)
