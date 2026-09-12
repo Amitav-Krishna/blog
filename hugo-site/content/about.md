@@ -2,7 +2,7 @@
 title: "About"
 ---
 
-I am a Grade 10 (going into grade 11) student at Holy Trinity Catholic High School in Simcoe, Ontario.
+I am a Grade 11 student at Holy Trinity Catholic High School in Simcoe, Ontario.
 
 My research focuses on applied machine learning for the physical sciences. I presented my work on machine learning for quantum state denoising at IEEE qCCL 2026 ([preprint](https://amitav.net/images/paper_v6_final.pdf), [press](https://www.norfolktoday.ca/2026/08/05/whats-good-norfolk-holy-trinity-student-presents-quantum-research-at-international-conference-in-denmark/)). Right now I am researching atomic simulations of light-activated water splitting with the [Material and Process Simulation Center at Caltech](https://www.wag.caltech.edu/).  
 
