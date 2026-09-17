@@ -8,10 +8,10 @@
 <meta name="robots" content="index, follow">
 <title>Amitav Krishna</title>
 
-<meta name="description" content="Researcher, engineer, student.">
+<meta name="description" content="I research applied ML for the physical sciences — currently atomic simulations of light-activated water splitting at Caltech.">
 <meta name="author" content="Amitav Krishna">
 <link rel="canonical" href="https://amitav.net/">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.ecd37c03108bdd63f93cec597ecadf7325c3aa5f9026c38b791effc9a966894b.css" integrity="sha256-7NN8AxCL3WP5POxZfsrfcyXDql&#43;QJsOLeR7/yalmiUs=" rel="preload stylesheet" as="style">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.117e8a7915c0b2da74b93bff9edfbfc35acb6e8ff4858dcec8a4efd333b5cee3.css" integrity="sha256-EX6KeRXAstp0uTv/nt&#43;/w1rLbo/0hY3OyKTv0zO1zuM=" rel="preload stylesheet" as="style">
 <link rel="icon" href="https://amitav.net/favicon.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="https://amitav.net/favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="https://amitav.net/favicon-32x32.png">
@@ -20,6 +20,7 @@
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
 <link rel="alternate" type="application/rss+xml" href="https://amitav.net/index.xml" title="rss">
+<link rel="alternate" type="application/json" href="https://amitav.net/index.json" title="json">
 <link rel="alternate" hreflang="en" href="https://amitav.net/">
 <noscript>
     <style>
@@ -29,16 +30,27 @@
         }
 
     </style>
-</noscript><meta property="og:url" content="https://amitav.net/">
+</noscript>
+<link rel="stylesheet" href="/css/tags-sidebar.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css" integrity="sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI+WdtXRGWt2kTvGFasHpSy3SV" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js" integrity="sha384-XjKyOOlGwcjNTAIQHIpgOno0Hl1YQqzUOEleOLALmuqehneUG+vnGctmUb0ZY0l8" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js" integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05" crossorigin="anonymous"
+  onload="renderMathInElement(document.body, {
+    delimiters: [
+      {left: '$$', right: '$$', display: true},
+      {left: '\\[', right: '\\]', display: true},
+      {left: '$', right: '$', display: false},
+      {left: '\\(', right: '\\)', display: false}
+    ],
+    throwOnError: false
+  });"></script><meta property="og:url" content="https://amitav.net/">
   <meta property="og:site_name" content="Amitav Krishna">
   <meta property="og:title" content="Amitav Krishna">
-  <meta property="og:description" content="Current research focuses on distributed training, making models stable, and figuring out what happens in the black box of neural networks.
-Projects cerebras-challenge — LLM token visualizer with perplexity tracking tinygrad-verilog — tinygrad to Verilog compiler (devlog) llm-from-scratch — C&#43;&#43; neural network framework with autograd gpu_torrent — Distributed token generation across GPUs stock_news — Stock price &#43; news overlay search_engine — word2vec from scratch face_recognition_ai — Face matching with DeepFace eye-tracking — Webcam gaze tracking Stock Email Notifications — Stock alerts (Grade 7, ~80 users) I am mentored by TKS and work as a software engineer at 8090.inc.">
+  <meta property="og:description" content="I research applied ML for the physical sciences — currently atomic simulations of light-activated water splitting at Caltech.">
   <meta property="og:locale" content="en-us">
   <meta property="og:type" content="website">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="">
-<meta name="twitter:description" content="Researcher, engineer, student.">
+<meta name="twitter:description" content="I research applied ML for the physical sciences — currently atomic simulations of light-activated water splitting at Caltech.">
 
 <script type="application/ld+json">
 {
@@ -79,8 +91,8 @@ Projects cerebras-challenge — LLM token visualizer with perplexity tracking ti
                 </a>
             </li>
             <li>
-                <a href="https://amitav.net/about" title="About">
-                    <span>About</span>
+                <a href="https://amitav.net/zotero" title="Zotero">
+                    <span>Zotero</span>
                 </a>
             </li>
             <li>
@@ -88,15 +100,64 @@ Projects cerebras-challenge — LLM token visualizer with perplexity tracking ti
                     <span>Blog</span>
                 </a>
             </li>
+            <li>
+                <a href="https://amitav.net/search" title="Search">
+                    <span>Search</span>
+                </a>
+            </li>
         </ul>
     </nav>
 </header>
-<main class="main"><div class="profile">
-    <div class="profile_inner">
-        <img draggable="false" src="https://amitav.net/images/amitav.jpg" alt="Amitav Krishna" title="Amitav Krishna"
-            height="150" width="150" />
-        <h1>Amitav Krishna</h1>
-        <span>Researcher · Software Engineer · Student</span><div class="social-icons" >
+<main class="main">
+<style>
+    .home-hero {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 2.5rem;
+        align-items: flex-start;
+        margin-top: 1rem;
+    }
+    .home-hero__profile {
+        flex: 0 0 190px;
+        text-align: center;
+    }
+    .home-hero__profile img {
+        width: 150px;
+        height: 150px;
+        object-fit: cover;
+        border-radius: 50%;
+    }
+    .home-hero__profile h1 {
+        font-size: 1.4rem;
+        margin: 0.6rem 0 0.4rem;
+    }
+    .home-hero__buttons {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+        margin-top: 1rem;
+    }
+    .home-hero__buttons .button {
+        display: block;
+    }
+    .home-hero__bio {
+        flex: 1 1 320px;
+        min-width: 0;
+        font-size: 1.05rem;
+        line-height: 1.7;
+    }
+    .home-hero__bio > :first-child { margin-top: 0; }
+     
+    @media (max-width: 680px) {
+        .home-hero { flex-direction: column; align-items: center; }
+        .home-hero__profile { flex-basis: auto; }
+        .home-hero__bio { flex-basis: auto; width: 100%; }
+    }
+</style>
+<div class="home-hero">
+    <div class="home-hero__profile">
+        <img draggable="false" src="https://amitav.net/images/amitav.jpg" alt="Amitav Krishna" width="150" height="150">
+        <h1>Amitav Krishna</h1><div class="social-icons" align="center">
     <a href="https://amitavthegreat.substack.com/" target="_blank" rel="noopener noreferrer me"
         title="Substack">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" stroke-width="2">
@@ -150,26 +211,35 @@ Projects cerebras-challenge — LLM token visualizer with perplexity tracking ti
     </a>
 </div>
 
-        <div class="buttons">
-            <a class="button" href="/research" rel="noopener" title="Research">
-                <span class="button-inner">
-                    Research
-                </span>
-            </a>
-            <a class="button" href="/projects" rel="noopener" title="Projects">
-                <span class="button-inner">
-                    Projects
-                </span>
-            </a>
-            <a class="button" href="/about" rel="noopener" title="About">
-                <span class="button-inner">
-                    About
-                </span>
-            </a>
+        <div class="home-hero__buttons">
+            <a class="button" href="https://amitav.net/posts.html"><span class="button-inner">Blog</span></a>
+            <a class="button" href="https://amitav.net/projects.html"><span class="button-inner">Projects</span></a>
+            <a class="button" href="https://amitav.net/research.html"><span class="button-inner">Research</span></a>
         </div>
     </div>
-</div>
+    <div class="home-hero__bio"><p>I am a Grade 11 student at Holy Trinity Catholic High School in Simcoe, Ontario.</p>
+<p>My research focuses on applied machine learning for the physical sciences. I presented my work on machine learning for quantum state denoising at IEEE qCCL 2026 (<a href="https://amitav.net/images/paper_v6_final.pdf">preprint</a>). Right now I am researching atomic simulations of light-activated water splitting with the <a href="https://www.wag.caltech.edu/">Material and Process Simulation Center at Caltech</a>.</p>
+<p>I was mentored by <a href="https://tks.world">The Knowledge Society (TKS)</a> from September 2024 - June 2026, which was wonderful! I am on leave as a software engineer at <a href="https://8090.inc">8090.inc</a> and as a consultant at <a href="https://fundomo.com">Fundomo</a>.  If you&rsquo;re an engineer who wants to build the future of software with 8090, email me <a href="mailto:amitav@8090.ai">here</a> with a video of your coolest project. I&rsquo;m lucky to have received an <a href="https://www.mercatus.org/emergent-ventures">Emergent Ventures</a> grant from the Mercatus Center and a compute grant from <a href="https://www.linkedin.com/in/lukepiette/">Luke Piette</a> at <a href="https://runpod.io">RunPod</a>.</p>
+<p>You can see press about me <a href="https://amitav.net/posts/press.html">here</a>.</p>
+<h2 id="contact--socials">Contact / Socials</h2>
+<ul>
+<li><strong>Email(s):</strong>
+<ul>
+<li><a href="mailto:krishna@amitav.net">krishna@amitav.net</a> (personal, most things should go here)</li>
+<li><a href="mailto:akrishn5@caltech.edu">akrishn5@caltech.edu</a> (research)</li>
+<li><a href="mailto:akrishna0511@bhncdsb.ca">akrishna0511@bhncdsb.ca</a> (student)</li>
+<li><a href="mailto:amitav@8090.inc">amitav@8090.inc</a> (work).</li>
+</ul>
+</li>
+<li><strong>GitHub:</strong> <a href="https://github.com/amitav-krishna">@amitav-krishna</a></li>
+<li><strong>X:</strong> <a href="https://x.com/amitavkrshna">@amitavkrshna</a> (I&rsquo;m most active here)</li>
+<li><strong>LinkedIn:</strong> <a href="https://linkedin.com/in/amitav-krishna">amitav-krishna</a> (I rarely use this)</li>
+<li><strong>YouTube:</strong> <a href="https://youtube.com/@amitavkrishna">@amitavkrishna</a></li>
+<li><strong>Substack:</strong> <a href="https://amitavthegreat.substack.com/">amitavthegreat</a> (This is pretty much shut down)</li>
+</ul>
 
+    </div>
+</div>
     </main>
     
 <footer class="footer">

@@ -1,5 +1,6 @@
 ---
 title: ""
+description: "I research applied ML for the physical sciences — currently atomic simulations of light-activated water splitting at Caltech."
 ---
 
 Current research focuses on distributed training, making models stable, and figuring out what happens in the black box of neural networks.
@@ -16,4 +17,4 @@ Current research focuses on distributed training, making models stable, and figu
 - **[eye-tracking](https://github.com/amitav-krishna/eye-tracking)** — Webcam gaze tracking
 - **[Stock Email Notifications](https://github.com/amitav-krishna/Stock_Email_Notifications)** — Stock alerts (Grade 7, ~80 users)
 
-I am mentored by [TKS](https://tks.world) and work as a software engineer at [8090.inc](https://8090.inc).
+I was mentored by [TKS](https://tks.world) from September 2024 – June 2026 and am on leave as a software engineer at [8090.inc](https://8090.inc).
