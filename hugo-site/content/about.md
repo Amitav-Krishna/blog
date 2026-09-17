@@ -9,7 +9,7 @@ My research focuses on applied machine learning for the physical sciences. I pre
 
 I was mentored by [The Knowledge Society (TKS)](https://tks.world) from September 2024 - June 2026, which was wonderful! I am on leave as a software engineer at [8090.inc](https://8090.inc) and as a consultant at [Fundomo](https://fundomo.com).  If you're an engineer who wants to build the future of software with 8090, email me [here](mailto:amitav@8090.ai) with a video of your coolest project. I'm lucky to have received an [Emergent Ventures](https://www.mercatus.org/emergent-ventures) grant from the Mercatus Center and a compute grant from [Luke Piette](https://www.linkedin.com/in/lukepiette/) at [RunPod](https://runpod.io).  
 
-
+You can see press about me [here](https://amitav.net/posts/press.html).
 ## Contact / Socials
 - **Email(s):** 
   - [krishna@amitav.net](mailto:krishna@amitav.net) (personal, most things should go here)
