@@ -4,7 +4,7 @@ title: "About"
 
 I am a Grade 11 student at Holy Trinity Catholic High School in Simcoe, Ontario.
 
-My research focuses on applied machine learning for the physical sciences. I presented my work on machine learning for quantum state denoising at IEEE qCCL 2026 ([preprint](https://amitav.net/images/paper_v6_final.pdf)). Right now I am researching atomic simulations of light-activated water splitting with the [Material and Process Simulation Center at Caltech](https://www.wag.caltech.edu/).
+My research focuses on applied machine learning for the physical sciences. I presented my work on machine learning for quantum state denoising at IEEE qCCL 2026 ([publication](https://ieeexplore.ieee.org/document/11668557), [preprint](https://amitav.net/images/paper_v6_final.pdf)). Right now I am researching atomic simulations of light-activated water splitting with the [Material and Process Simulation Center at Caltech](https://www.wag.caltech.edu/).
   
 
 I do software work for [Fundomo](https://fundomo.com).
