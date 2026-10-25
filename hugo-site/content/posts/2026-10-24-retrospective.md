@@ -20,6 +20,6 @@ I chatted with ChatGPT in a private window about my blog and one thing it pointe
 - Cultivate pride through celebrating small wins by Kiana Dochert
 - Khan Academy's AP Chemistry course,
 - WhatsApp,
-- The Diamond Age by Neal Stephenson
+- The Diamond Age by Neal Stephenson  
 
 I guess a meta point, this is one of the really useful parts of having a public blog!  There are a bunch of things in my private journals that I can't share with LLMs but by publishing this blog I get, as a side product, a pre-filtered log of things I've done for LLMs to work with.  Maybe I should create an API for this blog?  
